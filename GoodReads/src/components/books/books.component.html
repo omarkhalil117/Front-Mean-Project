@@ -1,0 +1,9 @@
+<div class="container">
+  @for (book of books; track book.id) {
+    <div class="image-container">
+      <img [src]="book.cover">
+      <a (click)="redirectToBookDetails(book.id)">{{ book.name }}</a>
+      <a>{{ book.authorName }}</a>
+    </div>
+  }
+</div>

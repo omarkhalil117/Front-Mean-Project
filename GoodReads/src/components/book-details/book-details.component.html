@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="details-left">
+    <img [src]="bookDetails.cover" alt="Book Cover">
+
+    <div>
+      <p-rating [(ngModel)]="newRating" [cancel]="false" (ngModelChange)="updateRating(newRating)"></p-rating>
+    </div>
+  </div>
+
+  <div class="details-right">
+    <h2>{{bookDetails.name}}</h2>
+    <p>{{bookDetails.authorName}}</p>
+    <p>{{bookDetails.categoryName}}</p>
+
+    @for (star of stars; track $index) {
+      <fa-icon class="star" [class.filled]="star" [icon]="faStar"></fa-icon>
+    }
+    <span class="rate">{{bookDetails.avgRate}}</span>
+  </div>
+</div>
