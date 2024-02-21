@@ -1,0 +1,11 @@
+    <div class="card ">
+        @if(!authorInfo.photo)
+        {
+            <img class="authorInfo-img border-0 rounded " src="../../assets/default-photo.jpg" alt="Card image cap">
+        } @else{ 
+            <img class="authorInfo-img border-0 rounded " src="../../assets/{{authorInfo.photo}}" alt="Card image cap">
+        }
+        <div class="card-body text-center">
+            <a href="https://google.com">{{authorInfo.name}}</a>
+            <h3 class="card-title"></h3>
+        </div>

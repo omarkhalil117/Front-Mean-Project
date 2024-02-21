@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AuthorComponent } from '../components/author/author.component';
+import { AuthorComponent } from '../components/authors/authors.component';
 import { BookRowComponent } from '../components/book-row/book-row.component';
 import { UserDashboardComponent } from '../components/user-dashboard/user-dashboard.component';
 @Component({
