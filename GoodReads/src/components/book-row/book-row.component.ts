@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-book-row',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './book-row.component.css'
 })
 export class BookRowComponent {
-
+@Input() info:any;
 }
