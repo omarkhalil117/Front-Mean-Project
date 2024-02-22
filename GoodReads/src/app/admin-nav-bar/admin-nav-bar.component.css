@@ -1,0 +1,9 @@
+.routesColored{
+color: black;
+background: #FCDAC3;
+border-radius: 5px;
+}
+
+.nav-link{
+    cursor: pointer;
+}

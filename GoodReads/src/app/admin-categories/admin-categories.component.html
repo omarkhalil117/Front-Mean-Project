@@ -1,0 +1,48 @@
+<div class="container-fluid rounded-5 mynav">
+    <div class="row justify-content-end ">
+        <ng-template #content let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Add</button>
+            </div>
+        </ng-template>
+        <button class="btn btn-dark my-width mt-5 me-5" (click)="openVerticallyCentered(content)">
+            +
+        </button>
+    
+        
+    </div>
+    <div class="row">
+
+        <div class="col-md-4 d-flex justify-content-center">
+                <p>id</p>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+            <p>Name</p>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center">
+            <p>Actions</p>
+        </div>
+    </div>
+    @for(category of this.categories; track $index){
+        <div class="row">
+            <div class="col-md-4 d-flex justify-content-center">
+                    <p>{{$index+1}}</p>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <p>{{category.name}}</p>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <button ><i></i></button>
+            </div>
+        </div>
+                
+    }
+    
+</div>
