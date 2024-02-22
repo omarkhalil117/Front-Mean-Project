@@ -7,7 +7,7 @@ import { AuthorCardComponent } from '../author-card/author-card.component';
   templateUrl: './authors.component.html',
   styleUrl: './authors.component.css'
 })
-export class AuthorComponent {
+export class AuthorsComponent {
 
   authors: any[] = [
     {
