@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthorCardComponent } from '../author-card/author-card.component';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-author',
   standalone: true,

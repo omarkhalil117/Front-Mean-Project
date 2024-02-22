@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -8,5 +9,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './author-card.component.css'
 })
 export class AuthorCardComponent {
-@Input() authorInfo:any;
-}
+  @Input() authorInfo:any;
+   
+} 

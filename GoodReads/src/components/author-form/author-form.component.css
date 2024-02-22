@@ -1,0 +1,31 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 5px;
+}
+
+form input[type="file"] {
+  margin-top: 5px;
+}
+
+form button[type="submit"] {
+  margin-top: 10px;
+}
+
+button{
+    width: 100px;
+    margin-left: 150px;
+}
+
+input{
+    width: 400px;
+}
