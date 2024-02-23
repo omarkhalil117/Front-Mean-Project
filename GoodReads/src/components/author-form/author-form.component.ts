@@ -11,7 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class AuthorFormComponent {
   authorForm: FormGroup;
-  dateChange: Boolean = false ;
+  dateChange: Boolean = false;
+  image?: any;
+  response!:any;
   constructor(private http:HttpClient)
   {
     this.authorForm = new FormGroup({
@@ -37,11 +39,29 @@ export class AuthorFormComponent {
     this.dateChange = true;
   }
 
-  submitAuthor(data:any)
+  async submitAuthor(data:any,event:any)
   {
+    data.photo = this.image.name;
     console.log(data);
-    this.http.post('http://localhost:3000/authors',data).subscribe(
-      (d)=> console.log(d)
-    );
+
+    const formData = new FormData();
+    formData.append("image",this.image);
+    console.log(data)
+
+    await this.http.post('http://localhost:3000/authors',data).subscribe(
+          (d)=> console.log(d)
+          );
+
+    const res = await this.http.post(`http://localhost:3000/upload-author-image/${data.photo}`,formData).subscribe((res)=> this.response = res)
+
+    console.log(this.response)
+    console.log(res)
+  }
+
+  registerPhoto(e:any)
+  {
+    console.log(e.target.files[0]) 
+    this.image =  e.target.files[0]
+   
   }
 }

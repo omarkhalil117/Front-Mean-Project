@@ -1,5 +1,5 @@
 <form [formGroup]="authorForm" #authorData="ngForm" class="container mt-5 align-items-center"
-  (ngSubmit)="submitAuthor(authorData.value)">
+  (ngSubmit)="submitAuthor(authorData.value,$event)">
   <div>
     <!-- First Name -->
     <div>
@@ -13,9 +13,6 @@
       @if(authorForm.controls['firstName'].errors?.['required']) {
       <!-- required -->
       <p class="text-danger fw-bold">User Name Required</p>
-      } @else if(authorForm.controls['firstName'].errors?.['spaced']) {
-      <!-- spaced -->
-      <p class="text-danger fw-bold">User Name is spaced</p>
       } @else if (authorForm.controls['firstName'].errors?.['minlength']) {
       <!-- min Legth -->
       <p class="text-danger fw-bold">name length is less than 3</p>
@@ -35,10 +32,7 @@
       @if(authorForm.controls['lastName'].errors?.['required']) {
       <!-- required -->
       <p class="text-danger fw-bold">User Name Required</p>
-      } @else if(authorForm.controls['lastName'].errors?.['spaced']) {
-      <!-- spaced -->
-      <p class="text-danger fw-bold">User Name is spaced</p>
-      } @else if (authorForm.controls['lastName'].errors?.['minlength']) {
+      }  @else if (authorForm.controls['lastName'].errors?.['minlength']) {
       <!-- min Legth -->
       <p class="text-danger fw-bold">name length is less than 3</p>
 
@@ -54,17 +48,16 @@
 
       <div>
         <label for="photo">Photo:</label>
-        <input class="form-control " type="file" id="photo" name="photo" />
+        <input class="form-control " type="file" id="photo" accept="image/*" name="photo" (change)="registerPhoto($event)"/>
       </div>
     </div>
 
     @if (authorForm.invalid) {
-    <button class="btn btn-primary" type="submit" [disabled]="true">Submit</button>
+    <button class="btn btn-danger" type="submit" [disabled]="true">Submit</button>
     } @else { @if(dateChange) {
-    <button type="submit" [disabled]="false">Submit</button>
+    <button class="btn btn-primary " type="submit" [disabled]="false">Submit</button>
     }@else {
-
-    <button type="submit" [disabled]="true">Submit</button>
+    <button class="btn btn-danger" type="submit" [disabled]="true">Submit</button>
     } }
   </div>
 </form>
