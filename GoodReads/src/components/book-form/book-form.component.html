@@ -1,0 +1,68 @@
+<h2>Add Book</h2>
+
+<form [formGroup]="bookForm" (ngSubmit)="handleSubmitForm()">
+  <div>
+    <label for="name">Book Name: </label>
+    <input
+      type="text"
+      class="type_text"
+      name="name"
+      formControlName="name"
+    />
+    @if(bookForm.controls['name'].invalid && bookForm.controls['name'].touched) {
+      <div id="nameHelp" class="form-text text-danger">
+        @if(bookForm.controls['name'].errors?.['required']) {
+          <small>Title of book is required</small>
+        }
+      </div>
+    }
+
+    <label for="category">Category: </label>
+    <input
+      type="text"
+      class="type_text"
+      name="category"
+      formControlName="category"
+    />
+    @if(bookForm.controls['category'].invalid && bookForm.controls['category'].touched) {
+      <div id="categoryHelp" class="form-text text-danger">
+        @if(bookForm.controls['category'].errors?.['required']) {
+          <small>Category is required</small>
+        }
+      </div>
+    }
+
+    <label for="author">Author: </label>
+    <input
+      type="text"
+      class="type_text"
+      name="author"
+      formControlName="author"
+    />
+    @if(bookForm.controls['author'].invalid && bookForm.controls['author'].touched) {
+      <div id="authorHelp" class="form-text text-danger">
+        @if(bookForm.controls['author'].errors?.['required']) {
+          <small>Author is required</small>
+        }
+      </div>
+    }
+
+    <label for="cover">Image: </label>
+    <input
+      type="file"
+      name="cover"
+      (change)="upload($event)"
+      formControlName="cover"
+    />
+
+    <!--@if(bookForm.controls['image'].invalid && bookForm.controls['image'].touched) {
+      <div id="imageHelp" class="form-text text-danger">
+        @if(bookForm.controls['image'].errors?.['required']) {
+          <small>Image is required</small>
+        }
+      </div>
+    }-->
+
+  </div>
+  <button type="submit" [disabled]="bookForm.invalid" (click)="addBook()">Add Book</button>
+</form>

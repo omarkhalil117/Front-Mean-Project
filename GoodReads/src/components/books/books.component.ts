@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BooksRequestsService } from '../../services/book-services/books-requests.service';
 
 @Component({
   selector: 'app-books',
@@ -93,7 +94,16 @@ export class BooksComponent {
     }
   ]
 
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private booksRequestsService: BooksRequestsService
+    ){}
+
+    ngOnInit(){
+      this.booksRequestsService.getAllbooks().subscribe((res) => {
+        console.log(res);
+      })
+    }
 
   redirectToBookDetails(id : number) {
     this.router.navigate(['app-book-details', id]);
