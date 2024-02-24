@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
-                <p><app-add-category [categories]="this.categories"></app-add-category></p>
+                <p><app-author-form [authors]="this.authors"></app-author-form></p>
             </div>
 
         </ng-template>
@@ -47,7 +47,7 @@
                 <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
-                <app-update-category [categoryData]="this.categoryData" [categories]="this.categories"></app-update-category>
+                <app-update-form [authorData]="this.authorData" [authors]="this.authors"></app-update-form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
@@ -59,13 +59,27 @@
     <!-- //! Header of category -->
     <div class="row">
 
-        <div class="col-md-4 d-flex justify-content-center">
+        <div class="col-md-2 d-flex justify-content-center">
                 <p>id</p>
         </div>
-        <div class="col-md-4 d-flex justify-content-center">
-            <p>Name</p>
+        <div class="col-md-2 d-flex justify-content-center">
+            <p>First Name</p>
         </div>
-        <div class="col-md-4 d-flex justify-content-center">
+        
+        <div class="col-md-2 d-flex justify-content-center">
+            <p>Last Name</p>
+        </div>
+
+        
+        <div class="col-md-2 d-flex justify-content-center">
+            <p>Photo</p>
+        </div>
+
+        <div class="col-md-2 d-flex justify-content-center">
+            <p>Date of birth</p>
+        </div>
+
+        <div class="col-md-2 d-flex justify-content-center">
             <p>Actions</p>
         </div>
     </div>
@@ -73,18 +87,27 @@
 
 
 
-    @for(category of this.categories; track category._id){
-        <div class="row mb-5">
-            <div class="col-md-4 d-flex justify-content-center">
+    @for(author of this.authors; track author._id){
+        <div class="row mb-5 justify-content-center align-items-center">
+            <div class="col-md-2 d-flex justify-content-center">
                     <p>{{$index+1}}</p>
             </div>
-            <div class="col-md-4 d-flex justify-content-center">
-                <p>{{category.name}}</p>
+            <div class="col-md-2 d-flex justify-content-center">
+                <p>{{author.firstName}}</p>
             </div>
-            <div class="col-md-4 d-flex justify-content-center gap-2">
-                <button class="btn btn-info"   (click)="openVerticallyCentered3(content3,category)"><i class="fas fa-pen"></i></button>
+            <div class="col-md-2 d-flex justify-content-center">
+                <p>{{author.lastName}}</p>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <img src="http://localhost:3000/{{author.photo}}" alt="">
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <p>{{author.dob | date:'shortDate'}}</p>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center gap-2">
+                <button class="btn btn-info"   (click)="openVerticallyCentered3(content3,author)"><i class="fas fa-pen"></i></button>
                 
-                <button class="btn btn-danger" (click)="deleteCategory(category._id)"><i class="fas fa-trash"></i></button>
+                <button class="btn btn-danger" (click)="deleteAuthor(author._id)"><i class="fas fa-trash"></i></button>
             </div>
         </div>
                 

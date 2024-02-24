@@ -1,0 +1,50 @@
+<form [formGroup]="authorForm" #authorData="ngForm" class="container mt-5 align-items-center"
+>
+  <div>
+    <!-- First Name -->
+    <div>
+      <div>
+        <label for="firstName">First Name:</label>
+        <input class="form-control "type="text" id="firstName" name="firstName" formControlName="firstName" />
+      </div>
+
+      @if(authorForm.controls['firstName'].invalid  ) {
+      @if (authorForm.controls['firstName'].errors?.['minlength']) {
+      <!-- min Legth -->
+      <p class="text-danger fw-bold">name length is less than 3</p>
+
+      } @else if (authorForm.controls['firstName'].errors?.['maxlength']) {
+      <!-- max Legth -->
+      <p class="text-danger fw-bold">name length is more than 30</p>
+      } }
+
+      <div>
+        <label for="lastName">Last Name:</label>
+        <input class="form-control "type="text" id="lastName" name="lastName" formControlName="lastName" />
+      </div>
+
+      @if(authorForm.controls['lastName'].invalid ) {
+      @if (authorForm.controls['lastName'].errors?.['minlength']) {
+      <!-- min Legth -->
+      <p class="text-danger fw-bold">name length is less than 3</p>
+
+      } @else if (authorForm.controls['lastName'].errors?.['maxlength']) {
+      <!-- max Legth -->
+      <p class="text-danger fw-bold">name length is more than 30</p>
+      } }
+
+      <div>
+        <label for="dob">Date of Birth:</label>
+        <input class="form-control " type="date" id="dob" name="dob" formControlName="dob" />
+      </div>
+
+      <div>
+        <label for="photo">Photo:</label>
+        <input class="form-control " type="file" id="photo" accept="image/*" name="photo"   formControlName="photo" (change)="registerPhoto($event)"/>
+      </div>
+    </div>
+
+
+      <button class="btn btn-primary " type="submit"  (click)="updateAuthor(this.authorForm)"  [disabled]="!(!authorForm.invalid && authorForm.dirty && this.photoChanged)">Submit</button>   
+  </div>
+</form>

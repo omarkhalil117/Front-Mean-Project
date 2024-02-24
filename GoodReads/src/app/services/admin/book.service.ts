@@ -7,5 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class BookService {
 
-  constructor() { }
+  constructor(private _HTTPClient:HttpClient) { }
+
+  displayBooks():Observable<any>{
+    return  this._HTTPClient.get('http://127.0.0.1:3000/books')
+  }
+  deleteBooks(id:String):Observable<any>{
+    return this._HTTPClient.delete(`http://127.0.0.1:3000/books/${id}`)
+  }
+  addBooks(body:object):Observable<any>{
+    return this._HTTPClient.post(`http://127.0.0.1:3000/books`,  body)
+  }
+  updateBooks(body:FormData,id:String):Observable<any>{
+    return this._HTTPClient.patch(`http://127.0.0.1:3000/books/${id}`,  body)
+  }
 }

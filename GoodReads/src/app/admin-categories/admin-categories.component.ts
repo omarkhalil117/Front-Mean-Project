@@ -1,62 +1,74 @@
+import { Category } from './../Interface/category';
 import { CategoriesService } from './../services/admin/categories.service';
 import { Component, inject, TemplateRef, ViewEncapsulation} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthorFormComponent } from '../admin/authors/author-form/author-form.component';
+import { AddCategoryComponent } from '../add-category/add-category.component';
+import { UpdateCategoryComponent } from '../update-category/update-category.component';
 
 @Component({
   selector: 'app-admin-categories',
   standalone: true,
-  imports: [],
+  imports: [AddCategoryComponent,UpdateCategoryComponent],
   templateUrl: './admin-categories.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrl: './admin-categories.component.css'
 })
 export class AdminCategoriesComponent {
 	private modalService = inject(NgbModal);
-  categories:any
-  constructor(private _CategoriesService:CategoriesService){
-    
-  }
+  categories!:Category[]
+  isResponse : boolean =false
+  deletedMessage!: String
+  categoryData !: Category
+  constructor(private _CategoriesService:CategoriesService){}
 
   ngOnInit(){
-    this._CategoriesService.displayBooks().subscribe(
+    //! Display categories
+    this.displayCategories()
+  }
+
+  //! Display Categories
+  displayCategories(){
+    this._CategoriesService.displayCategories().subscribe(
       data => {
           this.categories = data
       }
     )
   }
-  openBackDropCustomClass(content: TemplateRef<any>) {
-		this.modalService.open(content, { backdropClass: 'light-blue-backdrop' });
-	}
+  //! Delete Categories
+   deleteCategory(id:string){
+    this._CategoriesService.deleteCategory(id).subscribe(
+      data =>{
+        // console.log(data)
+          this.deletedMessage = data.message     
+        //! display id okay
+        this.categories = this.categories.filter(el => el._id !== id)
+      },
+      error =>{
+        console.log(error)
+        this.deletedMessage = error.error.message
+      }
+    )
+  }
 
-	openWindowCustomClass(content: TemplateRef<any>) {
-		this.modalService.open(content, { windowClass: 'dark-modal' });
-	}
 
-	openSm(content: TemplateRef<any>) {
-		this.modalService.open(content, { size: 'sm' });
-	}
 
-	openLg(content: TemplateRef<any>) {
-		this.modalService.open(content, { size: 'lg' });
-	}
 
-	openXl(content: TemplateRef<any>) {
-		this.modalService.open(content, { size: 'xl' });
-	}
 
-	openFullscreen(content: TemplateRef<any>) {
-		this.modalService.open(content, { fullscreen: true });
-	}
 
+  //! Modal Function from ng Bootstrap
 	openVerticallyCentered(content: TemplateRef<any>) {
 		this.modalService.open(content, { centered: true });
 	}
-
-	openScrollableContent(longContent:TemplateRef<any>) {
-		this.modalService.open(longContent, { scrollable: true });
+  openVerticallyCentered2(content: TemplateRef<any>,category:any) {
+		this.modalService.open(content, { centered: true });
 	}
 
-	openModalDialogCustomClass(content: TemplateRef<any>) {
-		this.modalService.open(content, { modalDialogClass: 'dark-modal' });
+  openVerticallyCentered3(content: TemplateRef<any>,category:any) {
+    console.log(category)
+		this.modalService.open(content, { centered: true });
+    this.categoryData = category
+    
 	}
+
 }
