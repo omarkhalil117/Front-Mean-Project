@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component , Input} from '@angular/core';
 import { UserAuthorBookComponent } from '../user-author-book/user-author-book.component';
+import { AuthorServicesService } from '../../services/author-services.service';
 @Component({
   selector: 'app-user-author',
   standalone: true,
@@ -8,21 +9,19 @@ import { UserAuthorBookComponent } from '../user-author-book/user-author-book.co
   styleUrl: './user-author.component.css'
 })
 export class UserAuthorComponent {
-books = [
+  @Input() id!:String;
+  authorData:any = [] ;
+  author:any = {};
+  books: any[] = [];
+  constructor(private authorInfo : AuthorServicesService){}
+
+  ngOnInit()
   {
-    id:1,
-    bookName:"clean code",
-    rating:4
-  },
-  {
-    id:2,
-    bookName:"clean Arch",
-    rating:4
-  },
-  {
-    id:3,
-    bookName:"Head First",
-    rating:4
-  },
-]
+    console.log(this.id)
+    this.authorInfo.getAuthorWithBooks(this.id).subscribe((data) => {
+      this.authorData =data 
+      console.log(this.authorData.authorbooks)
+    })
+
+  }
 }

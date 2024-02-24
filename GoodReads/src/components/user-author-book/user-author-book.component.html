@@ -1,6 +1,10 @@
     <div class="d-flex justify-content-between align-items-center ">
-        <img src="../../assets/default-photo.jpg" alt="">
-
+        @if(bookInfo.cover)
+        {
+            <img src="http://localhost:3000/{{bookInfo.cover}}" alt="{{bookInfo.cover}}">
+        } @else {
+            <img src="../../assets/default-photo.jpg" alt="">
+        }
         <div>
             <h3>{{bookInfo.bookName}}</h3>
             <p>rating : {{bookInfo.rating}}</p>

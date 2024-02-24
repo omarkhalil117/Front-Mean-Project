@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthorCardComponent } from '../author-card/author-card.component';
 import { HttpClient } from '@angular/common/http';
+import { AuthorServicesService } from '../../services/author-services.service';
 @Component({
   selector: 'app-author',
   standalone: true,
@@ -10,18 +11,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthorsComponent {
 
-  authors: any[] = [
-    {
-      photo:null,
-      name:"Linus Travoldas"
-    },
-    {
-      photo:null,
-      name:"Mohamed Hammad"
-    },
-    {
-      photo:null,
-      name:"Mohamed El-desouqy"
-    }
-  ];
+  authors:any;
+  constructor(private authorService: AuthorServicesService){}
+
+  ngOnInit()
+  {
+    this.authorService.getAllAuthors().subscribe((data)=> this.authors = data)
+  } 
 }
