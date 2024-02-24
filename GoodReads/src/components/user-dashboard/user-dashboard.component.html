@@ -60,9 +60,10 @@
     <div class="row">
       <div class="col-3">
         <div class="d-flex flex-column align-content-center justify-content-center ">
-          <button type="button" class="btn btn-info w-50 my-1">Read</button>
-          <button type="button" class="btn btn-info w-50 my-1">Want to Read</button>
-          <button type="button" class="btn btn-info w-50 my-1">Reading</button>
+          <button type="button" class="btn btn-info w-50 my-1" (click)="getAll()">All</button>
+          <button type="button" class="btn btn-info w-50 my-1" (click)="getReadBook()">Read</button>
+          <button type="button" class="btn btn-info w-50 my-1" (click)="getWantToReadBooks()">Want to Read</button>
+          <button type="button" class="btn btn-info w-50 my-1" (click)="getReadingBooks()">Reading</button>
         </div>
       </div>
       <div class="col-9">
@@ -78,22 +79,28 @@
             </tr>
           </thead>
           <tbody>
-            @for(book of data.fullInfo.books ; track book.id)
+            @for(book of books ; track book.id)
             {
             <tr>
-              @if(!book.cover)
+              @if(!book.book.cover)
               {
                 <td><img src="../../assets/default-photo.jpg" alt=""></td>
               } @else {
-                <td><img src="http://localhost:3000/{{book.cover}}" alt="img"></td>
+                <td><img src="http://localhost:3000/{{book.book.cover}}" alt="img"></td>
               }
-              <td>{{book.name}}</td>
-              <td>{{book.authorID?.firstName}} <span>{{book.authorID?.lastName}}</span>
+              <td><a href="">{{book.book.name}}</a></td>
+              <td> <a href=""> {{book.book.authorID?.firstName}} <span>{{book.book.authorID?.lastName}}</span></a>
               </td>
-              <td>{{book.categoryID?.name}}</td>
-              <!-- <td>{{book.Rating}}</td> -->
-              <!-- <td>{{book.AvgRating}}</td> -->
-              <td>{{book.shelve}}</td>
+              <td>{{book.book.categoryID?.name}}</td>
+              <td></td>
+              <!-- <td>{{book.book.shelve}}</td> -->
+              <td>
+                <select name="shelve" id="shelve">
+                    <option value="Want to Read" selected>Want to Read</option>
+                    <option value="Currently read">Currently read</option>
+                    <option value="Read">Read</option>
+                </select>
+              </td>
             </tr>
             }
             
