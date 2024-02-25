@@ -1,0 +1,115 @@
+<div class="container-fluid rounded-5 mynav p-5">
+
+    <!-- //! Add category form -->
+
+    <div class="row justify-content-end ">
+        <ng-template #content let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title">Add Category</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <app-add-form [books]="this.books"></app-add-form>
+            </div>
+
+        </ng-template>
+        <button class="btn btn-dark my-width mt-5 me-5" (click)="openVerticallyCentered(content)">
+            +
+        </button>
+    
+        
+    </div>
+
+
+
+    <!-- //! Error of delete -->
+
+    <div class="row justify-content-end ">
+        <ng-template #content2 let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <p >{{deletedMessage}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+            </div>
+        </ng-template>
+    </div>
+
+
+    <div class="row justify-content-end ">
+        <ng-template #content3 let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <app-update-form [bookData]="this.bookData" [books]="this.books"></app-update-form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+            </div>
+        </ng-template>
+    </div>
+
+
+    <!-- //! Header of category -->
+    <div class="row">
+
+        <div class="col-md-2 d-flex justify-content-center">
+                <p>id</p>
+        </div>
+        <div class="col-md-2 d-flex justify-content-center">
+            <p>Photo</p>
+        </div>
+        
+        <div class="col-md-2 d-flex justify-content-center">
+            <p>Name</p>
+        </div>
+
+        
+        <div class="col-md-2 d-flex justify-content-center">
+            <p>categoryId</p>
+        </div>
+
+        <div class="col-md-2 d-flex justify-content-center">
+            <p>authorId</p>
+        </div>
+
+        <div class="col-md-2 d-flex justify-content-center">
+            <p>Actions</p>
+        </div>
+    </div>
+
+
+
+    @for(book of this.books; track book._id){
+            
+        <div class="row mb-5 justify-content-center align-items-center">
+            <div class="col-md-2 d-flex justify-content-center">
+                    <p>{{$index+1}}</p>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                    <img src="http://localhost:3000/{{book.cover}}" alt="">
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <p>{{book.categoryID}}</p>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <p>{{book.authorID}}</p>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center">
+                <p>{{book.name}}</p>
+            </div>
+            <div class="col-md-2 d-flex justify-content-center gap-2">
+                <button class="btn btn-info"   (click)="openVerticallyCentered3(content3,book)"><i class="fas fa-pen"></i></button>
+                
+                <button class="btn btn-danger" (click)="deleteBook(book._id)"><i class="fas fa-trash"></i></button>
+            </div>
+        </div>       
+    }
+    
+</div>

@@ -1,0 +1,17 @@
+    <div class="d-flex justify-content-between align-items-center ">
+        @if(bookInfo.cover)
+        {
+            <img src="http://localhost:3000/{{bookInfo.cover}}" alt="{{bookInfo.cover}}">
+        } @else {
+            <img src="../../assets/default-photo.jpg" alt="">
+        }
+        <div>
+            <h3>{{bookInfo.bookName}}</h3>
+            <p>rating : {{bookInfo.rating}}</p>
+        </div>
+    <select >
+    <option selected>Currently Read</option>
+    <option value="1">Want to read</option>
+    <option value="2">Read</option>
+    </select>
+    </div>

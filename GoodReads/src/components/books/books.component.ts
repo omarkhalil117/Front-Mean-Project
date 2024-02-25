@@ -30,4 +30,8 @@ export class BooksComponent {
   redirectToBookDetails(id : string) {
     this.router.navigate(['books', id]);
   }
+
+  redirectToAuthorDetails(authorId: String){
+    this.router.navigate(['authors', authorId]);
+  }
 }

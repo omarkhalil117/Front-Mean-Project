@@ -21,15 +21,15 @@ export class BooksRequestsService {
     return this.http.post(`http://127.0.0.1:3000/books`, data);
   }
 
-  deleteBook(ID : number) {
-    return this.http.delete(`http://127.0.0.1:3000/books/:${ID}`);
+  deleteBook(id : number) {
+    return this.http.delete(`http://127.0.0.1:3000/books/${id}`);
   }
 
-  updateBook(ID : number, data: Object) {
-    return this.http.patch(`http://127.0.0.1:3000/books/:${ID}`, data);
+  updateBook(id : number, data: Object) {
+    return this.http.patch(`http://127.0.0.1:3000/books/${id}`, data);
   }
 
-  createReview(data: Object) {
-    return this.http.post(`http://127.0.0.1:3000/reviews`, data);
+  createReview(id : string, data: Object) {
+    return this.http.post(`http://127.0.0.1:3000/books/${id}/reviews`, data);
   }
 }

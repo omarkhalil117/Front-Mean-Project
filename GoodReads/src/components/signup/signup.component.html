@@ -1,0 +1,137 @@
+<form [formGroup]="signupForm" (ngSubmit)="handleSubmitForm()">
+
+
+
+  <div class="mb-3">
+    <label for="userName" class="form-label">User Name</label>
+    <input type="text" class="form-control" id="userName"
+    formControlName="userName"
+    >
+
+    @if(this.errorMessage.includes('userName')){
+      <small>{{this.errorMessage}}</small>
+    }
+
+
+    @if(signupForm.controls['userName'].invalid && signupForm.controls['userName'].touched){
+      @if(signupForm.controls['userName'].errors?.['required']){
+        <small>You must enter your user name</small>
+      }
+      @if(signupForm.controls['userName'].errors?.['pattern']){
+        <small>First charachter must be alphaptic, userName must be from 8 to 30 charchters ,and only numbers, alpha, _ are allowed </small>
+      }
+    }
+  </div>
+
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="firstName"
+      formControlName="firstName"
+      >
+
+      @if(signupForm.controls['firstName'].invalid && signupForm.controls['firstName'].touched){
+        @if(signupForm.controls['firstName'].errors?.['required']){
+          <small>You must enter your first name</small>
+        }
+        @if(signupForm.controls['firstName'].errors?.['pattern']){
+          <small>You must enter only alphaptics </small>
+        }
+        @if(signupForm.controls['firstName'].errors?.['maxlength']){
+          <small>Do not enter more than 200 charachters 😒</small>
+        }
+        @if(signupForm.controls['firstName'].errors?.['minlength']){
+          <small>Your first name less than 2 charachters ! 🤨</small>
+        }
+      }
+    </div>
+
+
+  <div class="mb-3">
+    <label for="lastName" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="lastName"
+    formControlName="lastName"
+    >
+
+
+
+    @if(signupForm.controls['lastName'].invalid && signupForm.controls['lastName'].touched){
+      @if(signupForm.controls['lastName'].errors?.['required']){
+        <small>You must enter your first name</small>
+      }
+      @if(signupForm.controls['lastName'].errors?.['pattern']){
+        <small>You must enter only alphaptics </small>
+      }
+      @if(signupForm.controls['lastName'].errors?.['maxlength']){
+        <small>Do not enter more than 200 charachters 😒</small>
+      }
+
+      @if(signupForm.controls['lastName'].errors?.['minlength']){
+        <small>Your last name less than 2 charachters ! 🤨</small>
+      }
+    }
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+    formControlName="email">
+
+    @if(this.errorMessage.includes('Email')){
+      <small>{{this.errorMessage}}</small>
+    }
+
+
+    @if(signupForm.controls['email'].invalid && signupForm.controls['email'].touched){
+      @if(signupForm.controls['email'].errors?.['required']){
+        <small>You must enter your Email</small>
+      }
+      @if(signupForm.controls['email'].errors?.['email']){
+        <small>Enter a valid email 🙂</small>
+      }
+      @if(signupForm.controls['email'].errors?.['maxlength']){
+        <small>Do not enter more than 200 charachters 😒</small>
+      }
+    }
+  </div>
+
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1"
+    formControlName="password"
+    >
+
+    @if(signupForm.controls['password'].invalid && signupForm.controls['password'].touched){
+      @if(signupForm.controls['password'].errors?.['required']){
+        <small>You must enter your password</small>
+      }
+      @if(signupForm.controls['password'].errors?.['pattern']){
+        <small>Your password must have at least one capital letter, one small letter, one number, and 8 charachters.</small>
+      }
+      @if(signupForm.controls['password'].errors?.['maxlength']){
+        <small>Do not enter more than 50 charachters 😒</small>
+      }
+    }
+
+
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1"
+    formControlName="confirmPassword"
+    >
+    @if(signupForm.controls['confirmPassword'].invalid && signupForm.controls['confirmPassword'].touched){
+      @if(signupForm.controls['confirmPassword'].errors?.['required']){
+        <small>You must confirm your password</small>
+      }
+
+      @if(signupForm.errors?.['passwordNotMatch']){
+        <small>Your confirm password does not match password</small>
+      }
+    }
+  </div>
+
+
+  <button type="button" class="btn btn-primary" (click)="redirectToMyBook()" [disabled]="signupForm.invalid">Submit</button>
+</form>

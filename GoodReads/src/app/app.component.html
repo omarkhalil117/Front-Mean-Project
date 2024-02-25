@@ -1,3 +1,8 @@
-<app-header></app-header>
-<!--<app-book-form></app-book-form>-->
+
+@if(this.currentUrl !== 'admin'){
+    <app-header></app-header>
+}
+@if(this.currentUrl === 'admin'){
+
+}
 <router-outlet></router-outlet>
