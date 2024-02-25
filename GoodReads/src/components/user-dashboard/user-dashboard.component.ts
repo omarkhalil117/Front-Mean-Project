@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { BookRowComponent } from '../book-row/book-row.component';
 import { UserDataService } from '../../services/user-data.service';
+import { Router } from '@angular/router';
+import { HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
@@ -13,7 +15,9 @@ export class UserDashboardComponent {
   books:any;
   temp:any;
   userToken:String = '';
-  constructor(private userData : UserDataService){}  
+  constructor(private userData : UserDataService,
+              private router : Router,
+              private http : HttpClient){}  
 
   ngOnInit()
   {
@@ -42,11 +46,33 @@ export class UserDashboardComponent {
   }
   getReadingBooks()
   {
-    this.books = this.temp.filter((el:any)=> el.shelve === "Currently Read")
+    this.books = this.temp.filter((el:any)=> el.shelve === "Currently read")
     console.log(this.books)
   }
 
+  redirectAuthorPage(id:string)
+  {
+    this.router.navigate(['/authors',id])
+  }
 
+  redirectBookPage(id:String)
+  {
+    this.router.navigate(['/books',id]); 
+  }
+
+  async updateBookShelve(e:any, bookId:String, fullId:String)
+  {
+    console.log(e.target.value,bookId)
+    this.http.patch(`http://localhost:3000/users/65d2e73c85d0e459ad9f7c3b/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
+    this.books = this.books.map((el:any)=> {
+      if(el._id !== fullId) {
+        return el;
+      } 
+      el.shelve = e.target.value;
+      return el;
+    })
+    console.log(this.books)
+  }
 }
 
 // data: any[] = [
