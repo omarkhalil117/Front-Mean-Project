@@ -1,7 +1,8 @@
 export interface Book {
   name:string;
   author:string;
-  id:number;
+  _id:string;
   cover:null
+  rating:number
 
 }

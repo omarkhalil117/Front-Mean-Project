@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { Book } from '../../models/book';
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
+import { category } from '../../models/category';
+import {CategoriesApiService } from '../../services/categories-api.service';
 
 @Component({
   selector: 'app-books-category',
@@ -13,15 +16,21 @@ import { RouterLink } from '@angular/router';
 })
 export class BooksCategoryComponent {
   books !: Array<Book>;
-  constructor(private activateRoute: ActivatedRoute) {}
+  categoryname !:String
+
+  constructor(private activateRoute: ActivatedRoute,private categoriesRequests: CategoriesApiService,private router : Router) {}
 //hold id param from route using activaterouter
-  ngOnInit(): void {
-    this.activateRoute.paramMap.subscribe({
-     next:(params)=>{
-      const id = params.get('categoryId');
-      console.log('Route parameter id:',id);
-     }
-    });
+  ngOnInit(){
+   // this.activateRoute.paramMap.subscribe({
+   //  next:(params)=>{
+   //     const id = params.get('categoryId');
+   //   console.log('Route parameter id:',id);
+  //   }
+   // });
+
+    const idfromroute = this.activateRoute.snapshot.params['categoryId'];
+    console.log(idfromroute)
+    this.categoriesRequests.getBooksByCategoryId(idfromroute).subscribe((res : any) => {this.books = res.booksbycategory; this.categoryname=res.categorycontent.name; console.log(this.books)});
 //i need make api-service to get realybook
 
 

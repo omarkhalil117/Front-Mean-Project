@@ -19,7 +19,7 @@ export class ShowCategoriesComponent {
     this.categoriesRequests.getCategoriesList().subscribe((res : any) => this.categories = res);
   }
 
-  redirectToBooks(categoryId : number){
+  redirectToBooks(categoryId : string){
     this.router.navigate(['categories' , categoryId])
  }
 }
