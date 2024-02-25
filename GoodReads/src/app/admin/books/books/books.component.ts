@@ -1,9 +1,10 @@
-import { BookService } from './../../../services/admin/book.service';
+
 import { Component, inject, TemplateRef, ViewEncapsulation} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddFormComponent } from '../add-form/add-form.component';
 import { UpdateFormComponent } from '../update-form/update-form.component';
-import { Books } from '../../../models/books';
+import { Books } from '../../../../models/books';
+import { BookService } from '../../../../services/admin/book.service';
 
 @Component({
   selector: 'app-books',

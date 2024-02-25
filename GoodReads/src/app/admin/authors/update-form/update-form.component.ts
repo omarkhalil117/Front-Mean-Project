@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { AuthorsService } from '../../../services/admin/authors.service';
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Authors } from '../../../models/authors';
+import { Authors } from '../../../../models/authors';
+import { AuthorsService } from '../../../../services/admin/authors.service';
 
 @Component({
   selector: 'app-update-form',

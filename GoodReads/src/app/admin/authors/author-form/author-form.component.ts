@@ -1,9 +1,10 @@
-import { AuthorsService } from './../../../services/admin/authors.service';
+
 import { Component , Input } from '@angular/core';
 import { FormControl, FormGroup , ReactiveFormsModule , Validators ,} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
-import { Authors } from '../../../models/authors';
+import { Authors } from '../../../../models/authors';
+import { AuthorsService } from '../../../../services/admin/authors.service';
 @Component({
   selector: 'app-author-form',
   standalone: true,

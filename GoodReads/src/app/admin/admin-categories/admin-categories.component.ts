@@ -1,10 +1,10 @@
-import { Category } from './../Interface/category';
-import { CategoriesService } from './../services/admin/categories.service';
 import { Component, inject, TemplateRef, ViewEncapsulation} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AuthorFormComponent } from '../admin/authors/author-form/author-form.component';
-import { AddCategoryComponent } from '../add-category/add-category.component';
-import { UpdateCategoryComponent } from '../update-category/update-category.component';
+import { AuthorFormComponent } from '../authors/author-form/author-form.component';
+import { AddCategoryComponent } from '../../../components/add-category/add-category.component';
+import { UpdateCategoryComponent } from './update-category/update-category.component';
+import { CategoriesService } from '../../../services/admin/categories.service';
+import { Category } from '../../../models/category';
 
 @Component({
   selector: 'app-admin-categories',
@@ -39,7 +39,6 @@ export class AdminCategoriesComponent {
    deleteCategory(id:string){
     this._CategoriesService.deleteCategory(id).subscribe(
       data =>{
-        // console.log(data)
           this.deletedMessage = data.message     
         //! display id okay
         this.categories = this.categories.filter(el => el._id !== id)

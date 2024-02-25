@@ -1,7 +1,8 @@
-import { BookService } from './../../../services/admin/book.service';
+
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Books } from '../../../models/books';
+import { Books } from '../../../../models/books';
+import { BookService } from '../../../../services/admin/book.service';
 
 @Component({
   selector: 'app-add-form',

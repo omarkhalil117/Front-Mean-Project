@@ -1,17 +1,16 @@
 import { BooksComponent } from './admin/books/books/books.component';
-import { authGuard } from './guards/auth.guard';
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
-import { MyBooksComponent } from './my-books/my-books.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { BookAdminComponent } from './book-admin/book-admin.component';
-import { AdminCategoriesComponent } from './admin-categories/admin-categories.component';
+import { MyBooksComponent } from '../components/my-books/my-books.component';
+import { HomeComponent } from '../components/home/home.component';
+import { LoginComponent } from '../components/login/login.component';
+import { SignupComponent } from '../components/signup/signup.component';
+import { NotFoundComponent } from '../components/not-found/not-found.component';
+
+import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 import { AuthorAdminComponent } from './admin/authors/author-admin/author-admin.component';
-import { adminGuard } from './guards/admin.guard';
 import { AdminComponent } from './admin/admin/admin.component';
+import { adminGuard } from '../guards/admin.guard';
+import { authGuard } from '../guards/auth.guard';
 
 export const routes: Routes = [
 

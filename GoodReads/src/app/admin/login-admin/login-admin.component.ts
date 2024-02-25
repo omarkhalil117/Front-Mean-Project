@@ -1,8 +1,8 @@
-import { JwtTokenService } from './../services/jwt-token.service';
-import { AdminService } from './../services/admin.service';
 import { Component, EventEmitter, Output } from '@angular/core';
 import {  FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AdminService } from '../../../services/admin.service';
+import { JwtTokenService } from '../../../services/jwt-token.service';
 
 @Component({
   selector: 'app-login-admin',

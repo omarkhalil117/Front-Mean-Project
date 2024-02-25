@@ -1,11 +1,12 @@
 
 import { Component, TemplateRef, ViewEncapsulation, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AuthorsService } from '../../../services/admin/authors.service';
-import { Authors } from '../../../models/authors';
+
 import { AuthorFormComponent } from '../author-form/author-form.component';
 import { UpdateFormComponent } from '../update-form/update-form.component';
 import { CommonModule } from '@angular/common';
+import { Authors } from '../../../../models/authors';
+import { AuthorsService } from '../../../../services/admin/authors.service';
 
 @Component({
   selector: 'app-author-admin',

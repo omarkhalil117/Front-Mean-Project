@@ -1,4 +1,4 @@
-import { CategoriesService } from './../services/admin/categories.service';
+
 import { Component,Output, EventEmitter, Input } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import {
@@ -8,7 +8,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Category } from '../Interface/category';
+import { Category } from '../../../../models/category';
+import { CategoriesService } from '../../../../services/admin/categories.service';
 
 @Component({
   selector: 'app-update-category',
