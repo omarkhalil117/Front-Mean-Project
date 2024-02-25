@@ -11,6 +11,10 @@ import { AuthorAdminComponent } from './admin/authors/author-admin/author-admin.
 import { AdminComponent } from './admin/admin/admin.component';
 import { adminGuard } from '../guards/admin.guard';
 import { authGuard } from '../guards/auth.guard';
+import { AuthorsComponent } from '../components/authors/authors.component';
+import { AppComponent } from './app.component';
+import { UserAuthorComponent } from '../components/user-author/user-author.component';
+import { UserDashboardComponent } from '../components/user-dashboard/user-dashboard.component';
 
 export const routes: Routes = [
 
@@ -66,4 +70,26 @@ export const routes: Routes = [
     component: NotFoundComponent
 }
 
+];
+export const routes: Routes = [
+    {
+    path:'',
+    component: AppComponent,
+    title : "Home"
+    },
+    {
+    path:'authors',
+    component: AuthorsComponent,
+    title : "all authors"
+    },
+    {
+    path:'authors/:id',
+    component: UserAuthorComponent,
+    title : "author page"       
+    },
+    {
+    path:'users',
+    component: UserDashboardComponent,
+    title : "Dashboard"       
+    }
 ];
