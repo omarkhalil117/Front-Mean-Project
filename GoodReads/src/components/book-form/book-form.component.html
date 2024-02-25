@@ -14,6 +14,12 @@
         @if(bookForm.controls['name'].errors?.['required']) {
           <small>Title of book is required</small>
         }
+        @if(bookForm.controls['name'].errors?.['minLength']) {
+          <small>Title must be from 3 to 30 characters</small>
+        }
+        @if(bookForm.controls['name'].errors?.['maxLength']) {
+          <small>Title must be from 3 to 30 characters</small>
+        }
       </div>
     }
 

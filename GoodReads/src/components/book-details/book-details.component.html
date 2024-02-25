@@ -1,19 +1,43 @@
-<div class="container">
-  <div class="details-left">
-    <!--<img [src]="bookDetails.cover" alt="Book Cover">-->
+@if(this.books && this.books.categoryID && this.books.authorID){
+  <div class="container">
+    <div class="details-left">
+      <img [src]="books.cover" alt="Book Cover">
 
-    <div>
-      <p-rating [(ngModel)]="newRating" [cancel]="false" (ngModelChange)="updateRating(newRating)"></p-rating>
+      <div>
+        <p-rating [(ngModel)]="newRating" [cancel]="false" (ngModelChange)="updateRating(newRating)"></p-rating>
+      </div>
+    </div>
+
+    <div class="details-right">
+      <h2>{{this.books.name}}</h2>
+      <p>by {{ books.authorID.firstName }} {{ books.authorID.lastName }}</p>
+      <p>{{books.categoryID.name}}</p>
+
+      <app-rating></app-rating>
+
+      <form [formGroup]="reviewForm" (ngSubmit)="handleSubmitForm()">
+        <div>
+          <label for="review">Review Book: </label>
+          <input
+            type="text"
+            id="review"
+            name="review"
+            formControlName="review"
+          />
+          @if(reviewForm.controls['review'].invalid && reviewForm.controls['review'].touched) {
+            <div id="reviewHelp" class="form-text text-danger">
+              @if(reviewForm.controls['review'].errors?.['required']) {
+                <small>Review of the book is required</small>
+              }
+            </div>
+          }
+        </div>
+        <button type="submit" [disabled]="reviewForm.invalid" (click)="addReview()">Add Book</button>
+      </form>
+
+
+      <span class="rate">{{books.avgRate}}</span>
     </div>
   </div>
 
-  <div class="details-right">
-    <h2>{{books.name}}</h2>
-    <p>{{books.authorID}}</p>
-    <p>{{books.categoryID}}</p>
-
-    <app-rating></app-rating>
-
-    <span class="rate">{{books.avgRate}}</span>
-  </div>
-</div>
+}

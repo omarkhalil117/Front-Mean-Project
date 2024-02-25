@@ -21,7 +21,7 @@ export class BookFormComponent {
 
 
     this.bookForm = this.fb.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.maxLength(30), Validators.minLength(3)]],
       category: ['', [Validators.required]],
       author: ['', [Validators.required]],
       cover: ['', [Validators.required]]

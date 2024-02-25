@@ -28,4 +28,8 @@ export class BooksRequestsService {
   updateBook(ID : number, data: Object) {
     return this.http.patch(`http://127.0.0.1:3000/books/:${ID}`, data);
   }
+
+  createReview(data: Object) {
+    return this.http.post(`http://127.0.0.1:3000/reviews`, data);
+  }
 }

@@ -5,12 +5,12 @@ import { NotFoundComponent } from '../components/not-found/not-found.component';
 
 export const routes: Routes = [
   {
-    path: "app-books",
+    path: "books",
     component: BooksComponent,
     title: "Book"
   },
   {
-    path: "app-book-details/:_id",
+    path: "books/:_id",
     component: BookDetailsComponent,
     title: "Book details"
   },

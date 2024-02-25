@@ -1,8 +1,8 @@
 export interface Book {
   _id: string,
   ID: number,
-  authorID?: string,
-  categoryID?: string,
+  authorID: {firstName:String, lastName:String},
+  categoryID: {name: String},
   name: string,
   avgRate?: number,
   rating?: number,
