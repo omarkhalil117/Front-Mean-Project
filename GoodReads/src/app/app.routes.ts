@@ -1,11 +1,8 @@
-import { BooksComponent } from './admin/books/books/books.component';
 import { Routes, RouterLink, RouterLinkActive } from '@angular/router';
 import { MyBooksComponent } from '../components/my-books/my-books.component';
 import { HomeComponent } from '../components/home/home.component';
 import { LoginComponent } from '../components/login/login.component';
 import { SignupComponent } from '../components/signup/signup.component';
-import { NotFoundComponent } from '../components/not-found/not-found.component';
-
 import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 import { AuthorAdminComponent } from './admin/authors/author-admin/author-admin.component';
 import { AdminComponent } from './admin/admin/admin.component';
@@ -82,15 +79,6 @@ export const routes: Routes = [
     component: UserDashboardComponent,
     title : "Dashboard"       
     },
-
-{
-    path:"**",
-    component: NotFoundComponent
-}
-
-];
-
-export const routes: Routes = [
   {
     path: "books",
     component: BooksComponent,
@@ -101,8 +89,11 @@ export const routes: Routes = [
     component: BookDetailsComponent,
     title: "Book details"
   },
-  {
-    path: '**',
+ 
+{
+    path:"**",
     component: NotFoundComponent
-  }
+}
+
 ];
+
