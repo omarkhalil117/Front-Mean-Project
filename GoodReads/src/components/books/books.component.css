@@ -1,0 +1,23 @@
+.container {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  gap: 20px; /* Adjust the gap between grid items */
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+img {
+  width: 250px;
+  height: 250px;
+}
+
+a {
+  cursor: pointer;
+}
