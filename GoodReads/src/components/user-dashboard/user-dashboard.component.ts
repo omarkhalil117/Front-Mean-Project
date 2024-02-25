@@ -15,6 +15,8 @@ export class UserDashboardComponent {
   books:any;
   temp:any;
   userToken:String = '';
+  status:String = 'All';
+
   constructor(private userData : UserDataService,
               private router : Router,
               private http : HttpClient){}  
@@ -22,9 +24,9 @@ export class UserDashboardComponent {
   ngOnInit()
   {
     this.userData.getUserInfo('65d2e73c85d0e459ad9f7c3b').subscribe((data) => {
-      this.data= data
-      this.books = this.data.fullInfo.books
-      this.temp = this.books
+      this.data = data;
+      this.books = this.data.fullInfo.books;
+      this.temp = this.books;
       console.log(this.data)
     });
   }
@@ -32,22 +34,25 @@ export class UserDashboardComponent {
   getAll()
   {
     this.books = this.temp;
+    this.status = 'All';
   }
+
   getReadBook()
   {
     this.books = this.temp.filter((el:any)=> el.shelve === "Read")
-    console.log(this.books)
+    this.status = 'Read';
   }
 
   getWantToReadBooks()
   {
     this.books = this.temp.filter((el:any)=> el.shelve === "Want to Read")
-    console.log(this.books)
+    this.status = 'Want to Read';
   }
+
   getReadingBooks()
   {
     this.books = this.temp.filter((el:any)=> el.shelve === "Currently read")
-    console.log(this.books)
+    this.status = 'Currently read';
   }
 
   redirectAuthorPage(id:string)
