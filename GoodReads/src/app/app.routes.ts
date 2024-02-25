@@ -22,34 +22,6 @@ import {UserHomeComponent } from '../components/user-home/user-home.component';
 import {CategoriesByUserComponent} from '../components/categories-by-user/categories-by-user.component';
 
 export const routes: Routes = [
-  {
-    path:'',
-    component: UserHomeComponent,
-    title: "Categories List page"
-},
-  {
-    path:'categories',
-    component: ShowCategoriesComponent,
-    title: "Categories List page"
-},
-{
-    path: "categories/:categoryId",
-    component: BooksCategoryComponent,
-    title: "BooksOfCategory"
-},
-{
-  path: "addcategory",
-  component: AddCategoryComponent,
-  title: "addcategory"
-},
-{
-  path: "categories/user/:userId",
-  component: CategoriesByUserComponent,
-  title: "addcategory"
-},
-
-];
-export const routes: Routes = [
 
 { path: '', redirectTo: 'home', pathMatch: 'full' },
 {
@@ -122,7 +94,26 @@ export const routes: Routes = [
     component: BookDetailsComponent,
     title: "Book details"
   },
- 
+   {
+    path:'categories',
+    component: ShowCategoriesComponent,
+    title: "Categories List page"
+},
+{
+    path: "categories/:categoryId",
+    component: BooksCategoryComponent,
+    title: "BooksOfCategory"
+},
+{
+  path: "addcategory",
+  component: AddCategoryComponent,
+  title: "addcategory"
+},
+{
+  path: "categories/user/:userId",
+  component: CategoriesByUserComponent,
+  title: "addcategory"
+},
 {
     path:"**",
     component: NotFoundComponent

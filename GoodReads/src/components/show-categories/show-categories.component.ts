@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { category } from '../../models/category';
+import { Category } from '../../models/category';
 import {CategoriesApiService } from '../../services/categories-api.service';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrl: './show-categories.component.css'
 })
 export class ShowCategoriesComponent {
-  categories !: Array<category>;
+  categories !: Array<Category>;
   constructor(private categoriesRequests: CategoriesApiService,private router : Router) {}
 
   ngOnInit() {
