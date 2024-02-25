@@ -17,22 +17,22 @@
 
       <form [formGroup]="reviewForm" (ngSubmit)="handleSubmitForm()">
         <div>
-          <label for="review">Review Book: </label>
+          <label for="reviews">Review Book: </label>
           <input
             type="text"
-            id="review"
-            name="review"
-            formControlName="review"
+            id="reviews"
+            name="reviews"
+            formControlName="reviews"
           />
-          @if(reviewForm.controls['review'].invalid && reviewForm.controls['review'].touched) {
+          @if(reviewForm.controls['reviews'].invalid && reviewForm.controls['reviews'].touched) {
             <div id="reviewHelp" class="form-text text-danger">
-              @if(reviewForm.controls['review'].errors?.['required']) {
+              @if(reviewForm.controls['reviews'].errors?.['required']) {
                 <small>Review of the book is required</small>
               }
             </div>
           }
         </div>
-        <button type="submit" [disabled]="reviewForm.invalid" (click)="addReview()">Add Book</button>
+        <button type="submit" [disabled]="reviewForm.invalid" (click)="addReview()">Add Reviews</button>
       </form>
 
 

@@ -56,7 +56,7 @@ export class BookDetailsComponent {
   }
 
   handleSubmitForm() {
-    console.log(this.reviewForm.value);
+    //console.log(this.reviewForm.value);
   }
 
 
