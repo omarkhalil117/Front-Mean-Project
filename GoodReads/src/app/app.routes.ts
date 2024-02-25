@@ -63,20 +63,7 @@ export const routes: Routes = [
 
         }
     ]
-},
-
-{
-    path:"**",
-    component: NotFoundComponent
-}
-
-];
-export const routes: Routes = [
-    {
-    path:'',
-    component: AppComponent,
-    title : "Home"
-    },
+},    
     {
     path:'authors',
     component: AuthorsComponent,
@@ -91,5 +78,12 @@ export const routes: Routes = [
     path:'users',
     component: UserDashboardComponent,
     title : "Dashboard"       
-    }
+    },
+
+{
+    path:"**",
+    component: NotFoundComponent
+}
+
 ];
+

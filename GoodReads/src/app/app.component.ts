@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { AuthorsComponent } from '../components/authors/authors.component';
 import { BookRowComponent } from '../components/book-row/book-row.component';
 import { UserDashboardComponent } from '../components/user-dashboard/user-dashboard.component';
