@@ -1,0 +1,68 @@
+
+
+
+<h2>{{categoryname}}</h2>
+<hr />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  @for(book of books; track book._id){
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img [src]='book.cover' class="card-img-top" alt="Image">
+        <div class="card-body">
+          <a class=""  [routerLink]="['/books', book._id]">{{book.name}}</a>
+          <a class=""  [routerLink]="['/auther', book._id]">{{book.author}}</a>
+        </div>
+      </div>
+    </div>
+  }@empty{
+
+
+
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdgru6kvdfIosBL4Zu9M_kvL-ei1E1yyJ_g&usqp=CAU" class="card-img-top" alt="Image">
+            <div class="card-body">
+              <h5 class="card-title">book Title</h5>
+              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              <a href="#" class="btn btn-primary">Link 1</a>
+              <a href="#" class="btn btn-secondary">Link 2</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdgru6kvdfIosBL4Zu9M_kvL-ei1E1yyJ_g&usqp=CAU" class="card-img-top" alt="Image">
+            <div class="card-body">
+              <h5 class="card-title">book Title</h5>
+              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              <a href="#" class="btn btn-primary">Link 1</a>
+              <a href="#" class="btn btn-secondary">Link 2</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdgru6kvdfIosBL4Zu9M_kvL-ei1E1yyJ_g&usqp=CAU" class="card-img-top" alt="Image">
+            <div class="card-body">
+              <h5 class="card-title">book Title</h5>
+              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              <a href="#" class="btn btn-primary">Link 1</a>
+              <a href="#" class="btn btn-secondary">Link 2</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdgru6kvdfIosBL4Zu9M_kvL-ei1E1yyJ_g&usqp=CAU" class="card-img-top" alt="Image">
+            <div class="card-body">
+              <h5 class="card-title">book Title</h5>
+              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+              <a href="#" class="btn btn-primary">Link 1</a>
+              <a href="#" class="btn btn-secondary">Link 2</a>
+            </div>
+          </div>
+        </div>
+
+
+  }
+</div>
