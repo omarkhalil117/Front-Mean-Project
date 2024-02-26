@@ -14,7 +14,7 @@
           <thead>
             <tr>
               <th>Cover</th>
-              <th>Book</th>
+              <th>Name</th>
               <th>Author</th>
               <th>Rating</th>
               <th>Average Rating</th>
@@ -37,16 +37,22 @@
 
               @if(!book.rating)
               { 
-                <td>None</td>
+                <td>
+                <app-star-rate [rating]="book.rating"></app-star-rate>
+                <p>{{book.rating}}</p> 
+                </td>
               } @else {
-                <td>{{book.book.categoryID?.name}}</td>
+                <!-- <app-star-rate [rating]="0"></app-star-rate>  -->
+                <p>None</p>
               }
 
               @if(!book.book.avgRating)
               {
-                <td>None</td>
-              } @else {
-                <td>{{!book.book.avgRating}}</td>
+                <td>
+                  <app-star-rate [rating]="book.book.avgRating"></app-star-rate> 
+                </td>
+              } @else { 
+                  <app-star-rate [rating]="0"></app-star-rate> 
               }
 
               <td>

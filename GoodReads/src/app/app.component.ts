@@ -4,10 +4,11 @@ import { AuthorsComponent } from '../components/authors/authors.component';
 import { BookRowComponent } from '../components/book-row/book-row.component';
 import { UserDashboardComponent } from '../components/user-dashboard/user-dashboard.component';
 import { UserAuthorComponent } from '../components/user-author/user-author.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AuthorsComponent, UserDashboardComponent, BookRowComponent, UserAuthorComponent],
+  imports: [RouterOutlet, AuthorsComponent, UserDashboardComponent, BookRowComponent, UserAuthorComponent, FontAwesomeModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

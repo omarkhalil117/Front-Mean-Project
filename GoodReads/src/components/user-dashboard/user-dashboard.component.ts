@@ -3,19 +3,25 @@ import { BookRowComponent } from '../book-row/book-row.component';
 import { UserDataService } from '../../services/user-data.service';
 import { Router } from '@angular/router';
 import { HttpClient} from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { StarRateComponent } from '../star-rate/star-rate.component';
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [BookRowComponent],
+  imports: [BookRowComponent, FontAwesomeModule , StarRateComponent],
   templateUrl: './user-dashboard.component.html',
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent {
-  data:any;
-  books:any;
-  temp:any;
-  userToken:String = '';
-  status:String = 'All';
+  data: any;
+  books: any;
+  temp: any;
+  userToken: String = '';
+  status: String = 'All';
+  bookAvgRating: number = 0;
+  userRating: number = 0;
+  rate = 3; 
 
   constructor(private userData : UserDataService,
               private router : Router,
@@ -78,6 +84,31 @@ export class UserDashboardComponent {
     })
     console.log(this.books)
   }
+
+  UserRatingStar(rating:number)
+  {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating - fullStars >= 0.5;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+    let html = '';
+
+    for (let i = 0; i < fullStars; i++) {
+      html += '<fa-icon [icon]="faStar" ></i> ';
+    }
+
+    if (halfStar) {
+      html += '<fa-icon [icon]="faStarHalf"  ></fa-icon> ';
+    }
+
+    for (let i = 0; i < emptyStars; i++) {
+      html += '<fa-icon [icon]="farStar"  ></fa-icon> ';
+    }
+
+    return html;
+  
+  }
+
 }
 
 // data: any[] = [
