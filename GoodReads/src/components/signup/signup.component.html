@@ -1,4 +1,4 @@
-<form [formGroup]="signupForm" (ngSubmit)="handleSubmitForm()">
+<form [formGroup]="signupForm">
 
 
 
@@ -132,6 +132,11 @@
     }
   </div>
   
+  <div class="mb-3">
+    <label for="image" class="form-label">Image</label>
+    <input type="file" class="form-control" id="image" accept="" formControlName="image" (change)="registerPhoto($event)">
+  </div>
   
-  <button type="button" class="btn btn-primary" (click)="redirectToMyBook()" [disabled]="signupForm.invalid">Submit</button>
+  
+  <button type="button" class="btn btn-primary" (click)="signup()" [disabled]="signupForm.invalid">Submit</button>
 </form>

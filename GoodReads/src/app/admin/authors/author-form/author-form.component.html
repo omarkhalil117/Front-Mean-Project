@@ -51,13 +51,16 @@
       </div>
     </div>
 
-    @if (authorForm.invalid) {
+    <!-- @if (authorForm.invalid) {
     <button class="btn btn-danger" type="submit" [disabled]="true">Submit</button>
     } @else { @if(dateChange) {
     <button class="btn btn-primary " type="submit" (click)="addAuthor()" [disabled]="false">Submit</button>
     }@else {
 
     <button class="btn btn-danger" type="submit" [disabled]="true">Submit</button>
-    } }
+    } } -->
+    <button class="btn btn-primary " type="submit" (click)="addAuthor()" [disabled]="this.authorForm.invalid">Submit</button>
+
+
   </div>
 </form>

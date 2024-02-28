@@ -2,7 +2,6 @@
     width: 50px
 }
 .mynav.container-fluid{
-    background-color: #FCDAC3;
     width: 95% !important;
 }
 
@@ -22,5 +21,15 @@
 }
 
 img{
-    width: 150px;
+    width: 64px;
+}
+
+p{
+    padding: 0;
+    margin: 0;
+}
+
+
+@media screen {
+    
 }

@@ -5,11 +5,12 @@ import { AddFormComponent } from '../add-form/add-form.component';
 import { UpdateFormComponent } from '../update-form/update-form.component';
 import { Books } from '../../../../models/books';
 import { BookService } from '../../../../services/admin/book.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-books',
   standalone: true,
-  imports: [AddFormComponent,UpdateFormComponent],
+  imports: [AddFormComponent,UpdateFormComponent,CommonModule],
   templateUrl: './books.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrl: './books.component.css'
@@ -63,9 +64,7 @@ constructor(private _BookService:BookService){}
 	}
 
   openVerticallyCentered3(content: TemplateRef<any>,book:any) {
-    // console.log(category)
 		this.modalService.open(content, { centered: true });
     this.bookData = book
-    
 	}
 }

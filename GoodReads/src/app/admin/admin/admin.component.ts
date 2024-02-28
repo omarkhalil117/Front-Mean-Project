@@ -1,3 +1,5 @@
+import { JwtTokenService } from './../../../services/jwt-token.service';
+import { AdminService } from './../../../services/admin.service';
 import { BooksComponent } from './../books/books/books.component';
 import { AdminNavBarComponent } from '../admin-nav-bar/admin-nav-bar.component';
 import { Component, EventEmitter, Output } from '@angular/core';
@@ -15,8 +17,10 @@ import { LoginAdminComponent } from '../login-admin/login-admin.component';
 })
 export class AdminComponent {
 isLogged !: boolean
+
+
+
 recieveFromChild(para:boolean){
   this.isLogged= para
 }
-
 }

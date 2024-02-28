@@ -13,6 +13,7 @@ import { AuthServiceService } from '../../services/auth-service.service';
 export class SignupComponent {
   signupForm: FormGroup
   errorMessage !: String;
+  sendData = new FormData()
   constructor(private router: Router, private _authServiceService : AuthServiceService){
     
     this.signupForm = new FormGroup({
@@ -24,7 +25,7 @@ export class SignupComponent {
         email: new FormControl('',[Validators.required, Validators.email,Validators.maxLength(200)]),
         password: new FormControl('',[Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/), Validators.maxLength(50)]),
         confirmPassword: new FormControl('',[Validators.required]),
-        // image: new FormControl('',[Validators.required])
+        image: new FormControl()
       },
       {
         validators: this.matchPassword
@@ -47,26 +48,25 @@ export class SignupComponent {
     return null
   }
 
-  redirectToMyBook(){
-    //! my-books has a guard if you do not have token guard my books will nerver works
-      this.router.navigate(['my-books'])
-      console.log(this.signupForm.value)
-    
-      this._authServiceService.registe(this.signupForm.value).subscribe(
-        data => {    
-          localStorage.setItem('token',JSON.stringify(data.token)) },
-        error => { 
-          console.log(error.error.message)
-          this.errorMessage =  error.error.message
-        },
 
+  registerPhoto(e:any)
+  {
+    this.sendData.append('image',e.target.files[0])
+  }
+
+  signup(){
+      for(const property in this.signupForm.value){
+        this.sendData.append(property,this.signupForm.value[property])
+  }
+      this._authServiceService.registe(this.sendData).subscribe(
+        data => {    
+          localStorage.setItem('token',JSON.stringify(data.token))
+          this.sendData = new FormData()        
+        },
+        error => { 
+          this.errorMessage =  error.error.message
+          this.sendData = new FormData()
+        },
       )
   }
-
-  handleSubmitForm(){
-
-
-  }
-
-  
 }
