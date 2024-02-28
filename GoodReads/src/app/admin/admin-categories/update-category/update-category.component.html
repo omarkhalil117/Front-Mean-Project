@@ -16,7 +16,7 @@
         }
       </div>
       }
-      <button type="submit" class="btn btn-secondary">Update</button>
+      <button type="submit" class="btn btn-secondary" [disabled] = "this.categoryForm.dirty && !this.categoryForm.invalid? false : true">Update</button>
       @if(this.isdata){
           <small class="text-success"> {{categoryForm.get('name')?.value}} category updated successfully</small>
       }

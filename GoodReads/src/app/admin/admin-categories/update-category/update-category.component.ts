@@ -1,3 +1,4 @@
+import { AlertService } from './../../../../services/alert.service';
 
 import { Component,Output, EventEmitter, Input } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -21,11 +22,12 @@ import { CategoriesService } from '../../../../services/admin/categories.service
 export class UpdateCategoryComponent {
   categoryForm !: FormGroup;
   isdata !: boolean
-  errorMsg !: String
+  submitted =true
+  errorMsg !: string
   @Input() categoryData !: Category
   @Input()categories !: Category[]
 
-  constructor( private fb: FormBuilder, private _CategoriesService: CategoriesService) {
+  constructor( private fb: FormBuilder, private _CategoriesService: CategoriesService, private AlertService: AlertService) {
     
   }
   //! must recieve categoryData i n oninit if in constructor it will throw error as category undefinde لسه ما اتبعتش من ال admin categories
@@ -38,17 +40,20 @@ export class UpdateCategoryComponent {
   updateCategory(){
     this._CategoriesService.updateCategory(this.categoryForm.value, this.categoryData._id).subscribe(
       data =>{
-        // console.log(data)
         this.isdata=true 
         this.categories.map(el =>{
           if(this.categoryData._id === el._id){
-            el.name = this.categoryForm.value.name
+            el.name = this.categoryForm.value.name            
+        let successMessage = `you update  the category ${this.categoryForm.value.name} successfully` 
+        this.AlertService.myAlert('success', 'Updated Successfully',successMessage)
+        this.categoryForm.markAsPristine()
+        this.categoryForm.markAsUntouched();
           }
         })
       },
       error => {
-        // console.log(error
         this.errorMsg=error.error.message 
+        this.AlertService.myAlert('error', 'Something wrong!',this.errorMsg)
       }
     )
   }

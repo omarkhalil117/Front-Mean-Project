@@ -45,7 +45,6 @@ export class AuthorAdminComponent {
      deleteAuthor(id:String){
       this._AuthorService.deleteAuthors(id).subscribe(
         data =>{
-          // console.log(data)
             this.deletedMessage = data.message     
           //! display id okay
           this.authors = this.authors.filter(el => el._id !== id)
@@ -60,16 +59,17 @@ export class AuthorAdminComponent {
 
   //! Modal Function from ng Bootstrap
 	openVerticallyCentered(content: TemplateRef<any>) {
-		this.modalService.open(content, { centered: true });
+		this.modalService.open(content, { centered: true,animation: true });
 	}
-  openVerticallyCentered2(content: TemplateRef<any>,category:any) {
-		this.modalService.open(content, { centered: true });
+  openVerticallyCentered2(content: TemplateRef<any>) {
+		this.modalService.open(content, { centered: true, animation: true });
 	}
 
   openVerticallyCentered3(content: TemplateRef<any>,author:any) {
     console.log(author)
-		this.modalService.open(content, { centered: true });
+		this.modalService.open(content, { centered: true , animation: true});
     this.authorData = author
     
 	}
+  
 }

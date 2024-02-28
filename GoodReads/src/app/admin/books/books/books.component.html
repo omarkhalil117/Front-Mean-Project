@@ -96,10 +96,10 @@
                     <img src="http://localhost:3000/{{book.cover}}" alt="">
             </div>
             <div class="col-md-2 d-flex justify-content-center">
-                <p>{{book.categoryID}}</p>
+                <p>{{book.categoryID?.ID}}</p>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
-                <p>{{book.authorID}}</p>
+                <p>{{  book.authorID?.ID}}</p>
             </div>
             <div class="col-md-2 d-flex justify-content-center">
                 <p>{{book.name}}</p>

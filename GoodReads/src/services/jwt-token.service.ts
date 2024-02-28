@@ -17,8 +17,6 @@ export class JwtTokenService {
   }
 
   decodeToken(token:string|null) {
-    // if (this.jwtToken) {
-    // this.decodedToken = 
     if(token !== null){
       return jwt_decode.jwtDecode(token);
     }

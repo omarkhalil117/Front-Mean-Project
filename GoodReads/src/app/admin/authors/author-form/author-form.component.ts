@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Authors } from '../../../../models/authors';
 import { AuthorsService } from '../../../../services/admin/authors.service';
+import { AlertService } from '../../../../services/alert.service';
 @Component({
   selector: 'app-author-form',
   standalone: true,
@@ -15,11 +16,12 @@ import { AuthorsService } from '../../../../services/admin/authors.service';
 export class AuthorFormComponent {
   authorForm !: FormGroup;
   dateChange: Boolean = false;
+  errorMsg!:string
   sendFormData =  new FormData()
   image?: any;
   response!:any;
   @Input() authors !: Authors[]
-  constructor(private AuthorsService:AuthorsService){}
+  constructor(private AuthorsService:AuthorsService, private AlertService:AlertService){}
   ngOnInit(){
     this.authorForm = new FormGroup({
       firstName: new FormControl('', [
@@ -57,9 +59,15 @@ export class AuthorFormComponent {
     await this.AuthorsService.addAuthors(this.sendFormData).subscribe(
       async data =>{
         this.authors.push(data)
-
-      },
+        let successMessage = `you Added the author ${this.authorForm.value.firstName} successfully` 
+        this.sendFormData = new FormData()
+    this.AlertService.myAlert('success', 'Added Successfully',successMessage)
+    this.authorForm.reset()
+  },
       error => {
+        this.errorMsg=error.error.message 
+        this.AlertService.myAlert('error', 'Something wrong!',this.errorMsg)
+
       }
     )
 

@@ -7,3 +7,7 @@ border-radius: 5px;
 .nav-link{
     cursor: pointer;
 }
+img{
+    width: 45px;
+    border-radius: 50%;
+}

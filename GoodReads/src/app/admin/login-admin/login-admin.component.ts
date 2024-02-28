@@ -21,15 +21,24 @@ export class LoginAdminComponent {
       password: new FormControl('',[Validators.required, Validators.maxLength(50)])
     })
   }
+  ngOnInit(){
+    const jwt = this._JwtTokenService.decodeToken(localStorage.getItem('token'))
+    if(JSON.parse(JSON.stringify(jwt)).role === 'admin'){
+      console.log(JSON.parse(JSON.stringify(jwt)).role)
+      this.router.navigate(['admin/categories'],{ skipLocationChange: true })
+      this.isLogged.emit(true)
+    } 
+  }
 
   redirectToAdminDashBoard(){
-    this._AdminService.login(this.adminLogin.value).subscribe(
+    this._AdminService.login(this.adminLogin.value,'admin').subscribe(
       data => {    
-        localStorage.setItem('token',JSON.stringify(data.token))
-        this.router.navigate(['admin/categories'],{ skipLocationChange: true })
+        localStorage.setItem('token',data.token)    
         const jwt = this._JwtTokenService.decodeToken(localStorage.getItem('token'))
         JSON.stringify(jwt) 
         if(JSON.parse(JSON.stringify(jwt)).role === 'admin'){
+          console.log(JSON.parse(JSON.stringify(jwt)).role)
+          this.router.navigate(['admin/categories'],{ skipLocationChange: true })
           this.isLogged.emit(true)
         } 
         else{

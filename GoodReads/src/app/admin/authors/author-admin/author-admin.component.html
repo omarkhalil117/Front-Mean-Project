@@ -5,19 +5,16 @@
     <div class="row justify-content-end ">
         <ng-template #content let-modal>
             <div class="modal-header">
-                <h4 class="modal-title">Add Category</h4>
+                <h4 class="modal-title">Add Author</h4>
                 <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
                 <p><app-author-form [authors]="this.authors"></app-author-form></p>
             </div>
-
         </ng-template>
         <button class="btn btn-dark my-width mt-5 me-5" (click)="openVerticallyCentered(content)">
             +
         </button>
-    
-        
     </div>
 
 
@@ -43,7 +40,7 @@
     <div class="row justify-content-end ">
         <ng-template #content3 let-modal>
             <div class="modal-header">
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title">Update Author</h4>
                 <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">

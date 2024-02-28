@@ -4,7 +4,7 @@ import { Book } from '../../models/book';
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-import { category } from '../../models/category';
+import { Category } from '../../models/category';
 import {CategoriesApiService } from '../../services/categories-api.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { category } from '../../models/category';
+import { Category } from '../../models/category';
 import { Book } from '../../models/book';
 import {CategoriesApiService } from '../../services/categories-api.service';
 import { RouterLink } from '@angular/router';
@@ -23,7 +23,7 @@ import { BooksRequestsService } from '../../services/books-requests.service';
   styleUrl: './user-home.component.css'
 })
 export class UserHomeComponent {
-  categories !: Array<category>;
+  categories !: Array<Category>;
   books !: Array<Book>;
   constructor(private categoriesRequests: CategoriesApiService,private booksRequestsService: BooksRequestsService,private router : Router) {}
 

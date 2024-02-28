@@ -1,7 +1,8 @@
+import { AlertService } from './../../../services/alert.service';
 import { Component, inject, TemplateRef, ViewEncapsulation} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthorFormComponent } from '../authors/author-form/author-form.component';
-import { AddCategoryComponent } from '../../../components/add-category/add-category.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { CategoriesService } from '../../../services/admin/categories.service';
 import { Category } from '../../../models/category';
