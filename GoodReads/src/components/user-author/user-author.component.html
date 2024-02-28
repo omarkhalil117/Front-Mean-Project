@@ -1,18 +1,19 @@
-<div class="d-flex">
+<div class="d-flex bg-info my-container">
     @if(!authorData.author[0].photo)
     {
         <img src="../../assets/default-photo.jpg" alt="">
     } @else {
         <img src="http://localhost:3000/{{authorData.author[0].photo}}" alt="">
     }
-    <div class="justify-content-around align-items-center mt-5  py-5">
+    <div class="justify-content-around align-items-center m-5 py-5 name">
         <h1>{{authorData.author[0].firstName}} <span>{{authorData.author[0].lastName}}</span></h1>
         <p>{{authorData.author[0].dob.slice(0,10)}}</p>
     </div>
 </div>
 
-
-<h1 class="align-items-start px-5 ">Author's Books</h1>
+<div>
+    <h1 class="align-items-start px-5 border border-4  rounded-2 w-25 m-5 bg-body-secondary ">Author's Books</h1>
+</div>
 
 <div class="container">
     

@@ -21,4 +21,14 @@ export class PagesServiceService {
   {
     return this.http.get(`http://localhost:3000/authors/page/${pageNum}`)
   }
+
+  getUserBooksPages(userId:string , pageNum:string)
+  {
+    return this.http.get(`http://localhost:3000/users/${userId}/page/${pageNum}`)
+  }
+
+  getUserAuthors(page:String , userId:String)
+  {
+    return this.http.get(`http://localhost:3000/authors/${userId}/page/${page}`)
+  }
 }

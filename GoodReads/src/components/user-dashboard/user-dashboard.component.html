@@ -1,11 +1,11 @@
   <div class="container-fluid mt-5 ">
     <div class="row">
       <div class="col-3">
-        <div class="d-flex flex-column align-content-center justify-content-center ">
-          <button type="button" class="btn btn-info w-50 my-1" (click)="getAll()">All</button>
-          <button type="button" class="btn btn-info w-50 my-1" (click)="getReadBook()">Read</button>
-          <button type="button" class="btn btn-info w-50 my-1" (click)="getWantToReadBooks()">Want to Read</button>
-          <button type="button" class="btn btn-info w-50 my-1" (click)="getReadingBooks()">Currently read</button>
+        <div class="d-flex flex-column align-content-center justify-content-center" (click)="filterByShelve($event)">
+          <button type="button" class="btn btn-info w-50 my-1">All</button>
+          <button type="button" class="btn btn-info w-50 my-1">Read</button>
+          <button type="button" class="btn btn-info w-50 my-1">Want to Read</button>
+          <button type="button" class="btn btn-info w-50 my-1">Currently read</button>
         </div>
       </div>
       <div class="col-9">
@@ -22,41 +22,43 @@
             </tr>
           </thead>
           <tbody>
-            @for(book of books ; track book._id)
+            @for(bookInfo of data ; track $index)
             {
-            <tr>
-              @if(!book.book.cover)
+              <tr>
+              @if(!bookInfo._id.book.cover)
               {
                 <td><img src="../../assets/default-photo.jpg" alt=""></td>
               } @else {
-                <td><img src="http://localhost:3000/{{book.book.cover}}" alt="img"></td>
+                <td><img src="http://localhost:3000/{{bookInfo._id.book.cover}}" alt="img"></td>
               }
-              <td><a class="text-decoration-underline " (click)="redirectBookPage(book.book?._id)">{{book.book.name}}</a></td>
-              <td> <a class="text-decoration-underline " (click)="redirectAuthorPage(book.book.authorID?._id)"> {{book.book.authorID?.firstName}} <span>{{book.book.authorID?.lastName}}</span></a>
-              </td>
 
-              @if(!book.rating)
+              <!-- <td><a class="text-decoration-underline " (click)="redirectBookPage(bookInfo._id.book._id)">{{bookInfo.book.name}}</a></td> -->
+              <td><a class="text-decoration-underline "(click)="redirectBookPage(bookInfo._id.book._id)" >{{bookInfo._id.book.name}}</a></td>
+              <!-- <td> <a class="text-decoration-underline " href="/authors/"> {{book.book.authorID?.firstName}} <span>{{book.book.authorID?.lastName}}</span></a> -->
+              <td> <a class="text-decoration-underline " (click)="redirectAuthorPage(bookInfo._id.book.authorID)">{{bookInfo._id.author[0].firstName}} <span>{{bookInfo._id.author[0].lastName}}</span></a></td>
+
+              @if(!bookInfo._id.rating)
               { 
                 <td>
-                <app-star-rate [rating]="book.rating"></app-star-rate>
-                <p>{{book.rating}}</p> 
+                <app-star-rate [rating]="bookInfo._id.rating"></app-star-rate>
+                <p>{{bookInfo._id.rating}}</p> 
                 </td>
               } @else {
                 <!-- <app-star-rate [rating]="0"></app-star-rate>  -->
                 <p>None</p>
               }
 
-              @if(!book.book.avgRating)
+              @if(!bookInfo._id.book.avgRating)
               {
                 <td>
-                  <app-star-rate [rating]="book.book.avgRating"></app-star-rate> 
+                  <app-star-rate [rating]="bookInfo._id.book.avgRating"></app-star-rate> 
                 </td>
               } @else { 
                   <app-star-rate [rating]="0"></app-star-rate> 
               }
 
               <td>
-                <select (change)="updateBookShelve($event, book.book._id, book._id)" name="shelve" id="shelve">
+                <select (change)="updateBookShelve($event, bookInfo._id.book._id , bookInfo._id)" name="shelve" id="shelve">
                     <option value="Want to Read" selected>Want to Read</option>
                     <option value="Currently read">Currently read</option>
                     <option value="Read">Read</option>
@@ -74,21 +76,11 @@
 <div class="d-flex align-items-center justify-content-center ">
   <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item">
-      <a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
+    <div (click)="changePage($event)">
+      <div class="btn btn-sm"><a class="page-link">1</a></div>
+      <div class="btn btn-sm"><a class="page-link">2</a></div>
+      <div class="btn btn-sm"><a class="page-link">3</a></div>
+    </div>
   </ul>
 </nav>
 </div>

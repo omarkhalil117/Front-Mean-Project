@@ -4,7 +4,7 @@ import { UserDataService } from '../../services/user-data.service';
 import { Router } from '@angular/router';
 import { HttpClient} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { PagesServiceService } from '../../services/pages-service.service';
 import { StarRateComponent } from '../star-rate/star-rate.component';
 @Component({
   selector: 'app-user-dashboard',
@@ -22,44 +22,65 @@ export class UserDashboardComponent {
   bookAvgRating: number = 0;
   userRating: number = 0;
   rate = 3; 
+  page = 0 ;
 
   constructor(private userData : UserDataService,
               private router : Router,
-              private http : HttpClient){}  
+              private http : HttpClient,
+              private BookPage : PagesServiceService){}  
 
   ngOnInit()
   {
-    this.userData.getUserInfo('65d2e73c85d0e459ad9f7c3b').subscribe((data) => {
-      this.data = data;
-      this.books = this.data.fullInfo.books;
-      this.temp = this.books;
-      console.log(this.data)
-    });
+    if(this.page == 0)
+    {
+
+      this.BookPage.getUserBooksPages('65d2e73c85d0e459ad9f7c3b','1').subscribe((data: any) => {
+        this.data = data.fullInfo;
+        this.temp = data.fullInfo;
+        console.log(this.data)
+      });
+    }
   }
 
-  getAll()
-  {
-    this.books = this.temp;
-    this.status = 'All';
-  }
+  // getReadBook()
+  // {
+  //   this.books = this.temp.filter((el:any)=> el.shelve === "Read")
+  //   this.status = 'Read';
+  // }
 
-  getReadBook()
-  {
-    this.books = this.temp.filter((el:any)=> el.shelve === "Read")
-    this.status = 'Read';
-  }
+  // getWantToReadBooks()
+  // {
+  //   this.books = this.temp.filter((el:any)=> el.shelve === "Want to Read")
+  //   this.status = 'Want to Read';
+  // }
 
-  getWantToReadBooks()
-  {
-    this.books = this.temp.filter((el:any)=> el.shelve === "Want to Read")
-    this.status = 'Want to Read';
-  }
+  // getReadingBooks()
+  // {
+  //   this.books = this.temp.filter((el:any)=> el.shelve === "Currently read")
+  //   this.status = 'Currently read';
+  // }
+  
 
-  getReadingBooks()
+  filterByShelve(e:any)
   {
-    this.books = this.temp.filter((el:any)=> el.shelve === "Currently read")
-    this.status = 'Currently read';
-  }
+    if(this.temp.length === 1 )
+    {
+      if(e.target.innerHTML !== this.temp[0]._id.shelve.shelve)
+      {
+        this.temp = []; 
+      }
+    }
+    else{
+
+      console.log(e.target.innerHTML)
+      this.books = this.temp.foreach((el:any) => { 
+        //  el._id.shelve === e.target.innerHTML
+        console.log(el)
+      })
+      this.status = e.target.innerHTML;
+    }
+  } 
+
 
   redirectAuthorPage(id:string)
   {
@@ -109,34 +130,13 @@ export class UserDashboardComponent {
   
   }
 
+    changePage(e:any)
+  {  
+      console.log(e.target.innerText)
+      this.BookPage.getUserBooksPages('65d2e73c85d0e459ad9f7c3b',e.target.innerText).subscribe((res:any) => {
+      this.data = res.fullInfo;
+      console.log(this.data)
+      });
+      this.page = e.target.innerText;
+  }
 }
-
-// data: any[] = [
-//   {
-//   id:1,
-//   cover:null,
-//   name:"Clean Code",
-//   Author:"John doe",
-//   AvgRating:"3.5",
-//   Rating:"4",
-//   Shelve:"reading"
-//   },
-//   {
-//   id:2,  
-//   cover:null,
-//   name:"Clean Arch",
-//   Author:"John doe",
-//   AvgRating:"3.5",
-//   Rating:"4",
-//   Shelve:"reading"
-//   },
-//   {
-//   id:3,
-//   cover:null,
-//   name:"Head first",
-//   Author:"John doe",
-//   AvgRating:"3.5",
-//   Rating:"4",
-//   Shelve:"reading"
-//   },
-// ]

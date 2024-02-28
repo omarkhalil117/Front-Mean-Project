@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthorCardComponent } from '../author-card/author-card.component';
-import { HttpClient } from '@angular/common/http';
 import { AuthorServicesService } from '../../services/author-services.service';
 import { PagesServiceService } from '../../services/pages-service.service';
 @Component({
@@ -19,14 +18,21 @@ export class AuthorsComponent {
 
   ngOnInit()
   {
-    this.authorService.getAllAuthors().subscribe((data)=> this.authors = data)
+    if(this.page == 0)
+    {
+      this.pageService.getUserAuthors('1', "65d2e73c85d0e459ad9f7c3b").subscribe((data)=> { 
+       this.authors = data
+      console.log(this.authors)
+      })
+    }
   } 
 
   changePage(e:any)
   {  
-      this.pageService.getAuthorPages(e.target.innerText).subscribe((res) => {
+      this.pageService.getUserAuthors(e.target.innerText , "65d2e73c85d0e459ad9f7c3b").subscribe((res:any) => {
       this.authors = res;
       console.log(this.authors)
+      this.page = 1;
       });
   }
 }
