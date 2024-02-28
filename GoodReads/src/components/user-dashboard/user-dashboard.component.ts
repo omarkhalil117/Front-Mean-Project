@@ -37,47 +37,23 @@ export class UserDashboardComponent {
       this.BookPage.getUserBooksPages('65d2e73c85d0e459ad9f7c3b','1').subscribe((data: any) => {
         this.data = data.fullInfo;
         this.temp = data.fullInfo;
+        console.log(this.temp)
         console.log(this.data)
       });
     }
   }
 
-  // getReadBook()
-  // {
-  //   this.books = this.temp.filter((el:any)=> el.shelve === "Read")
-  //   this.status = 'Read';
-  // }
-
-  // getWantToReadBooks()
-  // {
-  //   this.books = this.temp.filter((el:any)=> el.shelve === "Want to Read")
-  //   this.status = 'Want to Read';
-  // }
-
-  // getReadingBooks()
-  // {
-  //   this.books = this.temp.filter((el:any)=> el.shelve === "Currently read")
-  //   this.status = 'Currently read';
-  // }
-  
 
   filterByShelve(e:any)
   {
-    if(this.temp.length === 1 )
+    this.status = e.target.innerHTML; 
+    if(this.status === 'All')
     {
-      if(e.target.innerHTML !== this.temp[0]._id.shelve.shelve)
-      {
-        this.temp = []; 
-      }
+      this.data = this.temp;
     }
     else{
-
-      console.log(e.target.innerHTML)
-      this.books = this.temp.foreach((el:any) => { 
-        //  el._id.shelve === e.target.innerHTML
-        console.log(el)
-      })
-      this.status = e.target.innerHTML;
+      console.log(this.temp._id)
+      this.data = this.temp.filter( (el:any) => el._id.shelve.shelve === this.status );
     }
   } 
 
