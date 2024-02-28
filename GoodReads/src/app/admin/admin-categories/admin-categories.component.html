@@ -71,8 +71,8 @@
 
 
 
-    @for(category of this.categories; track category._id){
-        <div class="row mb-5">
+    @for(category of this.categories; track category._id;let e = $even){
+        <div class="row pt-2 pb-2 justify-content-center align-items-center" [ngStyle]="e? { 'background-color': '#fff' } : { 'background-color': '#d8d8d8' }">
             <div class="col-md-4 d-flex justify-content-center">
                     <p>{{$index+1}}</p>
             </div>
@@ -89,3 +89,5 @@
     }
     
 </div>
+
+

@@ -6,11 +6,12 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { CategoriesService } from '../../../services/admin/categories.service';
 import { Category } from '../../../models/category';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-categories',
   standalone: true,
-  imports: [AddCategoryComponent,UpdateCategoryComponent],
+  imports: [AddCategoryComponent,UpdateCategoryComponent,CommonModule],
   templateUrl: './admin-categories.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrl: './admin-categories.component.css'

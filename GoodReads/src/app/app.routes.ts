@@ -92,6 +92,12 @@ export const routes: Routes = [
             component: AuthorAdminComponent,
             canActivate: [adminGuard]
 
+        },
+        {
+            path:"add-admin",
+            component: SignupComponent,
+            canActivate: [adminGuard]
+
         }
     ]
 },    

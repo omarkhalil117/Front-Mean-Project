@@ -14,7 +14,6 @@ export class AlertService {
       buttons: ['false'],
       text: text,
       icon: alertType,
-      // dangerMode: true,
           timer: 10000
     });
   }

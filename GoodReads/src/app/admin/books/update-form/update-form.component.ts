@@ -94,7 +94,6 @@ export class UpdateFormComponent {
             for (const property in data.data.updatedBook){
               if(el.hasOwnProperty(property)){
                     el[property] = data.data.updatedBook[property] 
-                    // successMessage=successMessage+' '+`${data.data.updatedBook[property]}`    
               }
             }
             this.sendFormData = new FormData()               

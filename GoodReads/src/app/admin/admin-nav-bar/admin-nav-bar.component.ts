@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AdminService } from '../../../services/admin.service';
 import { JwtTokenService } from './../../../services/jwt-token.service';
 import { AdminComponent } from './../admin/admin.component';
@@ -7,7 +8,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 @Component({
   selector: 'app-admin-nav-bar',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive],
+  imports: [RouterLink,RouterLinkActive,NgbModule],
   templateUrl: './admin-nav-bar.component.html',
   styleUrl: './admin-nav-bar.component.css'
 })

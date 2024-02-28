@@ -54,35 +54,19 @@ export class SignupComponent {
     this.sendData.append('image',e.target.files[0])
   }
 
-  redirectToMyBook(){
-    //! my-books has a guard if you do not have token guard my books will nerver works
-      // this.router.navigate(['my-books'])    
+  signup(){
       for(const property in this.signupForm.value){
         this.sendData.append(property,this.signupForm.value[property])
   }
-  console.log(
-
-  this.sendData.get('image')
-
-  )
       this._authServiceService.registe(this.sendData).subscribe(
         data => {    
           localStorage.setItem('token',JSON.stringify(data.token))
           this.sendData = new FormData()        
         },
         error => { 
-          console.log(error.error.message)
           this.errorMessage =  error.error.message
           this.sendData = new FormData()
         },
-
       )
   }
-
-  handleSubmitForm(){
-
-
-  }
-
-  
 }

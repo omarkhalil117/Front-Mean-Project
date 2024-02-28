@@ -2,10 +2,11 @@
     width: 50px
 }
 .mynav.container-fluid{
-    background-color: #FCDAC3;
     width: 95% !important;
 }
-
+.myLine{
+  color: black;
+}
 .dark-modal .modal-content {
     background-color: #292b2c;
     color: white;
@@ -48,6 +49,16 @@ form {
   
  
   img{
-    width:150px
+    width:64px
+  }
+  p{
+    margin: 0 !important;
+    padding: 0 !important ;
+  }
+  hr{
+    border-top: 1px solid black;
+  }
+  p{
+    color: black
   }
   
