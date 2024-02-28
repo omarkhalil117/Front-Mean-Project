@@ -25,7 +25,12 @@
             <a class="nav-link myBtn paddingBtn" aria-current="page" routerLink="add-admin" routerLinkActive="routesColored" skipLocationChange="true">Add admin</a>
           </li>
           <li class="nav-item d-flex align-items-center gap-4">
-            <img src="http://localhost:3000/{{this.user.image}}" alt="" >
+            @if(this.user.image){
+              <img src="http://localhost:3000/{{this.user.image}}" alt="" >
+            }
+            @else{
+              <img src="../../../assets/user.png" alt="" >
+            }
             <span>{{this.user.userName}}</span>
             <a class="nav-link" aria-current="page"  routerLinkActive="routesColored" skipLocationChange="true" (click)="logout()"><i class="fa fa-sign-out fa-2x"></i></a>
           </li>

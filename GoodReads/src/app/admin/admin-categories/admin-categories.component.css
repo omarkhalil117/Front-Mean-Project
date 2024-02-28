@@ -4,6 +4,9 @@
 .mynav.container-fluid{
     width: 95% !important;
 }
+.fa-plus{
+    width: 16px;
+}
 
 .dark-modal .modal-content {
     background-color: #292b2c;

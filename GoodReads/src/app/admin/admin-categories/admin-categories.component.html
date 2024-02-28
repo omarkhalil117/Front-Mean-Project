@@ -14,7 +14,7 @@
 
         </ng-template>
         <button class="btn btn-dark my-width mt-5 me-5" (click)="openVerticallyCentered(content)">
-            +
+            <i class="fas fa-plus"></i>
         </button>
     </div>
 
@@ -57,13 +57,13 @@
     <!-- //! Header of category -->
     <div class="row">
 
-        <div class="col-md-4 d-flex justify-content-center">
+        <div class="col-md-4 d-flex justify-content-center fw-bold text-uppercase">
                 <p>id</p>
         </div>
-        <div class="col-md-4 d-flex justify-content-center">
+        <div class="col-md-4 d-flex justify-content-center fw-bold text-uppercase">
             <p>Name</p>
         </div>
-        <div class="col-md-4 d-flex justify-content-center">
+        <div class="col-md-4 d-flex justify-content-center fw-bold text-uppercase">
             <p>Actions</p>
         </div>
     </div>
@@ -80,7 +80,7 @@
                 <p>{{category.name}}</p>
             </div>
             <div class="col-md-4 d-flex justify-content-center gap-2">
-                <button class="btn btn-info"   (click)="openVerticallyCentered3(content3,category)"><i class="fas fa-pen"></i></button>
+                <button class="btn btn-success"   (click)="openVerticallyCentered3(content3,category)"><i class="fas fa-pen"></i></button>
                 
                 <button class="btn btn-danger" (click)="deleteCategory(category._id)"><i class="fas fa-trash"></i></button>
             </div>
