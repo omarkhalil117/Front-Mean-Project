@@ -1,67 +1,61 @@
 @if(this.book && this.book.categoryID && this.book.authorID){
-  <div class="container">
-    <div class="details-left">
-      <img [src]="book.cover" alt="Book Cover">
-      <!--<select (change)="updateBookShelve($event, book.book._id, book._id)" name="shelve" id="shelve">
+<div class="container">
+  <div class="details-left">
+    <img [src]="book.cover" alt="Book Cover">
+    <!--<select (change)="updateBookShelve($event, book.book._id, book._id)" name="shelve" id="shelve">
         <option value="Want to Read" selected>Want to Read</option>
         <option value="Currently read">Currently read</option>
         <option value="Read">Read</option>
       </select>-->
-      <div>
-        <form [formGroup]="reviewForm" (ngSubmit)="handleSubmitForm()">
-          <p-rating
-            [cancel]="false"
-            name="rating"
-            formControlName="rating">
-          </p-rating>
-          @if(reviewForm.controls['rating'].invalid && reviewForm.controls['rating'].touched) {
-            <div id="reviewHelp" class="form-text text-danger">
-              @if(reviewForm.controls['rating'].errors?.['required']) {
-                <small>Rating of the book is required</small>
-              }
-            </div>
+    <div>
+      <form [formGroup]="reviewForm" (ngSubmit)="handleSubmitForm()">
+        <p-rating [cancel]="false" name="rating" formControlName="rating">
+        </p-rating>
+        @if(reviewForm.controls['rating'].invalid && reviewForm.controls['rating'].touched) {
+        <div id="reviewHelp" class="form-text text-danger">
+          @if(reviewForm.controls['rating'].errors?.['required']) {
+          <small>Rating of the book is required</small>
           }
-          <div>
-            <label for="reviews">Review Book: </label>
-            <input
-              type="text"
-              name="reviews"
-              formControlName="reviews"
-            />
-            @if(reviewForm.controls['reviews'].invalid && reviewForm.controls['reviews'].touched) {
-              <div id="reviewHelp" class="form-text text-danger">
-                @if(reviewForm.controls['reviews'].errors?.['required']) {
-                  <small>Review of the book is required</small>
-                }
-              </div>
+        </div>
+        }
+        <div>
+          <label for="reviews">Review Book: </label>
+          <input type="text" name="reviews" formControlName="reviews" />
+          @if(reviewForm.controls['reviews'].invalid && reviewForm.controls['reviews'].touched) {
+          <div id="reviewHelp" class="form-text text-danger">
+            @if(reviewForm.controls['reviews'].errors?.['required']) {
+            <small>Review of the book is required</small>
             }
           </div>
-          <button type="submit" [disabled]="reviewForm.invalid" (click)="addReview()">Add Reviews</button>
-        </form>
-      </div>
-
-
+          }
+        </div>
+        <button type="submit" [disabled]="reviewForm.invalid" (click)="addReview()">Add Reviews</button>
+      </form>
     </div>
 
-    <div class="details-right">
-      <h2>{{ this.book.name }}</h2>
-      <p (click)="redirectToAuthorDetails(book.authorID._id)">by {{ book.authorID.firstName }} {{ book.authorID.lastName }}</p>
-      <p (click)="redirectToCategoryDetails(book.categoryID._id)">{{ book.categoryID.name }}</p>
 
-      <app-rating></app-rating>
-
-      <span class="rate">{{ book.avgRate }}</span>
-      <span class="rate">{{ book.rating }} - ratings</span>
-    </div>
   </div>
 
+  <div class="details-right">
+    <h2>{{ this.book.name }}</h2>
+    <p (click)="redirectToAuthorDetails(book.authorID._id)">by {{ book.authorID.firstName }} {{ book.authorID.lastName
+      }}</p>
+    <p (click)="redirectToCategoryDetails(book.categoryID._id)">{{ book.categoryID.name }}</p>
+
+    <app-rating></app-rating>
+
+    <span class="rate">{{ book.avgRate }}</span>
+    <span class="rate">{{ book.rating }} - ratings</span>
+  </div>
+</div>
+
+<div>
+  <h2>Reviews</h2>
+  @for(review of book.reviews; track $index){
+  <p>{{ review.reviewBook }}</p>
+  }
   <div>
-    <h2>Reviews</h2>
-    @for(review of book.reviews; track $index){
-      <p>{{ review.reviewBook }}</p>
-    }
-    <div>
 
-    </div>
   </div>
+</div>
 }

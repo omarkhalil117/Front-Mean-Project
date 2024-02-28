@@ -3,12 +3,7 @@
 <form [formGroup]="bookForm">
   <div>
     <label for="name">Book Name: </label>
-    <input
-      type="text"
-      class="type_text"
-      name="name"
-      formControlName="name"
-    />
+    <input type="text" class="type_text" name="name" formControlName="name" />
     <!-- @if(bookForm.controls['name'].invalid && bookForm.controls['name'].touched) {
       <div id="nameHelp" class="form-text text-danger">
         @if(bookForm.controls['name'].errors?.['required']) {
@@ -18,32 +13,27 @@
     } -->
 
     <label for="categories">Category: </label>
-    <select formControlName="categories"  class="form-select" (change)="getCategoryId(bookForm.value.categories)">
+    <select formControlName="categories" class="form-select" (change)="getCategoryId(bookForm.value.categories)">
       @for( category of categories; track category._id){
-        <option (click)="category._id" [value]="category._id">
-          {{ category.name }}
-        </option>
+      <option (click)="category._id" [value]="category._id">
+        {{ category.name }}
+      </option>
       }
     </select>
-    
+
     <label for="auhors">Author: </label>
-    <select formControlName="authors" class="form-select"  (change)="getAuthorId(bookForm.value.authors)" >
+    <select formControlName="authors" class="form-select" (change)="getAuthorId(bookForm.value.authors)">
       @for( author of this.authors; track author._id){
-        <option [value]="author._id">
-          {{ author.firstName }} {{author.lastName}}
-        </option>
+      <option [value]="author._id">
+        {{ author.firstName }} {{author.lastName}}
+      </option>
       }
     </select>
-   
+
     <label for="cover">Image: </label>
-    <input
-      type="file"
-      name="cover"
-      (change)="registerPhoto($event)"
-      formControlName="cover"
-      class="form-control"
-    />
+    <input type="file" name="cover" (change)="registerPhoto($event)" formControlName="cover" class="form-control" />
 
   </div>
-  <button class="btn btn-info" type="submit" (click)="updateBooks(this.bookForm)" [disabled]="!this.bookForm.invalid && bookForm.dirty || this.photoChanged? false:true" >Update Book</button>
+  <button class="btn btn-info" type="submit" (click)="updateBooks(this.bookForm)"
+    [disabled]="!this.bookForm.invalid && bookForm.dirty || this.photoChanged? false:true">Update Book</button>
 </form>

@@ -1,7 +1,7 @@
 @if(!isLogged){
-    <app-login-admin (isLogged)="recieveFromChild($event)"></app-login-admin>
+<app-login-admin (isLogged)="recieveFromChild($event)"></app-login-admin>
 }
 @if(isLogged){
-    <app-admin-nav-bar  (isLogged)="recieveFromChild($event)"></app-admin-nav-bar>
+<app-admin-nav-bar (isLogged)="recieveFromChild($event)"></app-admin-nav-bar>
 }
 <router-outlet></router-outlet>

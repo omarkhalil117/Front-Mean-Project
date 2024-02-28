@@ -1,14 +1,13 @@
-<form [formGroup]="authorForm" #authorData="ngForm" class="container mt-5 align-items-center"
->
+<form [formGroup]="authorForm" #authorData="ngForm" class="container mt-5 align-items-center">
   <div>
     <!-- First Name -->
     <div>
       <div>
         <label for="firstName">First Name:</label>
-        <input class="form-control "type="text" id="firstName" name="firstName" formControlName="firstName" />
+        <input class="form-control " type="text" id="firstName" name="firstName" formControlName="firstName" />
       </div>
 
-      @if(authorForm.controls['firstName'].invalid  ) {
+      @if(authorForm.controls['firstName'].invalid ) {
       @if (authorForm.controls['firstName'].errors?.['minlength']) {
       <!-- min Legth -->
       <p class="text-danger fw-bold">name length is less than 3</p>
@@ -20,7 +19,7 @@
 
       <div>
         <label for="lastName">Last Name:</label>
-        <input class="form-control "type="text" id="lastName" name="lastName" formControlName="lastName" />
+        <input class="form-control " type="text" id="lastName" name="lastName" formControlName="lastName" />
       </div>
 
       @if(authorForm.controls['lastName'].invalid ) {
@@ -40,9 +39,11 @@
 
       <div>
         <label for="photo">Photo:</label>
-        <input class="form-control " type="file" id="photo" accept="image/*" name="photo"   formControlName="photo" (change)="registerPhoto($event)"/>
+        <input class="form-control " type="file" id="photo" accept="image/*" name="photo" formControlName="photo"
+          (change)="registerPhoto($event)" />
       </div>
     </div>
-      <button class="btn btn-primary " type="submit"  (click)="updateAuthor(this.authorForm)"  [disabled]="!this.authorForm.invalid && authorForm.dirty || this.photoChanged? false:true">Submit</button>
-        </div>
+    <button class="btn btn-primary " type="submit" (click)="updateAuthor(this.authorForm)"
+      [disabled]="!this.authorForm.invalid && authorForm.dirty || this.photoChanged? false:true">Submit</button>
+  </div>
 </form>

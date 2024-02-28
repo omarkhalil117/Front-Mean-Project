@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Category } from '../../models/category';
-import { Book } from '../../models/book';
+import { Books } from '../../models/books';
+import { Authors } from '../../models/authors';
 import {CategoriesApiService } from '../../services/categories-api.service';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
@@ -24,7 +25,8 @@ import { BooksRequestsService } from '../../services/books-requests.service';
 })
 export class UserHomeComponent {
   categories !: Array<Category>;
-  books !: Array<Book>;
+  books !:Array<Books>;
+  authors !: Array<Authors>;
   constructor(private categoriesRequests: CategoriesApiService,private booksRequestsService: BooksRequestsService,private router : Router) {}
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class UserHomeComponent {
 
 this.categoriesRequests.getPopularCategory().subscribe((res :any) =>{return this.categories = res.map((item:any)=>item.category);}) //console.log(this.categories) }  )
 
-
+this.categoriesRequests.getPopularAuthor().subscribe((res :any) =>{console.log(res);return this.authors = res.map((item:any)=>item.author);})
 
 ////////////////////////////////////////////////////////////////////////////////
     this.booksRequestsService.getAllbooks().subscribe((res:any) => {
@@ -43,11 +45,15 @@ this.categoriesRequests.getPopularCategory().subscribe((res :any) =>{return this
     })
   }
 
-  redirectToBooks(categoryId : string){
+  redirectToBooks(categoryId : String){
     this.router.navigate(['categories' , categoryId])
  }
 
- redirectToBookDetails(id : number) {
-  this.router.navigate(['app-book-details', id]);
+ redirectToBookDetails(id : String) {
+  this.router.navigate(['/books', id]);
+}
+
+redirectToAuthorDetails(id : String) {
+  this.router.navigate(['author', id]);
 }
 }

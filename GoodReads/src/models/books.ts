@@ -5,10 +5,12 @@ export interface Books {
       rating: Number
       cover: String
       shelve: String
-      categoryID:{
-            ID:string
-      },
+      categoryID:String,
       authorID:{
-            ID:string
-      }
+        firstName:String,
+        _id:String
+      },
+
+
+
 }

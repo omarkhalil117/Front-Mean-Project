@@ -6,7 +6,8 @@
         <ng-template #content let-modal>
             <div class="modal-header">
                 <h4 class="modal-title">Add Author</h4>
-                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                <button type="button" class="btn-close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
                 <p><app-author-form [authors]="this.authors"></app-author-form></p>
@@ -25,10 +26,11 @@
         <ng-template #content2 let-modal>
             <div class="modal-header">
                 <h4 class="modal-title">Modal title</h4>
-                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                <button type="button" class="btn-close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
-                <p >{{deletedMessage}}</p>
+                <p>{{deletedMessage}}</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
@@ -41,7 +43,8 @@
         <ng-template #content3 let-modal>
             <div class="modal-header">
                 <h4 class="modal-title">Update Author</h4>
-                <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+                <button type="button" class="btn-close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
                 <app-update-form [authorData]="this.authorData" [authors]="this.authors"></app-update-form>
@@ -57,17 +60,17 @@
     <div class="row">
 
         <div class="col-sm-2 d-flex justify-content-center fw-bold text-uppercase">
-                <p>id</p>
+            <p>id</p>
         </div>
         <div class="col-md-2 d-flex justify-content-center fw-bold text-uppercase">
             <p>First Name</p>
         </div>
-        
+
         <div class="col-sm-2 d-flex justify-content-center fw-bold text-uppercase">
             <p>Last Name</p>
         </div>
 
-        
+
         <div class="col-sm-2 d-flex justify-content-center fw-bold text-uppercase">
             <p>Photo</p>
         </div>
@@ -85,31 +88,33 @@
 
 
     @for(author of this.authors; track author._id;let e = $even){
-        <div class="row pt-2 pb-2  justify-content-center align-items-center" [ngStyle]="e? { 'background-color': '#fff' } : { 'background-color': '#d8d8d8' }">
-            <div class="col-sm-2 d-flex justify-content-center">
-                    <p>{{$index+1}}</p>
-            </div>
-            <div class="col-sm-2 d-flex justify-content-center">
-                <p>{{author.firstName}}</p>
-            </div>
-            <div class="col-sm-2 d-flex justify-content-center">
-                <p>{{author.lastName}}</p>
-            </div>
-            <div class="col-sm-2 d-flex justify-content-center">
-                <img src="http://localhost:3000/{{author.photo}}" alt="">
-            </div>
-            <div class="col-sm-2 d-flex justify-content-center">
-                <p>{{author.dob | date:'shortDate'}}</p>
-            </div>
-            <div class="col-sm-2 d-flex justify-content-center gap-2">
-                <button class="btn btn-success"   (click)="openVerticallyCentered3(content3,author)"><i class="fas fa-pen"></i></button>
-                
-                <button class="btn btn-danger" (click)="deleteAuthor(author._id)"><i class="fas fa-trash"></i></button>
-            </div>
+    <div class="row pt-2 pb-2  justify-content-center align-items-center"
+        [ngStyle]="e? { 'background-color': '#fff' } : { 'background-color': '#d8d8d8' }">
+        <div class="col-sm-2 d-flex justify-content-center">
+            <p>{{$index+1}}</p>
         </div>
-                
+        <div class="col-sm-2 d-flex justify-content-center">
+            <p>{{author.firstName}}</p>
+        </div>
+        <div class="col-sm-2 d-flex justify-content-center">
+            <p>{{author.lastName}}</p>
+        </div>
+        <div class="col-sm-2 d-flex justify-content-center">
+            <img src="http://localhost:3000/{{author.photo}}" alt="">
+        </div>
+        <div class="col-sm-2 d-flex justify-content-center">
+            <p>{{author.dob | date:'shortDate'}}</p>
+        </div>
+        <div class="col-sm-2 d-flex justify-content-center gap-2">
+            <button class="btn btn-success" (click)="openVerticallyCentered3(content3,author)"><i
+                    class="fas fa-pen"></i></button>
 
-        <!-- @for(book of this.books; track book._id;let e = $even ){
+            <button class="btn btn-danger" (click)="deleteAuthor(author._id)"><i class="fas fa-trash"></i></button>
+        </div>
+    </div>
+
+
+    <!-- @for(book of this.books; track book._id;let e = $even ){
             
             <div class="row pt-2 pb-2 justify-content-center align-items-center" [ngStyle]="e? { 'background-color': '#fff' } : { 'background-color': '#d8d8d8' }">
                 <div class="col-md-2 d-flex justify-content-center">
@@ -140,5 +145,5 @@
 
 
     }
-    
+
 </div>

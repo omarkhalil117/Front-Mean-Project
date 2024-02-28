@@ -4,7 +4,7 @@
     <div>
       <div>
         <label for="firstName">First Name:</label>
-        <input class="form-control "type="text" id="firstName" name="firstName" formControlName="firstName" />
+        <input class="form-control " type="text" id="firstName" name="firstName" formControlName="firstName" />
       </div>
 
       @if(authorForm.controls['firstName'].invalid &&
@@ -23,7 +23,7 @@
 
       <div>
         <label for="lastName">Last Name:</label>
-        <input class="form-control "type="text" id="lastName" name="lastName" formControlName="lastName" />
+        <input class="form-control " type="text" id="lastName" name="lastName" formControlName="lastName" />
       </div>
 
       @if(authorForm.controls['lastName'].invalid &&
@@ -31,7 +31,7 @@
       @if(authorForm.controls['lastName'].errors?.['required']) {
       <!-- required -->
       <p class="text-danger fw-bold">User Name Required</p>
-      }  @else if (authorForm.controls['lastName'].errors?.['minlength']) {
+      } @else if (authorForm.controls['lastName'].errors?.['minlength']) {
       <!-- min Legth -->
       <p class="text-danger fw-bold">name length is less than 3</p>
 
@@ -42,12 +42,14 @@
 
       <div>
         <label for="dob">Date of Birth:</label>
-        <input class="form-control "(change)="printDate($event)" type="date" id="dob" name="dob" formControlName="dob" />
+        <input class="form-control " (change)="printDate($event)" type="date" id="dob" name="dob"
+          formControlName="dob" />
       </div>
 
       <div>
         <label for="photo">Photo:</label>
-        <input class="form-control " type="file" id="photo" accept="image/*" name="photo" formControlName="photo" (change)="registerPhoto($event)"/>
+        <input class="form-control " type="file" id="photo" accept="image/*" name="photo" formControlName="photo"
+          (change)="registerPhoto($event)" />
       </div>
     </div>
 
@@ -59,7 +61,8 @@
 
     <button class="btn btn-danger" type="submit" [disabled]="true">Submit</button>
     } } -->
-    <button class="btn btn-primary " type="submit" (click)="addAuthor()" [disabled]="this.authorForm.invalid">Submit</button>
+    <button class="btn btn-primary " type="submit" (click)="addAuthor()"
+      [disabled]="this.authorForm.invalid">Submit</button>
 
 
   </div>
