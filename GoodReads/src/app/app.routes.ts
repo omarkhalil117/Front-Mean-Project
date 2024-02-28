@@ -21,7 +21,7 @@ import {AddCategoryComponent  } from '../components/add-category/add-category.co
 import {UserHomeComponent } from '../components/user-home/user-home.component';
 import {CategoriesByUserComponent} from '../components/categories-by-user/categories-by-user.component';
 
-export const route: Routes = [
+export const routes: Routes = [
   {
     path:'',
     component: UserHomeComponent,
@@ -122,11 +122,6 @@ export const routes: Routes = [
     component: BookDetailsComponent,
     title: "Book details"
   },
-  {
-    path: "categories/:categoryId",
-    component: BooksCategoryComponent,
-    title: "BooksOfCategory"
-},
 
 {
     path:"**",
