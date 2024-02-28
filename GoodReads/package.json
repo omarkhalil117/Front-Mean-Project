@@ -40,6 +40,8 @@
     "@angular/compiler-cli": "^17.1.0",
     "@angular/localize": "^17.1.0",
     "@types/jasmine": "~5.1.0",
+    "@types/node": "^20.11.22",
+    "dotenv": "^16.4.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",

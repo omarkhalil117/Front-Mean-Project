@@ -1,15 +1,15 @@
-    <div class="d-flex justify-content-between align-items-center ">
-        @if(bookInfo.cover)
+    <div class="d-flex justify-content-around align-items-center bg-info">
+        @if(!bookInfo.cover)
         {
             <img src="http://localhost:3000/{{bookInfo.cover}}" alt="{{bookInfo.cover}}">
         } @else {
             <img src="../../assets/default-photo.jpg" alt="">
         }
-        <div>
-            <h3>{{bookInfo.bookName}}</h3>
+        <div >
+            <h3>{{bookInfo.name}}</h3>
             <p>rating : {{bookInfo.rating}}</p>
         </div>
-    <select >
+    <select class="form-select form-select-sm w-25" aria-label=".form-select-sm example">
     <option selected>Currently Read</option>
     <option value="1">Want to read</option>
     <option value="2">Read</option>
