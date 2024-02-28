@@ -7,3 +7,10 @@
     </div>
   }
 </div>
+
+<div class="pagination">
+  <button (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+  <span>{{ currentPage }} | {{ lastPage }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === lastPage">Next</button>
+</div>
+

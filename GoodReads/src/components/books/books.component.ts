@@ -12,7 +12,9 @@ import { Book } from './../../models/interface/book';
   styleUrl: './books.component.css'
 })
 export class BooksComponent {
-  books ?: Array<Book>
+  books ?: Array<Book>;
+  currentPage: number = 1;
+  lastPage: number = 1;
 
   constructor(
     private router: Router,
@@ -20,11 +22,28 @@ export class BooksComponent {
     ){}
 
     ngOnInit(){
-      this.booksRequestsService.getAllbooks().subscribe((res: any) => {
-        console.log(res);
-        return this.books = res.data.books;
+      this.showBooks();
+    }
 
+    showBooks(){
+      this.booksRequestsService.getAllbooks(this.currentPage).subscribe((res: any) => {
+        this.books = res.data.books;
+        this.lastPage = Math.ceil(res.result / 6);
       })
+    }
+
+    previousPage(){
+      if(this.currentPage > 1) {
+        this.currentPage--;
+        this.showBooks();
+      }
+    }
+
+    nextPage(){
+      if(this.currentPage < this.lastPage) {
+        this.currentPage++;
+        this.showBooks();
+      }
     }
 
   redirectToBookDetails(id : string) {
@@ -34,4 +53,5 @@ export class BooksComponent {
   redirectToAuthorDetails(authorId: String){
     this.router.navigate(['authors', authorId]);
   }
+
 }

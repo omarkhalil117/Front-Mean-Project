@@ -18,34 +18,43 @@
     }
 
     <label for="categoryID">Category: </label>
-    <input
-      type="text"
-      class="type_text"
-      name="categoryID"
-      formControlName="categoryID"
-    />
-    @if(bookForm.controls['categoryID'].invalid && bookForm.controls['categoryID'].touched) {
-      <div id="categoryID" class="form-text text-danger">
-        @if(bookForm.controls['categoryID'].errors?.['required']) {
-          <small>Category is required</small>
-        }
-      </div>
-    }
+      <select
+        name="authorID"
+        name="categoryID"
+        formControlName="categoryID"
+        (click)="getCategories()"
+      >
+      <option value="">Select Category</option>
+      @for(category of categories; track category.id){
+        <option [value]="category.id">{{ category.name }}</option>
+      }
+      </select>
+      @if(bookForm.controls['categoryID'].invalid && bookForm.controls['categoryID'].touched) {
+        <div id="categoryID" class="form-text text-danger">
+          @if(bookForm.controls['categoryID'].errors?.['required']) {
+            <small>Category is required</small>
+          }
+        </div>
+      }
 
     <label for="authorID">Author: </label>
-    <input
-      type="text"
-      class="type_text"
-      name="authorID"
-      formControlName="authorID"
-    />
-    @if(bookForm.controls['authorID'].invalid && bookForm.controls['authorID'].touched) {
-      <div id="authorID" class="form-text text-danger">
-        @if(bookForm.controls['authorID'].errors?.['required']) {
-          <small>Author is required</small>
-        }
-      </div>
-    }
+      <select
+        name="authorID"
+        formControlName="authorID"
+        (click)="getAuthors()"
+      >
+      <option value="">Select Author</option>
+      @for(author of authors; track author.id){
+        <option [value]="author.id">{{ author.firstName }} {{ author.lastName }}</option>
+      }
+      </select>
+      @if(bookForm.controls['authorID'].invalid && bookForm.controls['authorID'].touched) {
+        <div id="authorID" class="form-text text-danger">
+          @if(bookForm.controls['authorID'].errors?.['required']) {
+            <small>Author is required</small>
+          }
+        </div>
+      }
 
     <label for="cover">Image: </label>
     <input

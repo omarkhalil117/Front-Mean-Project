@@ -3,6 +3,8 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Books } from '../../../../models/books';
 import { BookService } from '../../../../services/admin/book.service';
+import { AuthorServicesService } from '../../../../services/author-services.service';
+import { CategoriesApiService } from '../../../../services/categories-api.service';
 
 @Component({
   selector: 'app-add-form',
@@ -17,9 +19,16 @@ export class AddFormComponent {
   sendFormData =  new FormData()
   image?: any;
   response!:any;
+  authors: any[] = [];
+  categories: any[] = [];
+
   @Input() books : Books[] =[]
-  constructor(private BookService:BookService,private fb: FormBuilder){
-    
+  constructor(
+    private BookService:BookService,
+    private AuthorServicesService: AuthorServicesService,
+    private CategoriesApiService: CategoriesApiService,
+    private fb: FormBuilder){
+
   }
   ngOnInit(){
     this.bookForm = this.fb.group({
@@ -29,6 +38,7 @@ export class AddFormComponent {
       cover: ['', [Validators.required]]
     })
   }
+
   printDate(e:any)
   {
     this.dateChange = true;
@@ -41,16 +51,26 @@ export class AddFormComponent {
     for(const property in this.bookForm.value){
           this.sendFormData.append(property,this.bookForm.value[property])
     }
-     this.BookService.addBooks(this.sendFormData).subscribe(
-         data =>{
+    this.BookService.addBooks(this.sendFormData).subscribe(
+        data =>{
           console.log(data.data)
             this.books.push(data.data.Book)
-        
-      },
-      error => {
-      }
-    )
 
+      },
+    )
   }
+
+  getAuthors() {
+    this.AuthorServicesService.getAllAuthors().subscribe((res : any) => {
+      this.authors = res;
+    })
+  }
+
+  getCategories() {
+    this.CategoriesApiService.getCategoriesList().subscribe((res : any) => {
+      this.categories = res;
+    })
+  }
+
 
 }

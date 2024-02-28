@@ -41,8 +41,8 @@ export class BookDetailsComponent {
     const id = this.activateRoute.snapshot.params['_id'];
     this.booksRequestsService.getBook(id).subscribe((res: any) => {
       this.book = res.data.book;
-
       console.log(this.book);
+
     })
   }
 
@@ -59,10 +59,11 @@ export class BookDetailsComponent {
     if (this.reviewForm.valid) {
       const formData = {
         ratingBook: +this.reviewForm.value.rating,      // Convert rating to number
-        reviewBook: this.reviewForm.value.review
+        reviewBook: this.reviewForm.value.reviews
       };
       this.booksRequestsService.createReview(this.book._id, formData).subscribe((res) => {
         console.log(res);
+        console.log(formData);
       });
     }
   }
@@ -70,10 +71,19 @@ export class BookDetailsComponent {
   handleSubmitForm() {
     console.log(this.reviewForm.value);
   }
-
-  updateRating(newRating: number) {
-    this.book.rating = newRating;
-    console.log(newRating);
+/*
+  async updateBookShelve(e:any, bookId:String, fullId:String)
+  {
+    console.log(e.target.value,bookId)
+    this.http.patch(`http://localhost:3000/users/65d2e73c85d0e459ad9f7c3b/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
+    this.books = this.books.map((el:any)=> {
+      if(el._id !== fullId) {
+        return el;
+      }
+      el.shelve = e.target.value;
+      return el;
+    })
+    console.log(this.books)
   }
-
+*/
 }

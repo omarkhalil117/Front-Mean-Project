@@ -2,12 +2,15 @@
   <div class="container">
     <div class="details-left">
       <img [src]="book.cover" alt="Book Cover">
+      <!--<select (change)="updateBookShelve($event, book.book._id, book._id)" name="shelve" id="shelve">
+        <option value="Want to Read" selected>Want to Read</option>
+        <option value="Currently read">Currently read</option>
+        <option value="Read">Read</option>
+      </select>-->
       <div>
         <form [formGroup]="reviewForm" (ngSubmit)="handleSubmitForm()">
           <p-rating
-            [(ngModel)]="newRating"
             [cancel]="false"
-            (ngModelChange)="updateRating(newRating)"
             name="rating"
             formControlName="rating">
           </p-rating>
@@ -41,13 +44,14 @@
     </div>
 
     <div class="details-right">
-      <h2>{{this.book.name}}</h2>
+      <h2>{{ this.book.name }}</h2>
       <p (click)="redirectToAuthorDetails(book.authorID._id)">by {{ book.authorID.firstName }} {{ book.authorID.lastName }}</p>
-      <p (click)="redirectToCategoryDetails(book.categoryID._id)">{{book.categoryID.name}}</p>
+      <p (click)="redirectToCategoryDetails(book.categoryID._id)">{{ book.categoryID.name }}</p>
 
       <app-rating></app-rating>
 
-      <span class="rate">{{book.avgRate}}</span>
+      <span class="rate">{{ book.avgRate }}</span>
+      <span class="rate">{{ book.rating }} - ratings</span>
     </div>
   </div>
 

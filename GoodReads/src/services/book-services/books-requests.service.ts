@@ -9,12 +9,12 @@ export class BooksRequestsService {
 
   constructor(private http : HttpClient) { }
 
-  getAllbooks() {
-    return this.http.get(`http://127.0.0.1:3000/books`);
+  getAllbooks(page: Number) {
+    return this.http.get(`http://127.0.0.1:3000/books?page=${page}`);
   }
 
-  getBook(id : number) {
-    return this.http.get(`http://127.0.0.1:3000/books/${id}`);
+  getBook(_id : number) {
+    return this.http.get(`http://127.0.0.1:3000/books/${_id}`);
   }
 
   createBook(data: Object) {
