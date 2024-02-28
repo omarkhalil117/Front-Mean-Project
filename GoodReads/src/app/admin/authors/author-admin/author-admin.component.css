@@ -1,0 +1,26 @@
+.my-width{
+    width: 50px
+}
+.mynav.container-fluid{
+    background-color: #FCDAC3;
+    width: 95% !important;
+}
+
+.dark-modal .modal-content {
+    background-color: #292b2c;
+    color: white;
+}
+.dark-modal .close {
+    color: white;
+}
+.light-blue-backdrop {
+    background-color: #5cb3fd;
+}
+.deletedmessage{
+    height: 300px;
+    background-color: red;
+}
+
+img{
+    width: 150px;
+}

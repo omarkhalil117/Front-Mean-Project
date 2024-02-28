@@ -1,0 +1,8 @@
+<div class="container">
+    <div class="card-deck d-flex justify-content-center align-items-center ">
+    @for(author of authors; track author._id)
+        {
+            <app-author-card [authorInfo]="author"></app-author-card>
+        }
+    </div>
+</div>

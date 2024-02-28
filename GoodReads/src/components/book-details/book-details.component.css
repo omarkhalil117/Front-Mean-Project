@@ -1,0 +1,27 @@
+img {
+  width: 250px;
+  height: 250px;
+}
+
+div {
+  margin-top: 10px;
+}
+
+.rate {
+  margin-left: 5px;
+}
+
+.container {
+  display: flex;
+  margin-top: 30px;
+}
+
+.details-left {
+  flex: 0 0 auto; /* Prevent stretching */
+  margin-right: 20px; /* Adjust spacing between details-left and details-right */
+}
+
+.details-right {
+  flex: 1; /* Take remaining space */
+}
+

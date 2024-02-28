@@ -1,0 +1,47 @@
+<form [formGroup]="adminLogin" (ngSubmit)="handleSubmitForm()">
+
+
+
+    <div class="mb-3">
+      <label for="userName" class="form-label">User Name</label>
+      <input type="text" class="form-control" id="userName"
+      formControlName="userName"
+      >
+      
+
+      
+  
+      @if(adminLogin.controls['userName'].invalid && adminLogin.controls['userName'].touched){
+        @if(adminLogin.controls['userName'].errors?.['required']){
+          <small>You must enter your user name</small>
+        }
+        @if(adminLogin.controls['userName'].errors?.['maxLength']){
+          <small>Do not enter more than 30 charachters</small>
+        }
+      }
+    </div>
+    
+  
+  
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1"
+      formControlName="password"
+      >
+  
+      @if(adminLogin.controls['password'].invalid && adminLogin.controls['password'].touched){
+        @if(adminLogin.controls['password'].errors?.['required']){
+          <small>You must enter your password</small>
+        }
+        @if(adminLogin.controls['password'].errors?.['maxlength']){
+          <small>Do not enter more than 50 charachters 😒</small>
+        }
+      }
+  
+  
+    </div>
+    
+    
+    
+    <button type="button" class="btn btn-primary" (click)="redirectToAdminDashBoard()" [disabled]="adminLogin.invalid">Submit</button>
+  </form>

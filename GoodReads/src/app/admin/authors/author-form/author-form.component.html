@@ -1,0 +1,63 @@
+<form [formGroup]="authorForm" #authorData="ngForm" class="container mt-5 align-items-center">
+  <div>
+    <!-- First Name -->
+    <div>
+      <div>
+        <label for="firstName">First Name:</label>
+        <input class="form-control "type="text" id="firstName" name="firstName" formControlName="firstName" />
+      </div>
+
+      @if(authorForm.controls['firstName'].invalid &&
+      authorForm.controls['firstName'].touched ) {
+      @if(authorForm.controls['firstName'].errors?.['required']) {
+      <!-- required -->
+      <p class="text-danger fw-bold">User Name Required</p>
+      } @else if (authorForm.controls['firstName'].errors?.['minlength']) {
+      <!-- min Legth -->
+      <p class="text-danger fw-bold">name length is less than 3</p>
+
+      } @else if (authorForm.controls['firstName'].errors?.['maxlength']) {
+      <!-- max Legth -->
+      <p class="text-danger fw-bold">name length is more than 30</p>
+      } }
+
+      <div>
+        <label for="lastName">Last Name:</label>
+        <input class="form-control "type="text" id="lastName" name="lastName" formControlName="lastName" />
+      </div>
+
+      @if(authorForm.controls['lastName'].invalid &&
+      authorForm.controls['lastName'].touched ) {
+      @if(authorForm.controls['lastName'].errors?.['required']) {
+      <!-- required -->
+      <p class="text-danger fw-bold">User Name Required</p>
+      }  @else if (authorForm.controls['lastName'].errors?.['minlength']) {
+      <!-- min Legth -->
+      <p class="text-danger fw-bold">name length is less than 3</p>
+
+      } @else if (authorForm.controls['lastName'].errors?.['maxlength']) {
+      <!-- max Legth -->
+      <p class="text-danger fw-bold">name length is more than 30</p>
+      } }
+
+      <div>
+        <label for="dob">Date of Birth:</label>
+        <input class="form-control "(change)="printDate($event)" type="date" id="dob" name="dob" formControlName="dob" />
+      </div>
+
+      <div>
+        <label for="photo">Photo:</label>
+        <input class="form-control " type="file" id="photo" accept="image/*" name="photo" formControlName="photo" (change)="registerPhoto($event)"/>
+      </div>
+    </div>
+
+    @if (authorForm.invalid) {
+    <button class="btn btn-danger" type="submit" [disabled]="true">Submit</button>
+    } @else { @if(dateChange) {
+    <button class="btn btn-primary " type="submit" (click)="addAuthor()" [disabled]="false">Submit</button>
+    }@else {
+
+    <button class="btn btn-danger" type="submit" [disabled]="true">Submit</button>
+    } }
+  </div>
+</form>

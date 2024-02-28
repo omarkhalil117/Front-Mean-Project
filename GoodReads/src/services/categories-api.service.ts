@@ -26,8 +26,25 @@ export class CategoriesApiService {
     });
   }
 
+//test--------------------
+  getBooks(page: number,id:string) {
+    //const startIndex = (page - 1) * limit;
+   // const endIndex = startIndex + limit;
+    return this.http.get(`http://localhost:3000/categories/page/${id}?page=${page}`);
+  }
+//test------------------
     getPopularCategory(){
     return this.http.get('http://localhost:3000/categories/popular' , {
+      params: {},
+      headers: {
+        Authorization: 'TOKEN_VALUE_HERE'
+       }
+    });
+  }
+
+
+  getPopularAuthor(){
+    return this.http.get('http://localhost:3000/author/popular' , {
       params: {},
       headers: {
         Authorization: 'TOKEN_VALUE_HERE'
