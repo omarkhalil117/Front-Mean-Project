@@ -13,7 +13,7 @@ export class CategoriesApiService {
       params: {},
       headers: {
         Authorization: 'TOKEN_VALUE_HERE'
-       }
+      }
     });
   }
 
@@ -22,7 +22,7 @@ export class CategoriesApiService {
       params: {},
       headers: {
         Authorization: 'TOKEN_VALUE_HERE'
-       }
+      }
     });
   }
 
@@ -31,7 +31,7 @@ export class CategoriesApiService {
       params: {},
       headers: {
         Authorization: 'TOKEN_VALUE_HERE'
-       }
+      }
     });
   }
 

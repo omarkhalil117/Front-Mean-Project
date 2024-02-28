@@ -19,7 +19,7 @@ export class UserAuthorComponent {
   {
     console.log(this.id)
     this.authorInfo.getAuthorWithBooks(this.id).subscribe((data) => {
-      this.authorData =data 
+      this.authorData =data
       console.log(this.authorData.authorbooks)
     })
 

@@ -3,7 +3,14 @@
     <div class="image-container">
       <img [src]="book.cover">
       <a (click)="redirectToBookDetails(book._id)">{{ book.name }}</a>
-      <a>{{ book.authorID.firstName }} {{ book.authorID.lastName }}</a>
+      <a (click)="redirectToAuthorDetails(book.authorID._id)">{{ book.authorID.firstName }} {{ book.authorID.lastName }}</a>
     </div>
   }
 </div>
+
+<div class="pagination">
+  <button (click)="previousPage()" [disabled]="currentPage === 0">Previous</button>
+  <span>{{ currentPage }} | {{ lastPage }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === lastPage">Next</button>
+</div>
+

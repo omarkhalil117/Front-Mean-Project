@@ -24,6 +24,9 @@ export class AddFormComponent {
   sendFormData =  new FormData()
   image?: any;
   response!:any;
+  authors: any[] = [];
+  categories: any[] = [];
+
   @Input() books : Books[] =[]
   categories !: Category[] 
   authors !: Authors[]
@@ -50,6 +53,7 @@ export class AddFormComponent {
       cover: ['',Validators.required]
     })
   }
+
   printDate(e:any)
   {
     this.dateChange = true;
@@ -88,5 +92,6 @@ export class AddFormComponent {
     )
 
   }
+
 
 }

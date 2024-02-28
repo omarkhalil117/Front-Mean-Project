@@ -1,5 +1,5 @@
 export interface Authors {
-    _id:String,
+    _id:string,
     firstName:String,
     lastName: String,
     dob:Date,

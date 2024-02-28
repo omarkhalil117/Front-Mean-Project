@@ -10,6 +10,6 @@ export class UserDataService {
 
   getUserInfo(userId:String)
   {
-   return this.http.get(`http://localhost:3000/users/${userId}`) 
+    return this.http.get(`http://localhost:3000/users/${userId}`)
   }
 }

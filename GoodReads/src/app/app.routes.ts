@@ -75,7 +75,7 @@ export const routes: Routes = [
 
         }
     ]
-},    
+},
     {
     path:'authors',
     component: AuthorsComponent,
@@ -84,12 +84,12 @@ export const routes: Routes = [
     {
     path:'authors/:id',
     component: UserAuthorComponent,
-    title : "author page"       
+    title : "author page"
     },
     {
     path:'users',
     component: UserDashboardComponent,
-    title : "Dashboard"       
+    title : "Dashboard"
     },
   {
     path: "books",
@@ -101,30 +101,9 @@ export const routes: Routes = [
     component: BookDetailsComponent,
     title: "Book details"
   },
-   {
-    path:'categories',
-    component: ShowCategoriesComponent,
-    title: "Categories List page"
-},
-{
-    path: "categories/:categoryId",
-    component: BooksCategoryComponent,
-    title: "BooksOfCategory"
-},
-{
-  path: "addcategory",
-  component: AddCategoryComponent,
-  title: "addcategory"
-},
-{
-  path: "categories/user/:userId",
-  component: CategoriesByUserComponent,
-  title: "addcategory"
-},
-{
+  {
     path:"**",
     component: NotFoundComponent
-}
-
+  }
 ];
 

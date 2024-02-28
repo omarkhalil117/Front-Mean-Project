@@ -31,9 +31,9 @@
                 <td><img src="http://localhost:3000/{{book.book.cover}}" alt="img"></td>
               }
               <td><a class="text-decoration-underline " (click)="redirectBookPage(book.book?._id)">{{book.book.name}}</a></td>
-              <td> <a class="text-decoration-underline " (click)="redirectAuthorPage(book.book.authorID?._id)"> {{book.book.authorID?.firstName}} <span>{{book.book.authorID?.lastName}}</span></a>
+              <td> <a class="text-decoration-underline " (click)="redirectAuthorPage(book.book.authorID?._id)"> {{book.book.authorID.firstName}} <span>{{book.book.authorID.lastName}}</span></a>
               </td>
-              <td>{{book.book.categoryID?.name}}</td>
+              <td>{{book.book.categoryID.name}}</td>
               <td></td>
               <td>
                 <select (change)="updateBookShelve($event, book.book._id, book._id)" name="shelve" id="shelve">
@@ -44,8 +44,8 @@
               </td>
             </tr>
             }
-            
-           
+
+
             <!-- Add more rows for other books -->
           </tbody>
         </table>

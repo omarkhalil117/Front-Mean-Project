@@ -11,14 +11,12 @@ import { BooksComponent } from '../components/books/books.component';
 import { BookDetailsComponent } from '../components/book-details/book-details.component';
 import { RatingComponent } from '../components/rating/rating.component';
 
-import { BookFormComponent } from '../components/book-form/book-form.component';
-
 import { RatingModule } from 'primeng/rating';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AuthorsComponent, UserDashboardComponent, BookRowComponent, UserAuthorComponent,HomeComponent,HeaderComponent, MyBooksComponent , RouterOutlet, BooksComponent, BookDetailsComponent, HeaderComponent, RatingModule, BookFormComponent, RatingComponent],
+  imports: [RouterOutlet, AuthorsComponent, UserDashboardComponent, BookRowComponent, UserAuthorComponent,HomeComponent, MyBooksComponent , RouterOutlet, BooksComponent, BookDetailsComponent, HeaderComponent, RatingModule, RatingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
