@@ -24,7 +24,7 @@ export class AddFormComponent {
   sendFormData =  new FormData()
   image?: any;
   response!:any;
-  @Input() books : Books[] =[]
+  @Input() books !: Books[] 
   categories !: Category[] 
   authors !: Authors[]
   constructor(private BookService:BookService,private fb: FormBuilder, private CategoriesService:CategoriesService,private AuthorsService:AuthorsService, private AlertService:AlertService){
@@ -72,6 +72,7 @@ export class AddFormComponent {
     }
      this.BookService.addBooks(this.sendFormData).subscribe(
          data =>{
+          console.log(data)
             this.books.push(data.data.Book)
             let successMessage = `you Added the book ${this.bookForm.value.name} successfully` 
           this.sendFormData = new FormData()

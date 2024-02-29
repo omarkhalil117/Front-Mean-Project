@@ -136,10 +136,9 @@
       @if(signupForm.controls['confirmPassword'].errors?.['required']){
         <small>You must confirm your password</small>
       }
-
-      @if(signupForm.errors?.['passwordNotMatch']){
-        <small>Your confirm password does not match password</small>
-      }
+    }
+    @if(signupForm.controls['confirmPassword'].touched && signupForm.errors?.['passwordNotMatch']){
+      <small>Your confirm password does not match password</small>
     }
   </div>
   
@@ -159,11 +158,11 @@
     class="img-fluid" alt="Sample image">
 
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+  </div>
+    </div>
+        </div>
+            </div>
+            </div>
 </div>
 </section>
 

@@ -63,7 +63,6 @@ export class SignupComponent {
         data => {    
           localStorage.setItem('token',data.token)
           this.sendData = new FormData()  
-          console.log(555555555,data)
           this.AlertService.myAlert('success',`Welcome ${data.data.newUser.firstName}`,'You registered sucessfully')      
         },
         error => { 

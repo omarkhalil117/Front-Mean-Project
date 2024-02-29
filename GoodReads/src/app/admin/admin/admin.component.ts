@@ -19,7 +19,6 @@ export class AdminComponent {
 isLogged !: boolean
 
 
-
 recieveFromChild(para:boolean){
   this.isLogged= para
 }
