@@ -25,7 +25,6 @@ export class LoginAdminComponent {
   ngOnInit(){
     const jwt = this._JwtTokenService.decodeToken(localStorage.getItem('token'))
     if(JSON.parse(JSON.stringify(jwt)).role === 'admin'){
-      console.log(JSON.parse(JSON.stringify(jwt)).role)
       this.router.navigate(['admin/categories'],{ skipLocationChange: true })
       this.isLogged.emit(true)
     } 
@@ -38,7 +37,6 @@ export class LoginAdminComponent {
         const jwt = this._JwtTokenService.decodeToken(localStorage.getItem('token'))
         JSON.stringify(jwt) 
         if(JSON.parse(JSON.stringify(jwt)).role === 'admin'){
-          console.log(JSON.parse(JSON.stringify(jwt)).role)
           this.router.navigate(['admin/categories'],{ skipLocationChange: true })
           this.isLogged.emit(true)
         } 

@@ -34,7 +34,6 @@ constructor(private _BookService:BookService){}
   displayBooks(){
     this._BookService.displayBooks().subscribe(
       data => {
-        console.log(data.data.books)
           this.books = data.data.books
       }
     )

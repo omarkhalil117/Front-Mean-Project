@@ -25,10 +25,8 @@ export class AppComponent {
   currentUrl!:string
   
   constructor(private router:Router){
-    console.log(router.url)
     router.events.forEach((event) => {
       if(event instanceof NavigationEnd) {
-        console.log(event.url.split('/')[1])
         this.currentUrl= event.url.split('/')[1]
       }
     }

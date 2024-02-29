@@ -36,7 +36,6 @@ export class AuthorAdminComponent {
     displayAuthors(){
       this._AuthorService.displayAuthors().subscribe(
         data => {
-          console.log(data)
             this.authors = data
         }
       )
@@ -66,7 +65,6 @@ export class AuthorAdminComponent {
 	}
 
   openVerticallyCentered3(content: TemplateRef<any>,author:any) {
-    console.log(author)
 		this.modalService.open(content, { centered: true , animation: true});
     this.authorData = author
     

@@ -34,18 +34,15 @@ export class UpdateFormComponent {
   ngOnInit(){
     this.CategoriesService.displayCategories().subscribe(
       data => {
-        console.log(this.categories)
         this.categories=data
       }
     )
   
     this.AuthorsService.displayAuthors().subscribe(
       data => {
-        console.log(data)
           this.authors = data
       }
     )
-    console.log(this.bookData)
     this.bookForm = this.fb.group({
       name: [this.bookData.name],
       categories: [this.bookData.categoryID],
@@ -82,11 +79,9 @@ export class UpdateFormComponent {
 
   updateBooks(form:FormGroup){
     this.checkFieldsChanges(form.value,this.bookData)
-    this.sendFormData.forEach(el => console.log(el))
         this.BookService.updateBooks(this.sendFormData, this.bookData._id).subscribe(
       data =>{
         this.isData=true 
-        console.log(data.data.updatedBook)
         this.books.map((el:any) =>{
           if(data.data.updatedBook._id === el._id){
             //! throw error about file type

@@ -3,6 +3,7 @@ export interface Authors {
     firstName:String,
     lastName: String,
     dob:Date,
-    photo:String
+    photo:String,
+    ID:string
 }
 
