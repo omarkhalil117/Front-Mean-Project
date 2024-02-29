@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Authors } from '../../../../models/authors';
 import { AuthorsService } from '../../../../services/admin/authors.service';
+import { AlertService } from '../../../../services/alert.service';
 
 @Component({
   selector: 'app-update-form',
@@ -16,13 +17,14 @@ export class UpdateFormComponent {
   isAnyFieldChange : boolean = true
   authorForm !: FormGroup;
   @Input() authorData !: Authors
+  errorMsg!:string
   image?: any;
   photoChanged = false
   isData !: boolean;
   response!:any;
   sendFormData =  new FormData()
   @Input() authors !: Authors[]
-  constructor(private http:HttpClient, private AuthorsService:AuthorsService)
+  constructor(private http:HttpClient, private AuthorsService:AuthorsService, private AlertService:AlertService)
   {
   }
 
@@ -71,11 +73,18 @@ export class UpdateFormComponent {
                     el[property]= data[property]
               }
             }
+            let successMessage = `you Update the author ${this.authorForm.value.firstName} successfully` 
+            this.sendFormData = new FormData()
+        this.AlertService.myAlert('success', 'Updated Successfully',successMessage)
+        this.authorForm.markAsPristine()
+        this.authorForm.markAsUntouched();
           }
         })
       },
       error => {
-        // this.errorMsg=error.error.message 
+        this.sendFormData = new FormData()
+        this.errorMsg=error.error.message 
+        this.AlertService.myAlert('error', 'Something wrong!',this.errorMsg)
       }
     )
   }

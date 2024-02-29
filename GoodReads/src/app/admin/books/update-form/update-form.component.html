@@ -3,12 +3,7 @@
 <form [formGroup]="bookForm">
   <div>
     <label for="name">Book Name: </label>
-    <input
-      type="text"
-      class="type_text"
-      name="name"
-      formControlName="name"
-    />
+    <input type="text" class="type_text" name="name" formControlName="name" />
     <!-- @if(bookForm.controls['name'].invalid && bookForm.controls['name'].touched) {
       <div id="nameHelp" class="form-text text-danger">
         @if(bookForm.controls['name'].errors?.['required']) {
@@ -17,45 +12,28 @@
       </div>
     } -->
 
-    <label for="categoryID">Category: </label>
-    <input
-      type="text"
-      class="type_text"
-      name="categoryID"
-      formControlName="categoryID"
-    />
-    <!-- @if(bookForm.controls['categoryID'].invalid && bookForm.controls['categoryID'].touched) {
-      <div id="categoryID" class="form-text text-danger">
-        @if(bookForm.controls['categoryID'].errors?.['required']) {
-          <small>Category is required</small>
-        }
-      </div>
-    } -->
+    <label for="categories">Category: </label>
+    <select formControlName="categories" class="form-select" (change)="getCategoryId(bookForm.value.categories)">
+      @for( category of categories; track category._id){
+      <option (click)="category._id" [value]="category._id">
+        {{ category.name }}
+      </option>
+      }
+    </select>
 
-    <label for="authorID">Author: </label>
-    <input
-      type="text"
-      class="type_text"
-      name="authorID"
-      formControlName="authorID"
-    />
-    <!-- @if(bookForm.controls['authorID'].invalid && bookForm.controls['authorID'].touched) {
-      <div id="authorID" class="form-text text-danger">
-        @if(bookForm.controls['authorID'].errors?.['required']) {
-          <small>Author is required</small>
-        }
-      </div>
-    } -->
+    <label for="auhors">Author: </label>
+    <select formControlName="authors" class="form-select" (change)="getAuthorId(bookForm.value.authors)">
+      @for( author of this.authors; track author._id){
+      <option [value]="author._id">
+        {{ author.firstName }} {{author.lastName}}
+      </option>
+      }
+    </select>
 
     <label for="cover">Image: </label>
-    <input
-      type="file"
-      name="cover"
-      (change)="registerPhoto($event)"
-      formControlName="cover"
-    />
-    <!-- <fa-icon [icon]="['fas', 'upload']"></fa-icon> -->
+    <input type="file" name="cover" (change)="registerPhoto($event)" formControlName="cover" class="form-control" />
 
   </div>
-  <button type="submit" (click)="updateBooks(this.bookForm)" >Update Book</button>
+  <button class="btn btn-info" type="submit" (click)="updateBooks(this.bookForm)"
+    [disabled]="!this.bookForm.invalid && bookForm.dirty || this.photoChanged? false:true">Update Book</button>
 </form>

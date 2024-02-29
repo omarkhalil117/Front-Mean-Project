@@ -1,0 +1,12 @@
+.star {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('../../assets/star.png'); /* Replace with your star icon */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .star.full {
+    background-image: url('../../assets/star.png'); /* Replace with your filled star icon */
+  }

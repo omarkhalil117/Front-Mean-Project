@@ -1,5 +1,5 @@
 
-
+<!--
 
 <h2>{{categoryname}}</h2>
 <hr />
@@ -66,3 +66,50 @@
 
   }
 </div>
+
+-->
+
+
+<h2>{{categoryname}}</h2>
+<hr />
+
+<div class=" row row-cols-1 row-cols-md-3 g-4 ml-20"  >
+  @for(book of arr; track book._id){
+  <div class="card col-md-3 text-center m-5" style="width: 18rem;">
+    <img src="https://localhost:3000/{{book.cover}}" class="card-img-top" alt="{{book.name}}'s Image">
+    <div class="card-body">
+      <h5 class="card-title">{{book.name}}</h5>
+    </div>
+    <div class="card-body">
+      <a class="card-link" (click)="redirectToBookDetails(book._id)" [routerLink]="['/books', book._id]">{{book.name}}</a>
+      <a class="card-link" (click)="redirectToBookDetails(book.authorID._id)" [routerLink]="['/auther', book._id]">{{book.authorID.firstName}}</a>
+      <!--<a class="btn btn-link" (click)="redirectToAuthorDetails(book.authorID._id)" [routerLink]="['/authors', book.authorID]">{{book.authorID.firstName}}</a>-->
+    </div>
+  </div>
+
+}
+</div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" (click)="prevPage()" >Previous</a></li>
+
+    <li class="page-item"><a class="page-link"  (click)="nextPage()">Next</a></li>
+  </ul>
+</nav>
+
+
+<!--(click)="prevPage()"   (click)="nextPage()"  (click)="clickPage($event)-->
+
+<!--<ul>
+  @for(book of arr; track book._id){
+  <li>
+    {{ book.name }} - {{ book.author }}
+  </li>
+}
+</ul>
+
+<button (click)="prevPage()" [disabled]="page === 1">Previous</button>
+<button (click)="nextPage()">Next</button>
+-->
+

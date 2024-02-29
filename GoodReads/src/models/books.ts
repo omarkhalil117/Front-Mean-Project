@@ -6,5 +6,11 @@ export interface Books {
       cover: String
       shelve: String
       categoryID:String,
-      authorID:String
+      authorID:{
+        firstName:String,
+        _id:String
+      },
+
+
+
 }

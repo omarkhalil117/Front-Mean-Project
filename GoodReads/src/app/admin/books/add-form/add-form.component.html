@@ -3,68 +3,63 @@
 <form [formGroup]="bookForm">
   <div>
     <label for="name">Book Name: </label>
-    <input
-      type="text"
-      class="type_text"
-      name="name"
-      formControlName="name"
-    />
+    <input type="text" class="type_text" name="name" formControlName="name" />
     @if(bookForm.controls['name'].invalid && bookForm.controls['name'].touched) {
-      <div id="nameHelp" class="form-text text-danger">
-        @if(bookForm.controls['name'].errors?.['required']) {
-          <small>Title of book is required</small>
-        }
-      </div>
+    <div id="nameHelp" class="form-text text-danger">
+      @if(bookForm.controls['name'].errors?.['required']) {
+      <small>Title of book is required</small>
+      }
+      @if(bookForm.controls['name'].errors?.['maxlength']) {
+      <small>length is more than 30 charachter</small>
+      }
+      @if(bookForm.controls['name'].errors?.['minlength']) {
+      <small>length is less than 3 charachters</small>
+      }
+    </div>
+    }
+    <label for="categories">Category: </label>
+    <select formControlName="categories" class="form-select" (change)="getCategoryId(bookForm.value.categories)">
+      @for( category of categories; track category._id){
+      <option (click)="category._id" [value]="category._id">
+        {{ category.name }}
+      </option>
+      }
+    </select>
+    @if(bookForm.controls['categories'].invalid && bookForm.controls['categories'].touched) {
+    <div id="nameHelp" class="form-text text-danger">
+      @if(bookForm.controls['categories'].errors?.['required']) {
+      <small>Category of book is required</small>
+      }
+    </div>
     }
 
-    <label for="categoryID">Category: </label>
-      <select
-        name="authorID"
-        name="categoryID"
-        formControlName="categoryID"
-        (click)="getCategories()"
-      >
-      <option value="">Select Category</option>
-      @for(category of categories; track category.id){
-        <option [value]="category.id">{{ category.name }}</option>
+    <label for="auhors">Author: </label>
+    <select formControlName="authors" class="form-select" (change)="getAuthorId(bookForm.value.authors)">
+      @for( author of this.authors; track author._id){
+      <option [value]="author._id">
+        {{ author.firstName }} {{author.lastName}}
+      </option>
       }
-      </select>
-      @if(bookForm.controls['categoryID'].invalid && bookForm.controls['categoryID'].touched) {
-        <div id="categoryID" class="form-text text-danger">
-          @if(bookForm.controls['categoryID'].errors?.['required']) {
-            <small>Category is required</small>
-          }
-        </div>
+    </select>
+    @if(bookForm.controls['authors'].invalid && bookForm.controls['authors'].touched) {
+    <div id="nameHelp" class="form-text text-danger">
+      @if(bookForm.controls['authors'].errors?.['required']) {
+      <small>Author of book is required</small>
       }
+    </div>
+    }
 
-    <label for="authorID">Author: </label>
-      <select
-        name="authorID"
-        formControlName="authorID"
-        (click)="getAuthors()"
-      >
-      <option value="">Select Author</option>
-      @for(author of authors; track author.id){
-        <option [value]="author.id">{{ author.firstName }} {{ author.lastName }}</option>
-      }
-      </select>
-      @if(bookForm.controls['authorID'].invalid && bookForm.controls['authorID'].touched) {
-        <div id="authorID" class="form-text text-danger">
-          @if(bookForm.controls['authorID'].errors?.['required']) {
-            <small>Author is required</small>
-          }
-        </div>
-      }
 
     <label for="cover">Image: </label>
-    <input
-      type="file"
-      name="cover"
-      (change)="registerPhoto($event)"
-      formControlName="cover"
-    />
-    <!-- <fa-icon [icon]="['fas', 'upload']"></fa-icon> -->
-
+    <input type="file" name="cover" (change)="registerPhoto($event)" formControlName="cover" />
   </div>
-  <button type="submit" [disabled]="bookForm.invalid" (click)="addBook()">Add Book</button>
+
+  @if(bookForm.controls['cover'].invalid && bookForm.controls['cover'].touched) {
+  <div id="nameHelp" class="form-text text-danger">
+    @if(bookForm.controls['cover'].errors?.['required']) {
+    <small>Cover of book is required</small>
+    }
+  </div>
+  }
+  <button class="btn btn-info" type="submit" [disabled]="bookForm.invalid" (click)="addBook()">Add Book</button>
 </form>

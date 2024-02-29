@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Category } from '../../models/category';
+import { Category } from '../../models/category';
 import {CategoriesApiService } from '../../services/categories-api.service';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
@@ -21,7 +22,14 @@ export class CategoriesByUserComponent {
     const idfromroute = this.activateRoute.snapshot.params['userId'];
     console.log(idfromroute)
     this.categoriesRequests.getCategoriesListByUser(idfromroute).subscribe((res : any) =>{  this.categories = res; console.log(this.categories)});
+
+
   }
 
 
+
 }
+
+
+
+

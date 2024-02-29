@@ -17,8 +17,6 @@ export class JwtTokenService {
   }
 
   decodeToken(token:string|null) {
-    // if (this.jwtToken) {
-    // this.decodedToken = 
     if(token !== null){
       return jwt_decode.jwtDecode(token);
     }
@@ -27,30 +25,5 @@ export class JwtTokenService {
     }
     
   }
-
-  // getDecodeToken() {
-  //   return jwt_decode(this.jwtToken);
-  // }
-
-  // getUser() {
-  //   this.decodeToken();
-  //   return this.decodedToken ? this.decodedToken.role : null;
-  // }
-
- 
-
-  // getExpiryTime() {
-  //   this.decodeToken();
-  //   return this.decodedToken ? this.decodedToken.exp : null;
-  // }
-
-  // isTokenExpired(): boolean {
-  //   const expiryTime: number = this.getExpiryTime();
-  //   if (expiryTime) {
-  //     return ((1000 * expiryTime) - (new Date()).getTime()) < 5000;
-  //   } else {
-  //     return false;
-  //   }
-  // }
 }
 

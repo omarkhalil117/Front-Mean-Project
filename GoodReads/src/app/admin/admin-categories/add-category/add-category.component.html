@@ -1,0 +1,31 @@
+
+<form [formGroup]="categoryForm" >
+  <div class="mb-3  bg-light p-4 d-flex justify-content-center flex-column align-items-center">
+    <label for="title" class="form-label">Add Category</label>
+    <input
+      type="text"
+      class="form-control mb-3"
+      formControlName="name"
+    />
+    @if(categoryForm.controls['name'].invalid && categoryForm.controls['name'].touched) {
+    <div class="form-text text-danger">
+      @if(categoryForm.controls['name'].errors?.['required']){
+      <small>This field is required</small>
+      } @if(categoryForm.controls['name'].errors?.['minlength']) {
+      <small>Min. length is 3 character</small>
+      }
+    </div>
+    }
+    <button type="submit" class="btn btn-secondary" [disabled]="this.categoryForm.dirty && !this.categoryForm.invalid? false : true"  (click)="addCategory()">Add</button>
+    @if(this.isdata){
+        <small class="text-success"> {{categoryForm.get('name')?.value}} category added successfully</small>
+    }
+    @if(this.errorMsg){
+        <small class="text-danger"> {{this.errorMsg}} </small>
+    }
+
+  </div>
+  </form>
+
+
+

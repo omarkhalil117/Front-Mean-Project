@@ -4,7 +4,7 @@
     <label for="title" class="form-label">Add Category</label>
     <input
       type="text"
-      class="form-control mb-3"
+       class="form-control mb-3"
       formControlName="name"
     />
     @if(categoryForm.controls['name'].invalid && categoryForm.controls['name'].touched) {
@@ -21,7 +21,7 @@
         <small class="text-success"> {{categoryForm.get('name')?.value}} category added successfully</small>
     }
     @if(this.errorMsg){
-        <small class="text-danger"> {{this.errorMsg}} </small>
+        <small class="text-danger"> {{this.errorMsg}} </small>    
     }
 
   </div>

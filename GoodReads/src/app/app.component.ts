@@ -11,6 +11,8 @@ import { BooksComponent } from '../components/books/books.component';
 import { BookDetailsComponent } from '../components/book-details/book-details.component';
 import { RatingComponent } from '../components/rating/rating.component';
 
+import { BookFormComponent } from '../components/book-form/book-form.component';
+
 import { RatingModule } from 'primeng/rating';
 
 @Component({
@@ -22,6 +24,17 @@ import { RatingModule } from 'primeng/rating';
 })
 export class AppComponent {
   title = 'GoodReads';
+  currentUrl!:string
+  constructor(private router:Router){
+    console.log(router.url)
+    router.events.forEach((event) => {
+      if(event instanceof NavigationEnd) {
+        console.log(event.url.split('/')[1])
+        this.currentUrl= event.url.split('/')[1]
+      }
+    }
+    )
+  }
   currentUrl!:string
   constructor(private router:Router){
     console.log(router.url)

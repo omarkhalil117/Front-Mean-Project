@@ -2,10 +2,11 @@
     width: 50px
 }
 .mynav.container-fluid{
-    background-color: #FCDAC3;
     width: 95% !important;
 }
-
+.myLine{
+  color: black;
+}
 .dark-modal .modal-content {
     background-color: #292b2c;
     color: white;
@@ -46,21 +47,18 @@ form {
     box-shadow: 0 0 5px #007bff;
   }
   
-  button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto 0;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
+ 
   img{
-    width:150px
+    width:64px
+  }
+  p{
+    margin: 0 !important;
+    padding: 0 !important ;
+  }
+  hr{
+    border-top: 1px solid black;
+  }
+  p{
+    color: black
   }
   

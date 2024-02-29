@@ -17,13 +17,115 @@ import { BookDetailsComponent } from '../components/book-details/book-details.co
 import { NotFoundComponent } from '../components/not-found/not-found.component';
 import { ShowCategoriesComponent } from '../components/show-categories/show-categories.component';
 import { BooksCategoryComponent } from '../components/books-category/books-category.component';
-import {AddCategoryComponent  } from '../components/add-category/add-category.component';
+import {AddCategoryComponent  } from './admin/admin-categories/add-category/add-category.component';
 import {UserHomeComponent } from '../components/user-home/user-home.component';
 import {CategoriesByUserComponent} from '../components/categories-by-user/categories-by-user.component';
 
 export const routes: Routes = [
 
 { path: '', redirectTo: 'home', pathMatch: 'full' },
+{
+    path: "home",
+    component: HomeComponent,
+    title:"Home"
+},
+{
+    path: "my-books",
+    component:MyBooksComponent,
+    title: "My books",
+    canActivate: [authGuard]
+},
+{
+    path:"login",
+    component: LoginComponent,
+    title: "Log in"
+},
+{
+    path:"signup",
+    component: SignupComponent,
+    title: "Sign up"
+},
+{
+    path:"admin",
+    component: AdminComponent,
+    title: "Admin",
+    children:[
+        {
+            path:"books",
+            component: BooksComponent,
+            canActivate: [adminGuard]
+        },
+        {
+            path: "categories",
+            component: AdminCategoriesComponent,
+            canActivate: [adminGuard]
+
+        },
+        {
+            path:"authors",
+            component: AuthorAdminComponent,
+            canActivate: [adminGuard]
+
+        },
+        {
+            path:"add-admin",
+            component: SignupComponent,
+            canActivate: [adminGuard]
+
+        }
+    ]
+},
+    {
+    path:'authors',
+    component: AuthorsComponent,
+    title : "all authors"
+    },
+    {
+    path:'authors/:id',
+    component: UserAuthorComponent,
+    title : "author page"
+    },
+    {
+    path:'users',
+    component: UserDashboardComponent,
+    title : "Dashboard"
+    },
+  {
+    path: "books",
+    component: BooksComponent,
+    title: "Book"
+  },
+  {
+    path: "books/:_id",
+    component: BookDetailsComponent,
+    title: "Book details"
+  },
+  {
+    path:"**",
+    component: NotFoundComponent
+  }
+];
+
+  {
+    path:'categories',
+    component: ShowCategoriesComponent,
+    title: "Categories List page"
+},
+{
+    path: "categories/:categoryId",
+    component: BooksCategoryComponent,
+    title: "BooksOfCategory"
+},
+{
+  path: "addcategory",
+  component: AddCategoryComponent,
+  title: "addcategory"
+},
+{
+  path: "categories/user/:userId",
+  component: CategoriesByUserComponent,
+  title: "addcategory"
+},
 {
     path: "home",
     component: HomeComponent,
@@ -94,9 +196,11 @@ export const routes: Routes = [
     component: BookDetailsComponent,
     title: "Book details"
   },
-  {
+
+{
     path:"**",
     component: NotFoundComponent
-  }
+}
+
 ];
 

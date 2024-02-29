@@ -3,52 +3,60 @@ import { BookRowComponent } from '../book-row/book-row.component';
 import { UserDataService } from '../../services/user-data.service';
 import { Router } from '@angular/router';
 import { HttpClient} from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PagesServiceService } from '../../services/pages-service.service';
+import { StarRateComponent } from '../star-rate/star-rate.component';
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [BookRowComponent],
+  imports: [BookRowComponent, FontAwesomeModule , StarRateComponent],
   templateUrl: './user-dashboard.component.html',
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent {
-  data:any;
-  books:any;
-  temp:any;
-  userToken:String = '';
+  data: any;
+  books: any;
+  temp: any;
+  userToken: String = '';
+  status: String = 'All';
+  bookAvgRating: number = 0;
+  userRating: number = 0;
+  rate = 3; 
+  page = 0 ;
+
   constructor(private userData : UserDataService,
               private router : Router,
-              private http : HttpClient){}  
+              private http : HttpClient,
+              private BookPage : PagesServiceService){}  
 
   ngOnInit()
   {
-    this.userData.getUserInfo('65d2e73c85d0e459ad9f7c3b').subscribe((data) => {
-      this.data= data
-      this.books = this.data.fullInfo.books
-      this.temp = this.books
-      console.log(this.data)
-    });
+    if(this.page == 0)
+    {
+
+      this.BookPage.getUserBooksPages('65d2e73c85d0e459ad9f7c3b','1').subscribe((data: any) => {
+        this.data = data.fullInfo;
+        this.temp = data.fullInfo;
+        console.log(this.temp)
+        console.log(this.data)
+      });
+    }
   }
 
-  getAll()
-  {
-    this.books = this.temp;
-  }
-  getReadBook()
-  {
-    this.books = this.temp.filter((el:any)=> el.shelve === "Read")
-    console.log(this.books)
-  }
 
-  getWantToReadBooks()
+  filterByShelve(e:any)
   {
-    this.books = this.temp.filter((el:any)=> el.shelve === "Want to Read")
-    console.log(this.books)
-  }
-  getReadingBooks()
-  {
-    this.books = this.temp.filter((el:any)=> el.shelve === "Currently read")
-    console.log(this.books)
-  }
+    this.status = e.target.innerHTML; 
+    if(this.status === 'All')
+    {
+      this.data = this.temp;
+    }
+    else{
+      console.log(this.temp._id)
+      this.data = this.temp.filter( (el:any) => el._id.shelve.shelve === this.status );
+    }
+  } 
+
 
   redirectAuthorPage(id:string)
   {
@@ -73,34 +81,38 @@ export class UserDashboardComponent {
     })
     console.log(this.books)
   }
-}
 
-// data: any[] = [
-//   {
-//   id:1,
-//   cover:null,
-//   name:"Clean Code",
-//   Author:"John doe",
-//   AvgRating:"3.5",
-//   Rating:"4",
-//   Shelve:"reading"
-//   },
-//   {
-//   id:2,  
-//   cover:null,
-//   name:"Clean Arch",
-//   Author:"John doe",
-//   AvgRating:"3.5",
-//   Rating:"4",
-//   Shelve:"reading"
-//   },
-//   {
-//   id:3,
-//   cover:null,
-//   name:"Head first",
-//   Author:"John doe",
-//   AvgRating:"3.5",
-//   Rating:"4",
-//   Shelve:"reading"
-//   },
-// ]
+  UserRatingStar(rating:number)
+  {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating - fullStars >= 0.5;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+    let html = '';
+
+    for (let i = 0; i < fullStars; i++) {
+      html += '<fa-icon [icon]="faStar" ></i> ';
+    }
+
+    if (halfStar) {
+      html += '<fa-icon [icon]="faStarHalf"  ></fa-icon> ';
+    }
+
+    for (let i = 0; i < emptyStars; i++) {
+      html += '<fa-icon [icon]="farStar"  ></fa-icon> ';
+    }
+
+    return html;
+  
+  }
+
+    changePage(e:any)
+  {  
+      console.log(e.target.innerText)
+      this.BookPage.getUserBooksPages('65d2e73c85d0e459ad9f7c3b',e.target.innerText).subscribe((res:any) => {
+      this.data = res.fullInfo;
+      console.log(this.data)
+      });
+      this.page = e.target.innerText;
+  }
+}

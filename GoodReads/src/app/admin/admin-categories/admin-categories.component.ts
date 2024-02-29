@@ -1,15 +1,17 @@
+import { AlertService } from './../../../services/alert.service';
 import { Component, inject, TemplateRef, ViewEncapsulation} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthorFormComponent } from '../authors/author-form/author-form.component';
-import { AddCategoryComponent } from '../../../components/add-category/add-category.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 import { UpdateCategoryComponent } from './update-category/update-category.component';
 import { CategoriesService } from '../../../services/admin/categories.service';
 import { Category } from '../../../models/category';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-categories',
   standalone: true,
-  imports: [AddCategoryComponent,UpdateCategoryComponent],
+  imports: [AddCategoryComponent,UpdateCategoryComponent,CommonModule],
   templateUrl: './admin-categories.component.html',
   encapsulation: ViewEncapsulation.None,
   styleUrl: './admin-categories.component.css'
