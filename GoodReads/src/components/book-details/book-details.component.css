@@ -1,27 +1,70 @@
-img {
-  width: 250px;
-  height: 250px;
-}
-
-div {
-  margin-top: 10px;
-}
-
-.rate {
-  margin-left: 5px;
-}
-
 .container {
   display: flex;
-  margin-top: 30px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.details-left,
+.details-right {
+  flex: 1;
+  margin: 0 10px;
 }
 
 .details-left {
-  flex: 0 0 auto; /* Prevent stretching */
-  margin-right: 20px; /* Adjust spacing between details-left and details-right */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.details-right {
-  flex: 1; /* Take remaining space */
+.book-cover {
+  width: 200px;
+  height: auto;
 }
 
+.shelve-select {
+  margin-top: 20px;
+}
+
+.review-section {
+  margin-top: 20px;
+}
+
+.review-textbox {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.add-review-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.add-review-button:hover {
+  background-color: #0056b3;
+}
+
+.author-name,
+.category-name {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.book-rating {
+  margin-bottom: 10px;
+}
+
+.rate {
+  margin-right: 10px;
+}
+
+.reviews-section {
+  margin-top: 20px;
+}
+
+.review-text {
+  margin-bottom: 10px;
+}

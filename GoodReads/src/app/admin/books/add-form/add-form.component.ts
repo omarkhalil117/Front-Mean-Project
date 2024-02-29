@@ -28,10 +28,8 @@ export class AddFormComponent {
   categories: any[] = [];
 
   @Input() books : Books[] =[]
-  categories !: Category[] 
-  authors !: Authors[]
   constructor(private BookService:BookService,private fb: FormBuilder, private CategoriesService:CategoriesService,private AuthorsService:AuthorsService, private AlertService:AlertService){
-    
+
   }
   ngOnInit(){
   this.CategoriesService.displayCategories().subscribe(
@@ -78,14 +76,14 @@ export class AddFormComponent {
      this.BookService.addBooks(this.sendFormData).subscribe(
          data =>{
             this.books.push(data.data.Book)
-            let successMessage = `you Added the book ${this.bookForm.value.name} successfully` 
+            let successMessage = `you Added the book ${this.bookForm.value.name} successfully`
           this.sendFormData = new FormData()
         this.AlertService.myAlert('success', 'Added Successfully',successMessage)
         this.bookForm.reset()
       },
       error => {
         this.sendFormData = new FormData()
-        this.errorMsg=error.error.message 
+        this.errorMsg=error.error.message
         this.AlertService.myAlert('error', 'Something wrong!',this.errorMsg)
 
       }

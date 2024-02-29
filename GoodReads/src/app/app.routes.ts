@@ -107,50 +107,50 @@ export const routes: Routes = [
 ];
 
   {
-    path:'categories',
-    component: ShowCategoriesComponent,
+    path:'categories'
+    component: ShowCategoriesComponent
     title: "Categories List page"
-},
+}
 {
-    path: "categories/:categoryId",
-    component: BooksCategoryComponent,
+    path: "categories/:categoryId"
+    component: BooksCategoryComponent
     title: "BooksOfCategory"
-},
+}
 {
-  path: "addcategory",
-  component: AddCategoryComponent,
+  path: "addcategory"
+  component: AddCategoryComponent
   title: "addcategory"
-},
+}
 {
-  path: "categories/user/:userId",
-  component: CategoriesByUserComponent,
+  path: "categories/user/:userId"
+  component: CategoriesByUserComponent
   title: "addcategory"
-},
+}
 {
-    path: "home",
-    component: HomeComponent,
+    path: "home"
+    component: HomeComponent
     title:"Home"
-},
+}
 {
-    path: "my-books",
-    component:MyBooksComponent,
-    title: "My books",
+    path: "my-books"
+    component:MyBooksComponent
+    title: "My books"
     canActivate: [authGuard]
-},
+}
 {
-    path:"login",
-    component: LoginComponent,
+    path:"login"
+    component: LoginComponent
     title: "Log in"
-},
+}
 {
-    path:"signup",
-    component: SignupComponent,
+    path:"signup"
+    component: SignupComponent
     title: "Sign up"
-},
+}
 {
-    path:"admin",
-    component: AdminComponent,
-    title: "Admin",
+    path:"admin"
+    component: AdminComponent
+    title: "Admin"
     children:[
         {
             path:"books",
@@ -170,37 +170,35 @@ export const routes: Routes = [
 
         }
     ]
-},
+}
     {
-    path:'authors',
-    component: AuthorsComponent,
+    path:'authors'
+    component: AuthorsComponent
     title : "all authors"
-    },
+    }
     {
-    path:'authors/:id',
-    component: UserAuthorComponent,
+    path:'authors/:id'
+    component: UserAuthorComponent
     title : "author page"
-    },
+    }
     {
-    path:'users',
-    component: UserDashboardComponent,
+    path:'users'
+    component: UserDashboardComponent
     title : "Dashboard"
-    },
+    }
   {
-    path: "books",
-    component: BooksComponent,
+    path: "books"
+    component: BooksComponent
     title: "Book"
-  },
+  }
   {
-    path: "books/:_id",
-    component: BookDetailsComponent,
+    path: "books/:_id"
+    component: BookDetailsComponent
     title: "Book details"
-  },
+  }
 
 {
-    path:"**",
+    path:"**"
     component: NotFoundComponent
-}
-
-];
+};
 

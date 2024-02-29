@@ -25,15 +25,19 @@ export class BooksRequestsService {
     return this.http.post(`http://127.0.0.1:3000/books`, data);
   }
 
-  deleteBook(id : number) {
+  deleteBook(id : string) {
     return this.http.delete(`http://127.0.0.1:3000/books/${id}`);
   }
 
-  updateBook(id : number, data: Object) {
+  updateBook(id : string, data: Object) {
     return this.http.patch(`http://127.0.0.1:3000/books/${id}`, data);
   }
 
   createReview(id : string, data: Object) {
     return this.http.post(`http://127.0.0.1:3000/books/${id}/reviews`, data);
+  }
+
+  updateUserRate(userId: string, bookId: string, data: any) {
+    return this.http.post(`http://127.0.0.1:3000/users/${userId}/book/${bookId}`, data);
   }
 }

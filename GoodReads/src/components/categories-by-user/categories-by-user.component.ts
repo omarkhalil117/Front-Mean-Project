@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Category } from '../../models/category';
-import { Category } from '../../models/category';
 import {CategoriesApiService } from '../../services/categories-api.service';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
