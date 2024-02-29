@@ -9,7 +9,11 @@ export class BooksRequestsService {
 
   constructor(private http : HttpClient) { }
 
-  getAllbooks(page: Number) {
+  getAllbooks() {
+    return this.http.get(`http://127.0.0.1:3000/books`);
+  }
+
+  getBooksWithPagination(page: Number) {
     return this.http.get(`http://127.0.0.1:3000/books?page=${page}`);
   }
 

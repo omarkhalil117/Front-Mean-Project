@@ -26,7 +26,7 @@ export class BooksComponent {
     }
 
     showBooks(){
-      this.booksRequestsService.getAllbooks(this.currentPage).subscribe((res: any) => {
+      this.booksRequestsService.getBooksWithPagination(this.currentPage).subscribe((res: any) => {
         this.books = res.data.books;
         this.lastPage = Math.ceil(res.result / 6);
       })
