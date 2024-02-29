@@ -1,0 +1,39 @@
+.all{
+  font-family: Arial, sans-serif;
+  background-color: #d7ddd9;
+  color:#0a3d16;
+  width: 1600px;
+  height: 1600px;
+
+}
+
+
+@media (max-width: 1600px) {
+   .row{
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1200px) {
+    .row {
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 992px) {
+    .row {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+    .row  {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card, .row  {
+    max-width: 400px;
+  }
+}
