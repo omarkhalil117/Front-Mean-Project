@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AddAuthHeaderService } from '../add-auth-header.service';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,34 +11,16 @@ export class BookService {
   constructor(private _HTTPClient:HttpClient, private AddAuthHeaderService:AddAuthHeaderService) { }
 
   displayBooks():Observable<any>{
-    return  this._HTTPClient.get('http://127.0.0.1:3000/books',this.AddAuthHeaderService.handleRequestOption())
+    return  this._HTTPClient.get(`${environment.apiurl}/books`,this.AddAuthHeaderService.handleRequestOption())
   }
   deleteBooks(id:String):Observable<any>{
-    return this._HTTPClient.delete(`http://127.0.0.1:3000/books/${id}`,this.AddAuthHeaderService.handleRequestOption())
+    return this._HTTPClient.delete(`${environment.apiurl}/books/${id}`,this.AddAuthHeaderService.handleRequestOption())
   }
   addBooks(body:object):Observable<any>{
-    return this._HTTPClient.post(`http://127.0.0.1:3000/books`,body,this.AddAuthHeaderService.handleRequestOption())
+    return this._HTTPClient.post(`${environment.apiurl}/books`,body,this.AddAuthHeaderService.handleRequestOption())
   }
   updateBooks(body:FormData,id:String):Observable<any>{
-    return this._HTTPClient.patch(`http://127.0.0.1:3000/books/${id}`,body,this.AddAuthHeaderService.handleRequestOption())
+    return this._HTTPClient.patch(`${environment.apiurl}/books/${id}`,body,this.AddAuthHeaderService.handleRequestOption())
   }
 }
-
-// import { AddAuthHeaderService } from './add-auth-header.service';
-// import { HttpClient } from '@angular/common/http';
-// import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AdminService {
-
-//   constructor(private http:HttpClient, private AddAuthHeaderService:AddAuthHeaderService) {
-//    }
-//    login(body: Object)  : Observable<any>{
-//     console.log(AddAuthHeaderService)
-//     return this.http.post('http://127.0.0.1:3000/users/login',body,AddAuthHeaderService)
-//   }
-// }
 

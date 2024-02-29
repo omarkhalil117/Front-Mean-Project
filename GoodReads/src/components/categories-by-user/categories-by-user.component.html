@@ -1,6 +1,8 @@
-
-<h2>categories List</h2>
+<div class="all">
+<h2>Categories List</h2>
 <hr />
+ 
+
 <div class="row row-cols-1 row-cols-md-3 g-4">
   @for(category of categories; track category._id){
     <div class="col-md-3 text-center">
@@ -9,18 +11,13 @@
   }@empty{
 
 
-        <div class="col-md-3 text-center">
-          <a href="#" class="btn btn-link">Link 1</a>
-        </div>
-        <div class="col-md-3 text-center">
-          <a href="#" class="btn btn-link">Link 2</a>
-        </div>
-        <div class="col-md-3 text-center">
-          <a href="#" class="btn btn-link">Link 3</a>
-        </div>
-        <div class="col-md-3 text-center">
-          <a href="#" class="btn btn-link">Link 4</a>
-        </div>
+    <div class="no-categories-found">
+      <p>No categories found</p>
+    </div>
 
   }
+</div>
+
+
+
 </div>

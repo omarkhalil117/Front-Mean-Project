@@ -1,115 +1,42 @@
 
-<!--
 
+
+  <div class="all">
 <h2>{{categoryname}}</h2>
-<hr />
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  @for(book of books; track book._id){
-    <div class="col-md-4 mb-4">
-      <div class="card">
-        <img [src]='book.cover' class="card-img-top" alt="Image">
-        <div class="card-body">
-          <a class=""  [routerLink]="['/books', book._id]">{{book.name}}</a>
-          <a class=""  [routerLink]="['/auther', book._id]">{{book.author}}</a>
-        </div>
-      </div>
-    </div>
-  }@empty{
-
-
-
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdgru6kvdfIosBL4Zu9M_kvL-ei1E1yyJ_g&usqp=CAU" class="card-img-top" alt="Image">
-            <div class="card-body">
-              <h5 class="card-title">book Title</h5>
-              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-              <a href="#" class="btn btn-primary">Link 1</a>
-              <a href="#" class="btn btn-secondary">Link 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdgru6kvdfIosBL4Zu9M_kvL-ei1E1yyJ_g&usqp=CAU" class="card-img-top" alt="Image">
-            <div class="card-body">
-              <h5 class="card-title">book Title</h5>
-              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-              <a href="#" class="btn btn-primary">Link 1</a>
-              <a href="#" class="btn btn-secondary">Link 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdgru6kvdfIosBL4Zu9M_kvL-ei1E1yyJ_g&usqp=CAU" class="card-img-top" alt="Image">
-            <div class="card-body">
-              <h5 class="card-title">book Title</h5>
-              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-              <a href="#" class="btn btn-primary">Link 1</a>
-              <a href="#" class="btn btn-secondary">Link 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYdgru6kvdfIosBL4Zu9M_kvL-ei1E1yyJ_g&usqp=CAU" class="card-img-top" alt="Image">
-            <div class="card-body">
-              <h5 class="card-title">book Title</h5>
-              <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-              <a href="#" class="btn btn-primary">Link 1</a>
-              <a href="#" class="btn btn-secondary">Link 2</a>
-            </div>
-          </div>
-        </div>
-
-
-  }
-</div>
-
--->
-
-
-<h2>{{categoryname}}</h2>
-<hr />
+<hr class="mb-4" />
 
 <div class=" row row-cols-1 row-cols-md-3 g-4 ml-20"  >
   @for(book of arr; track book._id){
   <div class="card col-md-3 text-center m-5" style="width: 18rem;">
-    <img src="https://localhost:3000/{{book.cover}}" class="card-img-top" alt="{{book.name}}'s Image">
+    <img src="{{api}}/{{book.cover}}" class="card-img-top" alt="{{book.name}}'s Image">
     <div class="card-body">
       <h5 class="card-title">{{book.name}}</h5>
     </div>
     <div class="card-body">
       <a class="card-link" (click)="redirectToBookDetails(book._id)" [routerLink]="['/books', book._id]">{{book.name}}</a>
-      <a class="card-link" (click)="redirectToBookDetails(book.authorID._id)" [routerLink]="['/auther', book._id]">{{book.authorID.firstName}}</a>
-      <!--<a class="btn btn-link" (click)="redirectToAuthorDetails(book.authorID._id)" [routerLink]="['/authors', book.authorID]">{{book.authorID.firstName}}</a>-->
+      <a class="card-link" (click)="redirectToAuthorDetails(book.authorID._id)" [routerLink]="['/authors', book.authorID._id]">{{book.authorID.firstName}}</a>
+
     </div>
   </div>
 
 }
 </div>
+@if(arr.length>0){
+  <nav aria-label="Page navigation example ">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" (click)="prevPage()" >Previous</a></li>
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" (click)="prevPage()" >Previous</a></li>
-
-    <li class="page-item"><a class="page-link"  (click)="nextPage()">Next</a></li>
-  </ul>
-</nav>
-
-
-<!--(click)="prevPage()"   (click)="nextPage()"  (click)="clickPage($event)-->
-
-<!--<ul>
-  @for(book of arr; track book._id){
-  <li>
-    {{ book.name }} - {{ book.author }}
-  </li>
+      <li class="page-item"><a class="page-link"  (click)="nextPage()">Next</a></li>
+    </ul>
+  </nav>
+}@else{
+  <div class="no-books-found">
+    <p>No books found</p>
+  </div>
 }
-</ul>
 
-<button (click)="prevPage()" [disabled]="page === 1">Previous</button>
-<button (click)="nextPage()">Next</button>
--->
+</div>
+
+
+
 

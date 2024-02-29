@@ -2,7 +2,7 @@ import { AddAuthHeaderService } from './add-auth-header.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +12,9 @@ export class AdminService {
    }
    login(body: any, role:string)  : Observable<any>{
     body.role=role
-    return this.http.post('http://127.0.0.1:3000/users/login',body)
+    return this.http.post(`${environment.apiurl}/users/login`,body)
   }
   getUser(id: any)  : Observable<any>{
-    return this.http.get(`http://127.0.0.1:3000/users/${id}`)
+    return this.http.get(`${environment.apiurl}/users/${id}`)
   }
 }

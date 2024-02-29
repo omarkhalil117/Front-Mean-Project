@@ -1,6 +1,7 @@
 import { Component , Input} from '@angular/core';
 import { UserAuthorBookComponent } from '../user-author-book/user-author-book.component';
 import { AuthorServicesService } from '../../services/author-services.service';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-user-author',
   standalone: true,
@@ -13,14 +14,15 @@ export class UserAuthorComponent {
   authorData:any = [] ;
   author:any = {};
   books: any[] = [];
+  url = environment.apiurl;
   constructor(private authorInfo : AuthorServicesService){}
 
   ngOnInit()
   {
     console.log(this.id)
     this.authorInfo.getAuthorWithBooks(this.id).subscribe((data) => {
-      this.authorData =data
-      console.log(this.authorData.authorbooks)
+    this.authorData = data
+    console.log(this.authorData.authorbooks)
     })
 
   }

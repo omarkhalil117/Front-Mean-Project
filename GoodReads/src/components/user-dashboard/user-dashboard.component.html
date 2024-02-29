@@ -29,29 +29,26 @@
               {
                 <td><img src="../../assets/default-photo.jpg" alt=""></td>
               } @else {
-                <td><img src="http://localhost:3000/{{bookInfo._id.book.cover}}" alt="img"></td>
+                <td><img src="{{url}}/{{bookInfo._id.book.cover}}" alt="img"></td>
               }
 
-              <!-- <td><a class="text-decoration-underline " (click)="redirectBookPage(bookInfo._id.book._id)">{{bookInfo.book.name}}</a></td> -->
               <td><a class="text-decoration-underline "(click)="redirectBookPage(bookInfo._id.book._id)" >{{bookInfo._id.book.name}}</a></td>
-              <!-- <td> <a class="text-decoration-underline " href="/authors/"> {{book.book.authorID?.firstName}} <span>{{book.book.authorID?.lastName}}</span></a> -->
               <td> <a class="text-decoration-underline " (click)="redirectAuthorPage(bookInfo._id.book.authorID)">{{bookInfo._id.author[0].firstName}} <span>{{bookInfo._id.author[0].lastName}}</span></a></td>
 
-              @if(!bookInfo._id.rating)
+              @if(bookInfo._id.shelve.rating)
               { 
                 <td>
-                <app-star-rate [rating]="bookInfo._id.rating"></app-star-rate>
-                <p>{{bookInfo._id.rating}}</p> 
+                <app-star-rate [rating]="bookInfo._id.shelve.rating"></app-star-rate>
                 </td>
               } @else {
                 <!-- <app-star-rate [rating]="0"></app-star-rate>  -->
                 <p>None</p>
               }
 
-              @if(!bookInfo._id.book.avgRating)
+              @if(bookInfo._id.book.avgRate)
               {
                 <td>
-                  <app-star-rate [rating]="bookInfo._id.book.avgRating"></app-star-rate> 
+                  <app-star-rate [rating]="bookInfo._id.book.avgRate"></app-star-rate> 
                 </td>
               } @else { 
                   <app-star-rate [rating]="0"></app-star-rate> 

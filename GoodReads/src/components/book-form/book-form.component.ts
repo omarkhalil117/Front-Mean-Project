@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BooksRequestsService } from '../../services/book-services/books-requests.service';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-book-form',
   standalone: true,
@@ -35,7 +35,7 @@ export class BookFormComponent {
     const formData = new FormData();
     formData.append('image', file);
 
-    this.http.post('http://127.0.0.1:3000/image', formData).subscribe(
+    this.http.post(`${environment.apiurl}/image`, formData).subscribe(
       (res) => {
         console.log(res);
       },

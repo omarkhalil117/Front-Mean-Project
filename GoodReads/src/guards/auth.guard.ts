@@ -1,13 +1,18 @@
 import { inject } from '@angular/core';
 import { CanActivateFn,Router } from '@angular/router';
+import { JwtTokenService } from '../services/jwt-token.service';
+import { AlertService } from '../services/alert.service';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  if(localStorage.getItem('token')){
+  const jwtTokenService = inject(JwtTokenService)
+  if( JSON.parse(JSON.stringify(jwtTokenService.decodeToken(localStorage.getItem('token'))))?.role === 'user'){
     return true
   }
   else{
     const router = inject(Router)
-    router.navigate(['/signup'])
+    const alertService = inject(AlertService)
+    alertService.myAlert('error','Unauthorized !', 'Please log in')
+    router.navigate(['/login'])
     return false
   } 
 };

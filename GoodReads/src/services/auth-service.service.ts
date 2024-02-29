@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,13 @@ export class AuthServiceService {
 
 
   registe(body: Object)  : Observable<any>{
-    return this.http.post('http://127.0.0.1:3000/users/register',body,this.AddAuthHeaderService.handleRequestOption())
+
+    if(this.AddAuthHeaderService.handleRequestOption()){
+      return this.http.post(`${environment.apiurl}/users/register`,body,this.AddAuthHeaderService.handleRequestOption())
+    }
+    else{
+      return this.http.post(`${environment.apiurl}/users/register`,body)
+    }
+    
   }
 }

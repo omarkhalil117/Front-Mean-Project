@@ -8,10 +8,10 @@ import { Book } from './../../models/interface/book';
   selector: 'books',
   standalone: true,
   imports: [FontAwesomeModule],
-  templateUrl: './books.component.html',
-  styleUrl: './books.component.css'
+  templateUrl: './user-books.component.html',
+  styleUrl: './user-books.component.css'
 })
-export class BooksComponent {
+export class UserBooksComponent {
   books ?: Array<Book>;
   currentPage: number = 1;
   lastPage: number = 1;
@@ -26,7 +26,7 @@ export class BooksComponent {
     }
 
     showBooks(){
-      this.booksRequestsService.getAllbooks(this.currentPage).subscribe((res: any) => {
+      this.booksRequestsService.getBooksWithPagination(this.currentPage).subscribe((res: any) => {
         this.books = res.data.books;
         this.lastPage = Math.ceil(res.result / 6);
       })

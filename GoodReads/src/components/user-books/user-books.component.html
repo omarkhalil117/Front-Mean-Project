@@ -1,0 +1,20 @@
+<div class="all">
+  <div class="container">
+    @for (book of books; track book.ID) {
+    <div class="image-container">
+      <img [src]="book.cover" class="book-image">
+      <div class="book-details">
+        <p (click)="redirectToBookDetails(book._id)" class="book-name">{{ book.name }}</p>
+        <p (click)="redirectToAuthorDetails(book.authorID._id)" class="author-name">{{ book.authorID.firstName }} {{ book.authorID.lastName }}</p>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 0" class="pagination-button">Previous</button>
+    <span class="pagination-info">{{ currentPage }} | {{ lastPage }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === lastPage" class="pagination-button">Next</button>
+  </div>
+  
+</div>

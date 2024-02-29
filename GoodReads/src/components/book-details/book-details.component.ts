@@ -8,6 +8,8 @@ import { Book } from './../../models/interface/book';
 import { RatingComponent } from '../rating/rating.component';
 
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { JwtTokenService } from '../../services/jwt-token.service';
 
 
 @Component({
@@ -21,15 +23,16 @@ export class BookDetailsComponent {
 
   reviewForm : FormGroup;
 
-  newRating?: any;
-
   book !: Book;
-
+  value: any;
+  userId! : any;
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private activateRoute: ActivatedRoute,
-    private booksRequestsService: BooksRequestsService
+    private booksRequestsService: BooksRequestsService,
+    private http : HttpClient,
+    private jwt : JwtTokenService
     ){
       this.reviewForm = this.fb.group({
         reviews: ['', [Validators.required]],
@@ -43,6 +46,7 @@ export class BookDetailsComponent {
       this.book = res.data.book;
       console.log(this.book);
 
+     this.userId = this.jwt.decodeToken(localStorage.getItem('token'));   
     })
   }
 
@@ -62,28 +66,25 @@ export class BookDetailsComponent {
         reviewBook: this.reviewForm.value.reviews
       };
       this.booksRequestsService.createReview(this.book._id, formData).subscribe((res) => {
-        console.log(res);
         console.log(formData);
       });
+      console.log(1111,this.userId)
+      this.booksRequestsService
+      .updateUserRate(this.userId.id, this.book._id, formData.ratingBook)
+      .subscribe((res) => console.log(res));
     }
   }
+
 
   handleSubmitForm() {
     console.log(this.reviewForm.value);
   }
-/*
-  async updateBookShelve(e:any, bookId:String, fullId:String)
+
+  async updateBookShelve(e:any, bookId:String)
   {
     console.log(e.target.value,bookId)
     this.http.patch(`http://localhost:3000/users/65d2e73c85d0e459ad9f7c3b/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
-    this.books = this.books.map((el:any)=> {
-      if(el._id !== fullId) {
-        return el;
-      }
-      el.shelve = e.target.value;
-      return el;
-    })
-    console.log(this.books)
+    console.log(this.book)
   }
-*/
+
 }

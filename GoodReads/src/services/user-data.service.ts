@@ -10,6 +10,6 @@ export class UserDataService {
 
   getUserInfo(userId:String)
   {
-  return this.http.get(`${environment.apiurl}users/${userId}`) 
+  return this.http.get(`${environment.apiurl}/users/${userId}`) 
   }
 }

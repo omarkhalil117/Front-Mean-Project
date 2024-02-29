@@ -3,7 +3,7 @@
     {
         <img src="../../assets/default-photo.jpg" alt="">
     } @else {
-        <img src="http://localhost:3000/{{authorData.author[0].photo}}" alt="">
+        <img src="{{url}}/{{authorData.author[0].photo}}" alt="">
     }
     <div class="justify-content-around align-items-center m-5 py-5 name">
         <h1>{{authorData.author[0].firstName}} <span>{{authorData.author[0].lastName}}</span></h1>

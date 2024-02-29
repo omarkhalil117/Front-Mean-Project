@@ -6,6 +6,7 @@ import { HttpClient} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PagesServiceService } from '../../services/pages-service.service';
 import { StarRateComponent } from '../star-rate/star-rate.component';
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
@@ -21,6 +22,7 @@ export class UserDashboardComponent {
   status: String = 'All';
   bookAvgRating: number = 0;
   userRating: number = 0;
+  url = environment.apiurl;
   rate = 3; 
   page = 0 ;
 
@@ -33,7 +35,6 @@ export class UserDashboardComponent {
   {
     if(this.page == 0)
     {
-
       this.BookPage.getUserBooksPages('65d2e73c85d0e459ad9f7c3b','1').subscribe((data: any) => {
         this.data = data.fullInfo;
         this.temp = data.fullInfo;
@@ -72,11 +73,12 @@ export class UserDashboardComponent {
   {
     console.log(e.target.value,bookId)
     this.http.patch(`http://localhost:3000/users/65d2e73c85d0e459ad9f7c3b/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
-    this.books = this.books.map((el:any)=> {
+    this.books = this.temp.map((el:any)=> {
       if(el._id !== fullId) {
         return el;
       } 
-      el.shelve = e.target.value;
+      el._id.shelve.shelve = e.target.value;
+      console.log(el._id.shelve.shelve)
       return el;
     })
     console.log(this.books)

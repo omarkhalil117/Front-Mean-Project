@@ -1,0 +1,66 @@
+.all {
+  font-family: Arial, sans-serif;
+  background-color: #d7ddd9;
+  color:#0a3d16;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-container {
+  margin: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.book-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.book-details {
+  margin-top: 10px;
+}
+
+.book-name {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.author-name {
+  color: #555;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.pagination-button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-info {
+  margin: 0 10px;
+}

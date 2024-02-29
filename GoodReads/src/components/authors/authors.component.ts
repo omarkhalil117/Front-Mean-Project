@@ -21,7 +21,7 @@ export class AuthorsComponent {
     if(this.page == 0)
     {
       this.pageService.getUserAuthors('1', "65d2e73c85d0e459ad9f7c3b").subscribe((data)=> { 
-       this.authors = data
+      this.authors = data
       console.log(this.authors)
       })
     }

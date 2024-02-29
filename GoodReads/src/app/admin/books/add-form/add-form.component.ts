@@ -24,8 +24,6 @@ export class AddFormComponent {
   sendFormData =  new FormData()
   image?: any;
   response!:any;
-  authors: any[] = [];
-  categories: any[] = [];
 
   @Input() books : Books[] =[]
   categories !: Category[] 

@@ -5,13 +5,6 @@ import { Authors } from '../../models/authors';
 import {CategoriesApiService } from '../../services/categories-api.service';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
-
-import { pipe } from 'rxjs';
-import { filter, take} from 'rxjs/operators';
-
-
-
-
 import { BooksRequestsService } from '../../services/books-requests.service';
 
 
@@ -39,10 +32,10 @@ this.categoriesRequests.getPopularAuthor().subscribe((res :any) =>{console.log(r
 
 ////////////////////////////////////////////////////////////////////////////////
     this.booksRequestsService.getAllbooks().subscribe((res:any) => {
-      console.log(res);
-      return this.books = res.data.books.sort((a: any, b: any) => b.rating - a.rating).slice(0, 5);;
-
-    })
+      console.log(11111,res);
+      this.books = res.data.books.sort((a: any, b: any) => b.rating - a.rating).slice(0, 5);
+      console.log("books",this.books);
+      })
   }
 
   redirectToBooks(categoryId : String){
@@ -54,6 +47,6 @@ this.categoriesRequests.getPopularAuthor().subscribe((res :any) =>{console.log(r
 }
 
 redirectToAuthorDetails(id : String) {
-  this.router.navigate(['author', id]);
+  this.router.navigate(['authors', id]);
 }
 }

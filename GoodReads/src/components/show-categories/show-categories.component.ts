@@ -17,13 +17,13 @@ export class ShowCategoriesComponent {
 
   ngOnInit() {
     this.categoriesRequests.getCategoriesList().subscribe((res : any) => this.categories = res);
+    console.log(this.categories)
   }
 
   redirectToBooks(categoryId : string){
     this.router.navigate(['categories' , categoryId])
  }
 }
-
 
 
 

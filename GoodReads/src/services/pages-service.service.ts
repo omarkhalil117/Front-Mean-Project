@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +12,7 @@ export class PagesServiceService {
 
   getUserBooksCount(userId:String)
   {
-    this.http.get(`http://localhost:3000/${userId}`).subscribe((data:any)=>{
+    this.http.get(`${environment.apiurl}/${userId}`).subscribe((data:any)=>{
       this.res = data.fullInfo.books.length;
     })
 
@@ -19,16 +21,16 @@ export class PagesServiceService {
 
   getAuthorPages(pageNum:string)
   {
-    return this.http.get(`http://localhost:3000/authors/page/${pageNum}`)
+    return this.http.get(`${environment.apiurl}/authors/page/${pageNum}`)
   }
 
   getUserBooksPages(userId:string , pageNum:string)
   {
-    return this.http.get(`http://localhost:3000/users/${userId}/page/${pageNum}`)
+    return this.http.get(`${environment.apiurl}/users/${userId}/page/${pageNum}`)
   }
 
   getUserAuthors(page:String , userId:String)
   {
-    return this.http.get(`http://localhost:3000/authors/${userId}/page/${page}`)
+    return this.http.get(`${environment.apiurl}/authors/${userId}/page/${page}`)
   }
 }

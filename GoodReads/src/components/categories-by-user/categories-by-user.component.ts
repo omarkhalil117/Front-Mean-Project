@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Category } from '../../models/category';
-import { Category } from '../../models/category';
 import {CategoriesApiService } from '../../services/categories-api.service';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
@@ -15,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoriesByUserComponent {
   categories !: Array<Category>;
+
   constructor(private activateRoute: ActivatedRoute,private categoriesRequests: CategoriesApiService,private router : Router) {}
 
   ngOnInit() {
@@ -29,7 +29,6 @@ export class CategoriesByUserComponent {
 
 
 }
-
 
 
 
