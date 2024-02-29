@@ -61,4 +61,13 @@ form {
   p{
     color: black
   }
+
+  @media screen and (max-width: 992px) {
+
+    .myContainer{
+        flex: 0 0 auto !important;
+        width: 16.67% !important
+    }
+}
+
   

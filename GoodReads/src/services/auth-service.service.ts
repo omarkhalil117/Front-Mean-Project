@@ -13,6 +13,14 @@ export class AuthServiceService {
 
 
   registe(body: Object)  : Observable<any>{
-    return this.http.post('http://127.0.0.1:3000/users/register',body,this.AddAuthHeaderService.handleRequestOption())
+
+    if(this.AddAuthHeaderService.handleRequestOption()){
+      return this.http.post('http://127.0.0.1:3000/users/register',body,this.AddAuthHeaderService.handleRequestOption())
+    }
+    else{
+      return this.http.post('http://127.0.0.1:3000/users/register',body)
+    }
+    
   }
+  
 }

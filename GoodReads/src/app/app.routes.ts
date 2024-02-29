@@ -12,12 +12,10 @@ import { AuthorsComponent } from '../components/authors/authors.component';
 import { AppComponent } from './app.component';
 import { UserAuthorComponent } from '../components/user-author/user-author.component';
 import { UserDashboardComponent } from '../components/user-dashboard/user-dashboard.component';
-// import { BooksComponent } from '../components/books/books.component';
 import { BookDetailsComponent } from '../components/book-details/book-details.component'
 import { NotFoundComponent } from '../components/not-found/not-found.component';
 import { ShowCategoriesComponent } from '../components/show-categories/show-categories.component';
 import { BooksCategoryComponent } from '../components/books-category/books-category.component';
-import {AddCategoryComponent  } from './admin/admin-categories/add-category/add-category.component';
 import {UserHomeComponent } from '../components/user-home/user-home.component';
 import {CategoriesByUserComponent} from '../components/categories-by-user/categories-by-user.component';
 import { BooksComponent } from './admin/books/books/books.component';
@@ -38,11 +36,7 @@ export const routes: Routes = [
     component: BooksCategoryComponent,
     title: "BooksOfCategory"
 },
-{
-  path: "addcategory",
-  component: AddCategoryComponent,
-  title: "addcategory"
-},
+
 {
   path: "categories/user/:userId",
   component: CategoriesByUserComponent,

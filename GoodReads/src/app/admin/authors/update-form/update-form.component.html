@@ -43,6 +43,6 @@
         <input class="form-control " type="file" id="photo" accept="image/*" name="photo"   formControlName="photo" (change)="registerPhoto($event)"/>
       </div>
     </div>
-      <button class="btn btn-primary " type="submit"  (click)="updateAuthor(this.authorForm)"  [disabled]="!this.authorForm.invalid && authorForm.dirty || this.photoChanged? false:true">Submit</button>
+      <button class="btn btn-secondary mt-2" type="submit"  (click)="updateAuthor(this.authorForm)"  [disabled]="!this.authorForm.invalid && authorForm.dirty || this.photoChanged? false:true">Submit</button>
         </div>
 </form>

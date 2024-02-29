@@ -66,7 +66,6 @@ export class AdminCategoriesComponent {
 	}
 
   openVerticallyCentered3(content: TemplateRef<any>,category:any) {
-    console.log(category)
 		this.modalService.open(content, { centered: true });
     this.categoryData = category
     

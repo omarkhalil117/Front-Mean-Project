@@ -19,10 +19,8 @@ constructor(private router:Router, private AdminService:AdminService, private Jw
 
 ngOnInit(){
   const payload:any = this.JwtTokenService.decodeToken(localStorage.getItem('token'))
-  console.log(payload)
   this.AdminService.getUser(payload?.id).subscribe(
     data=>{
-      console.log(data.data.user)
       this.user= data.data.user
 }
   )

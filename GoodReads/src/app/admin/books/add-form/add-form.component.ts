@@ -39,7 +39,6 @@ export class AddFormComponent {
 
   this.AuthorsService.displayAuthors().subscribe(
     data => {
-      console.log(data)
         this.authors = data
     }
   )

@@ -5,7 +5,7 @@
     <div class="row justify-content-end ">
         <ng-template #content let-modal>
             <div class="modal-header">
-                <h4 class="modal-title">Add Category</h4>
+                <h4 class="modal-title">Add Book</h4>
                 <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
@@ -14,7 +14,7 @@
 
         </ng-template>
         <button class="btn btn-dark my-width mt-5 me-5" (click)="openVerticallyCentered(content)">
-            +
+            <i class="fas fa-plus"></i>
         </button>
     
         
@@ -43,7 +43,7 @@
     <div class="row justify-content-end ">
         <ng-template #content3 let-modal>
             <div class="modal-header">
-                <h4 class="modal-title">Modal title</h4>
+                <h4 class="modal-title">Update book</h4>
                 <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
@@ -59,27 +59,27 @@
     <!-- //! Header of category -->
     <div class="row" >
 
-        <div class="col-md-2 d-flex justify-content-center fw-bold">
+        <div class="col-sm-2 myContainer d-flex justify-content-center fw-bold">
                 <p>BOOK ID</p>
         </div>
-        <div class="col-md-2 d-flex justify-content-center fw-bold">
+        <div class="col-sm-2 myContainer d-flex justify-content-center fw-bold">
             <p>PHOTO</p>
         </div>
         
-        <div class="col-md-2 d-flex justify-content-center fw-bold">
+        <div class="col-sm-2 myContainer d-flex justify-content-center fw-bold">
             <p>NAME</p>
         </div>
 
         
-        <div class="col-md-2 d-flex justify-content-center fw-bold">
+        <div class="col-sm-2 myContainer d-flex justify-content-center fw-bold">
             <p>CATEGORY ID</p>
         </div>
 
-        <div class="col-md-2 d-flex justify-content-center fw-bold">
+        <div class="col-sm-2 myContainer d-flex justify-content-center fw-bold">
             <p>AUTHOUR ID</p>
         </div>
 
-        <div class="col-md-2 d-flex justify-content-center fw-bold">
+        <div class="col-sm-2 myContainer d-flex justify-content-center fw-bold">
             <p>ACTIONS</p>
         </div>
     </div>
@@ -89,23 +89,23 @@
     @for(book of this.books; track book._id;let e = $even ){
             
         <div class="row pt-2 pb-2 justify-content-center align-items-center" [ngStyle]="e? { 'background-color': '#fff' } : { 'background-color': '#d8d8d8' }">
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-sm-2 myContainer d-flex justify-content-center">
                     <p>{{$index+1}}</p>
             </div>
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-sm-2 d-flex justify-content-center">
                     <img src="http://localhost:3000/{{book.cover}}" alt="">
             </div>
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-sm-2 myContainer d-flex justify-content-center">
                 <p>{{book.name}}</p>
             </div>
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-sm-2 myContainer d-flex justify-content-center">
                 <p>{{book.categoryID?.ID}}</p>
             </div>
-            <div class="col-md-2 d-flex justify-content-center">
+            <div class="col-sm-2 myContainer d-flex justify-content-center">
                 <p>{{  book.authorID?.ID}}</p>
             </div>
            
-            <div class="col-md-2 d-flex justify-content-center gap-2">
+            <div class="col-sm-2 myContainer d-flex justify-content-center gap-2">
                 <button class="btn btn-success"   (click)="openVerticallyCentered3(content3,book)"><i class="fas fa-pen"></i></button>
                 
                 <button class="btn btn-danger" (click)="deleteBook(book._id)"><i class="fas fa-trash"></i></button>

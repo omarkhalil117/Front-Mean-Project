@@ -1,3 +1,4 @@
+import { AlertService } from './../../services/alert.service';
 
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
@@ -12,9 +13,9 @@ import { AuthServiceService } from '../../services/auth-service.service';
 })
 export class SignupComponent {
   signupForm: FormGroup
-  errorMessage !: String;
+  errorMessage !: string;
   sendData = new FormData()
-  constructor(private router: Router, private _authServiceService : AuthServiceService){
+  constructor(private router: Router, private _authServiceService : AuthServiceService, private AlertService:AlertService){
     
     this.signupForm = new FormGroup({
     userName: new FormControl('',[Validators.required, Validators.pattern(/^[A-Za-z][A-Za-z0-9_]{7,29}$/)]),
@@ -60,12 +61,15 @@ export class SignupComponent {
   }
       this._authServiceService.registe(this.sendData).subscribe(
         data => {    
-          localStorage.setItem('token',JSON.stringify(data.token))
-          this.sendData = new FormData()        
+          localStorage.setItem('token',data.token)
+          this.sendData = new FormData()  
+          console.log(555555555,data)
+          this.AlertService.myAlert('success',`Welcome ${data.data.newUser.firstName}`,'You registered sucessfully')      
         },
         error => { 
           this.errorMessage =  error.error.message
           this.sendData = new FormData()
+          this.AlertService.myAlert('error','Error',this.errorMessage) 
         },
       )
   }
