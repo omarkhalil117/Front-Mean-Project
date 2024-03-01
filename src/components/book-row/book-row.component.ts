@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-book-row',
@@ -8,5 +9,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './book-row.component.css'
 })
 export class BookRowComponent {
+  url = environment.apiurl;
 @Input() info:any;
 }

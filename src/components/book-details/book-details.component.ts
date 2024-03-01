@@ -10,6 +10,7 @@ import { RatingComponent } from '../rating/rating.component';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { JwtTokenService } from '../../services/jwt-token.service';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -22,7 +23,7 @@ import { JwtTokenService } from '../../services/jwt-token.service';
 export class BookDetailsComponent {
 
   reviewForm : FormGroup;
-
+  url = environment.apiurl;
   book !: Book;
   value: any;
   userId! : any;
@@ -82,8 +83,9 @@ export class BookDetailsComponent {
 
   async updateBookShelve(e:any, bookId:String)
   {
+
     console.log(e.target.value,bookId)
-    this.http.patch(`http://localhost:3000/users/65d2e73c85d0e459ad9f7c3b/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
+    this.http.patch(`${this.url}/users/${this.userId}/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
     console.log(this.book)
   }
 

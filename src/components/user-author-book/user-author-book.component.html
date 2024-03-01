@@ -10,10 +10,9 @@
             <p>rating : {{bookInfo.rating}}</p>
             <p>average rating : {{bookInfo.avgRate}}</p>
         </div>
-    <select class="form-select form-select-sm w-25" aria-label=".form-select-sm example">
-    <option value=""></option>
-    <option selected>Currently Read</option>
-    <option value="1">Want to read</option>
-    <option value="2">Read</option>
+    <select class="form-select form-select-sm w-25" (change)="updateBookShelve($event,bookInfo._id)" aria-label=".form-select-sm example">
+    <option selected>Want to read</option>
+    <option>Currently Read</option>
+    <option>Read</option>
     </select>
     </div>

@@ -1,4 +1,4 @@
-import { AlertService } from './../../../services/alert.service';
+import { AlertService } from '../../../services/alert.service';
 import { Component, inject, TemplateRef, ViewEncapsulation} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthorFormComponent } from '../authors/author-form/author-form.component';

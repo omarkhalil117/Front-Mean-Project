@@ -17,18 +17,4 @@ export class BooksRequestsService {
   getBook() {
     return this.http.get(`${environment.apiurl}/books`);
   }
-
-  createBook(data: Object) {
-    return this.http.post(`${environment.apiurl}/books`, data);
-  }
-
-  deleteBook() {
-    return this.http.delete(`${environment.apiurl}/books`);
-  }
-
-  updateBook(data: Object) {
-    return this.http.patch(`${environment.apiurl}/books`, data);
-  }
-
-
 }

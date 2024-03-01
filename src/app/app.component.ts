@@ -6,7 +6,6 @@ import { UserDashboardComponent } from '../components/user-dashboard/user-dashbo
 import { UserAuthorComponent } from '../components/user-author/user-author.component';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../components/header/header.component';
-import { MyBooksComponent } from '../components/my-books/my-books.component';
 import { BookDetailsComponent } from '../components/book-details/book-details.component';
 import { RatingComponent } from '../components/rating/rating.component';
 import { UserBooksComponent } from '../components/user-books/user-books.component';
@@ -15,7 +14,7 @@ import { RatingModule } from 'primeng/rating';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AuthorsComponent, UserDashboardComponent, BookRowComponent, UserAuthorComponent, MyBooksComponent , RouterOutlet, BookDetailsComponent, HeaderComponent, RatingModule, RatingComponent , UserBooksComponent, HeaderComponent, SignedUserComponent],
+  imports: [RouterOutlet, AuthorsComponent, UserDashboardComponent, BookRowComponent, UserAuthorComponent, RouterOutlet, BookDetailsComponent, HeaderComponent, RatingModule, RatingComponent , UserBooksComponent, HeaderComponent, SignedUserComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

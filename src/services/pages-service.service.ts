@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { AddAuthHeaderService } from './add-auth-header.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,29 +9,22 @@ import { environment } from '../environments/environment';
 export class PagesServiceService {
 
   res:any;
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,
+    private auth : AddAuthHeaderService) { }
 
-  getUserBooksCount(userId:String)
+  getAuthorPages(userId:any , pageNum:string)
   {
-    this.http.get(`${environment.apiurl}/${userId}`).subscribe((data:any)=>{
-      this.res = data.fullInfo.books.length;
-    })
-
-    return this.res;
+    return this.http.get(`${environment.apiurl}/${userId.id}/authors/page/${pageNum}` , this.auth.handleRequestOption())
   }
 
-  getAuthorPages(pageNum:string)
+  getUserBooksPages(userId:any , pageNum:string)
   {
-    return this.http.get(`${environment.apiurl}/authors/page/${pageNum}`)
-  }
-
-  getUserBooksPages(userId:string , pageNum:string)
-  {
-    return this.http.get(`${environment.apiurl}/users/${userId}/page/${pageNum}`)
+    console.log(userId)
+    return this.http.get(`${environment.apiurl}/users/${userId.id}/page/${pageNum}` , this.auth.handleRequestOption())
   }
 
   getUserAuthors(page:String , userId:String)
   {
-    return this.http.get(`${environment.apiurl}/authors/${userId}/page/${page}`)
+    return this.http.get(`${environment.apiurl}/authors/${userId}/page/${page}` , this.auth.handleRequestOption())
   }
 }

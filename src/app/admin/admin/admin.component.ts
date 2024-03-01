@@ -1,4 +1,4 @@
-import { JwtTokenService } from './../../../services/jwt-token.service';
+import { JwtTokenService } from '../../../services/jwt-token.service';
 import { AdminService } from './../../../services/admin.service';
 import { BooksComponent } from './../books/books/books.component';
 import { AdminNavBarComponent } from '../admin-nav-bar/admin-nav-bar.component';

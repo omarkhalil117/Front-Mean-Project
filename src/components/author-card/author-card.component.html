@@ -3,7 +3,7 @@
         {
             <img class="authorInfo-img border-0 rounded " src="../../assets/default-photo.jpg" alt="Card image cap">
         } @else{ 
-            <img class="authorInfo-img border-0 rounded " src="http://localhost:3000/{{authorInfo._id.photo}}" alt="Card image cap">
+            <img class="authorInfo-img border-0 rounded " src="{{url}}/{{authorInfo._id.photo}}" alt="Card image cap">
         }
         <div class="card-body text-center">
         <a  class="text-decoration-underline " (click)="redirectAuthorPage(authorInfo._id.authors[0]._id)">{{authorInfo._id.authors[0].firstName}}<span> {{authorInfo._id.authors[0].lastName}} </span></a>

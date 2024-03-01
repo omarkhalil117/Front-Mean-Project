@@ -24,19 +24,14 @@ export class LoginComponent {
 
   redirectToHome(){
     this._AdminService.login(this.login.value,'user').subscribe(
-      data => {    
-          this.router.navigate(['/home'])
+      data => { 
+          localStorage.setItem('token', data.token)   
+          this.router.navigate(['/users'])
       },
       error => { 
         this.errorMessage =  error.error.message
         this.AlertService.myAlert('error','Unauthorized !', this.errorMessage)
-
       }
     )
-  }
-
-
-  handleSubmitForm(){
-
   }
 }

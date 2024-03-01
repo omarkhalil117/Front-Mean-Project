@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BooksRequestsService } from '../../services/book-services/books-requests.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-//import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -16,7 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class RatingComponent {
 
-//  faStar = faStar;
+  faStar = faStar;
   books ?: any;
   stars?: boolean[];
 

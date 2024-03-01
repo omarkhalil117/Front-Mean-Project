@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-author-card',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AuthorCardComponent {
   @Input() authorInfo:any;
+  url = environment.apiurl;
   
   constructor(private router : Router){}
 
