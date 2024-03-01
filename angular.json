@@ -86,7 +86,8 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "404.html"
             ],
             "styles": [
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
