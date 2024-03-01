@@ -7,7 +7,7 @@ import { UpdateFormComponent } from '../update-form/update-form.component';
 import { CommonModule } from '@angular/common';
 import { Authors } from '../../../../models/authors';
 import { AuthorsService } from '../../../../services/admin/authors.service';
-
+import { environment } from '../../../../environments/environment';
 @Component({
   selector: 'app-author-admin',
   standalone: true,
@@ -17,6 +17,7 @@ import { AuthorsService } from '../../../../services/admin/authors.service';
   styleUrl: './author-admin.component.css'
 })
 export class AuthorAdminComponent {
+  url = environment.apiurl;
   authors !: Authors[]
   deletedMessage !:String
   authorData !: Authors

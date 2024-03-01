@@ -6,6 +6,7 @@ import { UpdateFormComponent } from '../update-form/update-form.component';
 import { Books } from '../../../../models/books';
 import { BookService } from '../../../../services/admin/book.service';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-books',
@@ -16,6 +17,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './books.component.css'
 })
 export class BooksComponent {
+  url = environment.apiurl;
 	private modalService = inject(NgbModal);
   books!:Books[]
   deletedMessage!:string
