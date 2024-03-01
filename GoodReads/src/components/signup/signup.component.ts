@@ -14,7 +14,7 @@ import { JwtTokenService } from '../../services/jwt-token.service';
 })
 export class SignupComponent {
   signupForm: FormGroup
-  errorMessage !: string;
+  errorMessage?: string;
   sendData = new FormData()
   constructor(private router: Router, private _authServiceService : AuthServiceService, private AlertService:AlertService, 
     private JwtTokenService : JwtTokenService ){
@@ -95,7 +95,7 @@ export class SignupComponent {
         error => { 
           this.errorMessage =  error.error.message
           this.sendData = new FormData()
-          this.AlertService.myAlert('error','Error',this.errorMessage) 
+          this.AlertService.myAlert('error','Error',this.errorMessage!) 
         },
       )
   }
