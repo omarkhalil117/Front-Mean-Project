@@ -1,5 +1,5 @@
 import { Component , Input } from '@angular/core';
-
+import { environment } from '../../environments/environment';
 @Component({
   selector: 'app-user-author-book',
   standalone: true,
@@ -9,4 +9,10 @@ import { Component , Input } from '@angular/core';
 })
 export class UserAuthorBookComponent {
 @ Input() bookInfo:any;
+url = environment.apiurl;
+
+  ngOnInit()
+  {
+    console.log(this.bookInfo)
+  }
 }

@@ -4,6 +4,7 @@ import { JwtTokenService } from './../../../services/jwt-token.service';
 import { AdminComponent } from './../admin/admin.component';
 import { Component, EventEmitter, Input, Output, input } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-admin-nav-bar',
@@ -14,7 +15,8 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class AdminNavBarComponent {
 @Output() isLogged = new EventEmitter()
-user:any
+user:any;
+url = environment.apiurl;
 constructor(private router:Router, private AdminService:AdminService, private JwtTokenService:JwtTokenService){}
 
 ngOnInit(){

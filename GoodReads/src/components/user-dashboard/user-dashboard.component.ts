@@ -1,3 +1,4 @@
+import { JwtTokenService } from './../../services/jwt-token.service';
 import { Component } from '@angular/core';
 import { BookRowComponent } from '../book-row/book-row.component';
 import { UserDataService } from '../../services/user-data.service';
@@ -25,22 +26,28 @@ export class UserDashboardComponent {
   url = environment.apiurl;
   rate = 3; 
   page = 0 ;
-
+  jwt:any;
   constructor(private userData : UserDataService,
               private router : Router,
               private http : HttpClient,
-              private BookPage : PagesServiceService){}  
+              private BookPage : PagesServiceService,
+              private JwtTokenService : JwtTokenService){}  
 
   ngOnInit()
   {
+
     if(this.page == 0)
     {
-      this.BookPage.getUserBooksPages('65d2e73c85d0e459ad9f7c3b','1').subscribe((data: any) => {
-        this.data = data.fullInfo;
-        this.temp = data.fullInfo;
-        console.log(this.temp)
-        console.log(this.data)
-      });
+      this.jwt = this.JwtTokenService.decodeToken(localStorage.getItem('token'));
+      if(this.jwt)
+      {
+        this.BookPage.getUserBooksPages(this.jwt,'1').subscribe((data: any) => {
+          this.data = data.fullInfo;
+          this.temp = data.fullInfo;
+          console.log(this.temp)
+          console.log(this.data)
+        });
+      }
     }
   }
 
@@ -72,7 +79,7 @@ export class UserDashboardComponent {
   async updateBookShelve(e:any, bookId:String, fullId:String)
   {
     console.log(e.target.value,bookId)
-    this.http.patch(`http://localhost:3000/users/65d2e73c85d0e459ad9f7c3b/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
+    this.http.patch(`${this.url}/users/${this.jwt}/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
     this.books = this.temp.map((el:any)=> {
       if(el._id !== fullId) {
         return el;
@@ -111,7 +118,7 @@ export class UserDashboardComponent {
     changePage(e:any)
   {  
       console.log(e.target.innerText)
-      this.BookPage.getUserBooksPages('65d2e73c85d0e459ad9f7c3b',e.target.innerText).subscribe((res:any) => {
+      this.BookPage.getUserBooksPages(this.jwt,e.target.innerText).subscribe((res:any) => {
       this.data = res.fullInfo;
       console.log(this.data)
       });

@@ -26,7 +26,6 @@ export class AddFormComponent {
   response!:any;
   @Input() books !: Books[] 
 
-  @Input() books : Books[] =[]
   categories !: Category[] 
   authors !: Authors[]
   constructor(private BookService:BookService,private fb: FormBuilder, private CategoriesService:CategoriesService,private AuthorsService:AuthorsService, private AlertService:AlertService){

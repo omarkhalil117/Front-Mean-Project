@@ -16,14 +16,4 @@ export class UserAuthorComponent {
   books: any[] = [];
   url = environment.apiurl;
   constructor(private authorInfo : AuthorServicesService){}
-
-  ngOnInit()
-  {
-    console.log(this.id)
-    this.authorInfo.getAuthorWithBooks(this.id).subscribe((data) => {
-    this.authorData = data
-    console.log(this.authorData.authorbooks)
-    })
-
-  }
 }

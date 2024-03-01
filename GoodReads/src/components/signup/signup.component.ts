@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../../services/auth-service.service';
+import { JwtTokenService } from '../../services/jwt-token.service';
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -15,8 +16,9 @@ export class SignupComponent {
   signupForm: FormGroup
   errorMessage !: string;
   sendData = new FormData()
-  constructor(private router: Router, private _authServiceService : AuthServiceService, private AlertService:AlertService){
-    
+  constructor(private router: Router, private _authServiceService : AuthServiceService, private AlertService:AlertService, 
+    private JwtTokenService : JwtTokenService ){
+
     this.signupForm = new FormGroup({
     userName: new FormControl('',[
       Validators.required, 
@@ -83,7 +85,10 @@ export class SignupComponent {
   }
       this._authServiceService.registe(this.sendData).subscribe(
         data => {    
-          localStorage.setItem('token',data.token)
+          if(JSON.parse(JSON.stringify(this.JwtTokenService.decodeToken(data.token))).role!=='admin'){
+            JSON.parse(JSON.stringify(this.JwtTokenService.decodeToken(data.token)))
+            localStorage.setItem('token',data.token)
+          }
           this.sendData = new FormData()  
           this.AlertService.myAlert('success',`Welcome ${data.data.newUser.firstName}`,'You registered sucessfully')      
         },

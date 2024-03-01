@@ -30,11 +30,11 @@
             routerLinkActive="routesColored" skipLocationChange="true">Add admin</a>
         </li>
         <li class="nav-item d-flex align-items-center gap-4">
-          @if(this.user.image){
-          <img src="http://localhost:3000/{{this.user.image}}" alt="">
+          @if(this.user.image !== 'null'){
+          <img src="{{url}}/{{this.user.image}}" alt="">
           }
           @else{
-          <img src="../../../assets/user.png" alt="">
+          <img src="../../../assets/user.png" alt="aa">
           }
           <span>{{this.user.userName}}</span>
           <a class="nav-link" aria-current="page" routerLinkActive="routesColored" skipLocationChange="true"
