@@ -1,3 +1,4 @@
 @for (star of stars; track $index) {
-  <fa-icon class="star" [class.filled]="star" [icon]="faStar"></fa-icon>
+  <!-- <fa-icon class="star" [class.filled]="star" [icon]="faStar"></fa-icon> -->
+<i class="fa-star" [class.fa-solid]="star" [class.fa-regular]="!star"></i>
 }

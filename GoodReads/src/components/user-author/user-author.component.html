@@ -16,10 +16,8 @@
 </div>
 
 <div>
-    
     @for(book of authorData.authorbooks; track book._id)
     {
         <app-user-author-book [bookInfo]="book" [id]="book._id"></app-user-author-book>
     }
-
 </div>

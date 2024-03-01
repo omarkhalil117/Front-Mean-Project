@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand acme-regular" routerLink="books" skipLocationChange="true">
+      goodReads <i class="fas fa-book-open"></i>
+    </a>
+    <button class="navbar-toggler mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse smallNav" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="categories" routerLinkActive="routesColored"
+            skipLocationChange="true">Categories</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="books" skipLocationChange="true"
+            routerLinkActive="routesColored">Books</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="authors" routerLinkActive="routesColored"
+            skipLocationChange="true">Authors</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center d-flex">
+        <li class="nav-item d-flex align-items-center gap-4">
+          @if(this.user.image !== 'null'){
+          <img src="{{url}}/{{this.user.image}}" alt="">
+          }
+          @else{
+          <img src="../../../assets/user.png" alt="aa">
+          }
+          <span>{{this.user.userName}}</span>
+          <a class="nav-link" aria-current="page" routerLinkActive="routesColored" skipLocationChange="true"
+            (click)="logout()"><i class="fa fa-sign-out fa-2x"></i></a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

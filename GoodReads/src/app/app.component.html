@@ -1,7 +1,11 @@
-@if(this.currentUrl !== 'admin'){
+@if(this.currentUrl !== 'admin' && !token){
 <app-header></app-header>
 }
-@if(this.currentUrl === 'admin'){
-}
 
-<router-outlet></router-outlet>
+@if(this.currentUrl !== 'admin' && token)
+{
+    <app-signed-user></app-signed-user>
+    <app-user-dashboard></app-user-dashboard>
+}@else{
+    <router-outlet></router-outlet>
+}
