@@ -12,8 +12,7 @@ export class AuthorServicesService {
 
   getAuthorWithBooks(id: String)
   {
-    return this.http.get(`${environment.apiurl}/authors/${id}`, this.auth.handleRequestOption());
-    // return this.http.get(`${environment.apiurl}/authors/${id}`);
+    return this.http.get(`${environment.apiurl}/authors/${id}`);
   }
 
   getAllAuthors()

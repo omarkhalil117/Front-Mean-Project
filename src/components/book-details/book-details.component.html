@@ -1,7 +1,11 @@
-@if(this.book && this.book.categoryID && this.book.authorID){
   <div class="container">
     <div class="details-left">
-      <img [src]="book.cover" alt="Book Cover" class="book-cover">
+      @if(!this.book.cover)
+        {
+            <img src="../../assets/default-photo.jpg">
+        } @else{
+            <img [src]="book.cover" alt="Book Cover" class="book-cover">
+        }
       <select (change)="updateBookShelve($event, book._id)" name="shelve" id="shelve" class="shelve-select">
           <option value="Want to Read" selected>Want to Read</option>
           <option value="Currently read">Currently read</option>
@@ -52,4 +56,3 @@
     <p class="review-text">{{ review.reviewBook }}</p>
     }
   </div>
-  }

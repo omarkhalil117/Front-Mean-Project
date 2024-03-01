@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SignupComponent } from '../signup/signup.component';
 import { LoginComponent } from '../login/login.component';
@@ -11,5 +11,5 @@ import { LoginComponent } from '../login/login.component';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+@Input() token:any ;
 }

@@ -44,10 +44,8 @@ export class UserDashboardComponent {
         this.BookPage.getUserBooksPages(this.jwt,'1').subscribe((data: any) => {
           this.data = data.fullInfo;
           this.temp = data.fullInfo;
-          console.log(this.temp)
-          console.log(this.data)
         });
-      }
+      }          //console.log(this.temp)
     }
   }
 
@@ -60,7 +58,6 @@ export class UserDashboardComponent {
       this.data = this.temp;
     }
     else{
-      console.log(this.temp._id)
       this.data = this.temp.filter( (el:any) => el._id.shelve.shelve === this.status );
     }
   } 
@@ -68,18 +65,18 @@ export class UserDashboardComponent {
 
   redirectAuthorPage(id:string)
   {
-    this.router.navigate(['/authors',id])
+    this.router.navigate(['authors',id])
   }
 
   redirectBookPage(id:String)
   {
-    this.router.navigate(['/books',id]); 
+    this.router.navigate(['books',id]); 
   }
 
   async updateBookShelve(e:any, bookId:String, fullId:String)
   {
     console.log(e.target.value,bookId)
-    this.http.patch(`${this.url}/users/${this.jwt}/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
+    this.http.patch(`${this.url}/users/${this.jwt.id}/book/${bookId}`, { shelve:e.target.value} ).subscribe((d)=> console.log(d));
     this.books = this.temp.map((el:any)=> {
       if(el._id !== fullId) {
         return el;
@@ -118,7 +115,7 @@ export class UserDashboardComponent {
     changePage(e:any)
   {  
       console.log(e.target.innerText)
-      this.BookPage.getUserBooksPages(this.jwt,e.target.innerText).subscribe((res:any) => {
+      this.BookPage.getUserBooksPages(this.jwt.id,e.target.innerText).subscribe((res:any) => {
       this.data = res.fullInfo;
       console.log(this.data)
       });

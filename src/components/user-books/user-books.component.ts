@@ -47,6 +47,7 @@ export class UserBooksComponent {
     }
 
   redirectToBookDetails(id : string) {
+    console.log(1111,id)
     this.router.navigate(['books', id]);
   }
 

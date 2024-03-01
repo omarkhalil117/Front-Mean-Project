@@ -43,6 +43,7 @@ export class BookDetailsComponent {
 
   ngOnInit(){
     const id = this.activateRoute.snapshot.params['_id'];
+    console.log("55555555555555555",id)
     this.booksRequestsService.getBook(id).subscribe((res: any) => {
       this.book = res.data.book;
       console.log(this.book);

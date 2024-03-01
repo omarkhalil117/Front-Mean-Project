@@ -5,7 +5,5 @@
 @if(this.currentUrl !== 'admin' && token)
 {
     <app-signed-user></app-signed-user>
-    <app-user-dashboard></app-user-dashboard>
-}@else{
-    <router-outlet></router-outlet>
 }
+<router-outlet></router-outlet>

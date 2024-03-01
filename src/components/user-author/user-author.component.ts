@@ -1,3 +1,4 @@
+import { JwtTokenService } from '../../services/jwt-token.service';
 import { Component , Input} from '@angular/core';
 import { UserAuthorBookComponent } from '../user-author-book/user-author-book.component';
 import { AuthorServicesService } from '../../services/author-services.service';
@@ -15,5 +16,15 @@ export class UserAuthorComponent {
   author:any = {};
   books: any[] = [];
   url = environment.apiurl;
-  constructor(private authorInfo : AuthorServicesService){}
+  userId: any
+  constructor(private authorInfo : AuthorServicesService,
+    private jwt : JwtTokenService){}
+
+  ngOnInit()
+  {
+    this.userId = this.jwt.decodeToken(localStorage.getItem('token'));
+    this.authorInfo.getAuthorWithBooks(this.userId.id).subscribe((d)=>{
+      console.log(d);
+    })
+  }
 }

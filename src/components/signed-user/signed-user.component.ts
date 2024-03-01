@@ -1,13 +1,14 @@
 import { AdminService } from './../../services/admin.service';
 import { Component } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Output, EventEmitter } from '@angular/core';
 import { JwtTokenService } from '../../services/jwt-token.service';
+
 @Component({
   selector: 'app-signed-user',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './signed-user.component.html',
   styleUrl: './signed-user.component.css'
 })
@@ -27,7 +28,7 @@ ngOnInit(){
  }
 logout(){
     localStorage.clear()
-    this.router.navigate(['admin'])
+    this.router.navigate(['login'])
     this.isLogged.emit(false)
   }
 }

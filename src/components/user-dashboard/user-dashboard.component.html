@@ -33,7 +33,7 @@
               }
 
               <td><a class="text-decoration-underline "(click)="redirectBookPage(bookInfo._id.book._id)" >{{bookInfo._id.book.name}}</a></td>
-              <td> <a class="text-decoration-underline " (click)="redirectAuthorPage(bookInfo._id.book.authorID)">{{bookInfo._id.author[0].firstName}} <span>{{bookInfo._id.author[0].lastName}}</span></a></td>
+              <td> <a class="text-decoration-underline " (click)="redirectAuthorPage(bookInfo._id.book[0]._id.authorID)">{{bookInfo._id.author[0].firstName}} <span>{{bookInfo._id.author[0].lastName}}</span></a></td>
 
               @if(bookInfo._id.shelve.rating)
               { 

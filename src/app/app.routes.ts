@@ -4,7 +4,6 @@ import { SignupComponent } from '../components/signup/signup.component';
 import { AdminCategoriesComponent } from './admin/admin-categories/admin-categories.component';
 import { AuthorAdminComponent } from './admin/authors/author-admin/author-admin.component';
 import { AdminComponent } from './admin/admin/admin.component';
-import { authGuard } from '../guards/auth.guard';
 import { adminGuard } from '../guards/admin.guard';
 import { AuthorsComponent } from '../components/authors/authors.component';
 import { UserBooksComponent } from '../components/user-books/user-books.component';

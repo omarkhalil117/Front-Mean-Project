@@ -10,11 +10,12 @@ import { BookDetailsComponent } from '../components/book-details/book-details.co
 import { RatingComponent } from '../components/rating/rating.component';
 import { UserBooksComponent } from '../components/user-books/user-books.component';
 import { RatingModule } from 'primeng/rating';
+import { LoginComponent } from '../components/login/login.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AuthorsComponent, UserDashboardComponent, BookRowComponent, UserAuthorComponent, RouterOutlet, BookDetailsComponent, HeaderComponent, RatingModule, RatingComponent , UserBooksComponent, HeaderComponent, SignedUserComponent],
+  imports: [RouterOutlet, AuthorsComponent, UserDashboardComponent, BookRowComponent, UserAuthorComponent, RouterOutlet, BookDetailsComponent, HeaderComponent, RatingModule, RatingComponent , UserBooksComponent, HeaderComponent, SignedUserComponent, LoginComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
