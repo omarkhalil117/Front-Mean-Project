@@ -1,3 +1,4 @@
+import { authGuard } from './../../guards/auth.guard';
 import { JwtTokenService } from '../../services/jwt-token.service';
 import { Component , Input} from '@angular/core';
 import { UserAuthorBookComponent } from '../user-author-book/user-author-book.component';
@@ -14,17 +15,18 @@ export class UserAuthorComponent {
   @Input() id!:String;
   authorData:any = [] ;
   author:any = {};
-  books: any[] = [];
+  authorBooks: any ;
   url = environment.apiurl;
   userId: any
   constructor(private authorInfo : AuthorServicesService,
     private jwt : JwtTokenService){}
-
+  colors = ['red','blue','green']
   ngOnInit()
   {
-    this.userId = this.jwt.decodeToken(localStorage.getItem('token'));
-    this.authorInfo.getAuthorWithBooks(this.userId.id).subscribe((d)=>{
-      console.log(d);
+    this.authorInfo.getAuthorWithBooks(this.id).subscribe((d:any)=>{
+      this.author = d.author[0];
+      this.authorBooks = d.authorbooks;
+      console.log('books',this.authorBooks)
     })
   }
 }

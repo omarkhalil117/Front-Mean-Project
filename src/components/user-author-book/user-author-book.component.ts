@@ -11,7 +11,7 @@ import { JwtTokenService } from '../../services/jwt-token.service';
   styleUrl: './user-author-book.component.css'
 })
 export class UserAuthorBookComponent {
-@ Input() bookInfo:any;
+@ Input() bookInfo :any;
 url = environment.apiurl;
 userId:any;
   constructor(private jwt : JwtTokenService,

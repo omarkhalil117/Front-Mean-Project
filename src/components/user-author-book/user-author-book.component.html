@@ -1,18 +1,19 @@
-    <div class="d-flex justify-content-around align-items-center mt-5">
-        @if(!bookInfo.cover)
-        {
-            <img src="{{url}}/{{bookInfo.cover}}" alt="{{bookInfo.cover}}">
-        } @else {
-            <img src="../../assets/default-photo.jpg" alt="">
-        }
-        <div >
-            <h3>{{bookInfo.name}}</h3>
-            <p>rating : {{bookInfo.rating}}</p>
-            <p>average rating : {{bookInfo.avgRate}}</p>
-        </div>
-    <select class="form-select form-select-sm w-25" (change)="updateBookShelve($event,bookInfo._id)" aria-label=".form-select-sm example">
-    <option selected>Want to read</option>
-    <option>Currently Read</option>
-    <option>Read</option>
-    </select>
+<div class="d-flex justify-content-around align-items-center mt-5">
+    @if(!bookInfo.cover)
+    {
+    <img src="{{url}}/{{bookInfo.cover}}" alt="{{bookInfo.cover}}">
+    } @else {
+    <img src="../../assets/default-photo.jpg" alt="">
+    }
+    <div>
+        <h3>{{bookInfo.name}}</h3>
+        <p>rating : {{bookInfo.rating}}</p>
+        <p>average rating : {{bookInfo.avgRate}}</p>
     </div>
+    <select class="form-select form-select-sm w-25" (change)="updateBookShelve($event,bookInfo._id)"
+        aria-label=".form-select-sm example">
+        <option selected>Want to read</option>
+        <option>Currently Read</option>
+        <option>Read</option>
+    </select>
+</div>

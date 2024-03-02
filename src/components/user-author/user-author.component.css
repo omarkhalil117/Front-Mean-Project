@@ -4,11 +4,16 @@ img{
 }
 
 .name {
-  border: 5px solid black;
   padding: 20px;
   height: min-content;
 }
 
-.my-container {
-   border: 3px solid antiquewhite;
+.title
+{
+  width: 243px;
+}
+
+hr{
+  width: 25%;
+  color: coral;
 }

@@ -1,88 +1,92 @@
-  <div class="container-fluid mt-5 ">
-    <div class="row">
-      <div class="col-3">
-        <div class="d-flex flex-column align-content-center justify-content-center"(click)="filterByShelve($event)">
-          <button type="button" class="btn btn-info w-50 my-1" >All</button>
-          <button type="button" class="btn btn-info w-50 my-1">Read</button>
-          <button type="button" class="btn btn-info w-50 my-1">Want to Read</button>
-          <button type="button" class="btn btn-info w-50 my-1">Currently read</button>
-        </div>
+<div class="container-fluid mt-5 ">
+  <div class="row">
+    <div class="col-3">
+      <div class="d-flex flex-column align-content-center justify-content-center" (click)="filterByShelve($event)">
+        <button type="button" class="btn btn-info w-50 my-1">All</button>
+        <button type="button" class="btn btn-info w-50 my-1">Read</button>
+        <button type="button" class="btn btn-info w-50 my-1">Want to Read</button>
+        <button type="button" class="btn btn-info w-50 my-1">Currently read</button>
       </div>
-      <div class="col-9">
-        <h1>{{status}}</h1>
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Cover</th>
-              <th>Name</th>
-              <th>Author</th>
-              <th>Rating</th>
-              <th>Average Rating</th>
-              <th>Shelve</th>
-            </tr>
-          </thead>
-          <tbody>
-            @for(bookInfo of data ; track $index)
-            {
-              <tr>
-              @if(!bookInfo._id.book.cover)
-              {
-                <td><img src="../../assets/default-photo.jpg" alt=""></td>
-              } @else {
-                <td><img src="{{url}}/{{bookInfo._id.book.cover}}" alt="img"></td>
-              }
-
-              <td><a class="text-decoration-underline "(click)="redirectBookPage(bookInfo._id.book._id)" >{{bookInfo._id.book.name}}</a></td>
-              <td> <a class="text-decoration-underline " (click)="redirectAuthorPage(bookInfo._id.book[0]._id.authorID)">{{bookInfo._id.author[0].firstName}} <span>{{bookInfo._id.author[0].lastName}}</span></a></td>
-
-              @if(bookInfo._id.shelve.rating)
-              { 
-                <td>
-                <app-star-rate [rating]="bookInfo._id.shelve.rating"></app-star-rate>
-                </td>
-              } @else {
-                <!-- <app-star-rate [rating]="0"></app-star-rate>  -->
-                <p>None</p>
-              }
-
-              @if(bookInfo._id.book.avgRate)
-              {
-                <td>
-                  <app-star-rate [rating]="bookInfo._id.book.avgRate"></app-star-rate> 
-                </td>
-              } @else { 
-                  <app-star-rate [rating]="0"></app-star-rate> 
-              }
-
-              <td>
-                <select (change)="updateBookShelve($event, bookInfo._id.book._id , bookInfo._id)" name="shelve" id="shelve">
-                    <option value="{{bookInfo._id.shelve.shelve}}" disabled selected>{{bookInfo._id.shelve.shelve}}</option>
-                    <option value="Want to Read" >Want to Read</option>
-                    <option value="Currently read">Currently read</option>
-                    <option value="Read">Read</option>
-                </select>
-              </td>
-            </tr>
-            }
-            
-            <!-- Add more rows for other books -->
-          </tbody>
-        </table>
-        
-        <!-- Pagination buttons -->
-<div class="d-flex align-items-center justify-content-center ">
-  <nav aria-label="Page navigation example">
-    <ul class="pagination">
-    <div (click)="changePage($event)">
-      <div class="btn btn-sm"><a class="page-link">1</a></div>
-      <div class="btn btn-sm"><a class="page-link">2</a></div>
-      <div class="btn btn-sm"><a class="page-link">3</a></div>
     </div>
-  </ul>
-</nav>
-</div>
+    <div class="col-9">
+      <h1>{{status}}</h1>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Cover</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Rating</th>
+            <th>Average Rating</th>
+            <th>Shelve</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for(bookInfo of data ; track $index)
+          {
+          <tr>
+            @if(!bookInfo._id.book.cover)
+            {
+            <td><img src="../../assets/default-photo.jpg" alt=""></td>
+            } @else {
+            <td><img src="{{url}}/{{bookInfo._id.book.cover}}" alt="img"></td>
+            }
 
+            <td><a class="text-decoration-underline "
+                (click)="redirectBookPage(bookInfo._id.book._id)">{{bookInfo._id.book.name}}</a></td>
+            <td> <a class="text-decoration-underline "
+                (click)="redirectAuthorPage(bookInfo._id.book.authorID)">{{bookInfo._id.author[0].firstName}}
+                <span>{{bookInfo._id.author[0].lastName}}</span></a></td>
 
+            @if(bookInfo._id.shelve.rating)
+            {
+            <td>
+              <app-star-rate [rating]="bookInfo._id.shelve.rating"></app-star-rate>
+            </td>
+            } @else {
+            <!-- <app-star-rate [rating]="0"></app-star-rate>  -->
+            <p>None</p>
+            }
+
+            @if(bookInfo._id.book.avgRate)
+            {
+            <td>
+              <app-star-rate [rating]="bookInfo._id.book.avgRate"></app-star-rate>
+            </td>
+            } @else {
+            <app-star-rate [rating]="0"></app-star-rate>
+            }
+
+            <td>
+              <select (change)="updateBookShelve($event, bookInfo._id.book._id , bookInfo._id)" name="shelve"
+                id="shelve">
+                <option value="{{bookInfo._id.shelve.shelve}}" disabled selected>{{bookInfo._id.shelve.shelve}}</option>
+                <option value="Want to Read">Want to Read</option>
+                <option value="Currently read">Currently read</option>
+                <option value="Read">Read</option>
+              </select>
+            </td>
+          </tr>
+          }
+
+          <!-- Add more rows for other books -->
+        </tbody>
+      </table>
+
+      <!-- Pagination buttons -->
+      <div class="d-flex align-items-center justify-content-center ">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <div (click)="changePage($event)">
+              <div class="btn btn-sm"><a class="page-link">1</a></div>
+              <div class="btn btn-sm"><a class="page-link">2</a></div>
+              <div class="btn btn-sm"><a class="page-link">3</a></div>
+            </div>
+          </ul>
+        </nav>
       </div>
+
+
     </div>
   </div>
+</div>

@@ -65,6 +65,7 @@ export class UserDashboardComponent {
 
   redirectAuthorPage(id:string)
   {
+    console.log(this.data)
     this.router.navigate(['authors',id])
   }
 
