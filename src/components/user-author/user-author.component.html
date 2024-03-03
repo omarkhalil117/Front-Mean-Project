@@ -7,7 +7,7 @@
     }
     <div class="justify-content-around align-items-center m-5 py-5 name">
         <h1>{{author.firstName}} <span>{{author.lastName}}</span></h1>
-        <p>{{author.dob.slice(0,10)}}</p>
+        <p>{{author.dob?.slice(0,10)}}</p>
     </div>
 
 </div>
@@ -16,16 +16,9 @@
     <h1 class="align-items-start px-5 rounded-2 m-5 title">Author's Books</h1>
     <hr />
 </div>
-<!-- <p>{{!books}}</p> -->
-
-<!-- @for(color of colors; track $index)
-{
-<p>{{color}}</p>
-} -->
 
 @for(book of authorBooks; track $index)
 {
-<p>{{book}}</p>
 <app-user-author-book [bookInfo]="book" [id]="book._id"></app-user-author-book>
 <hr />
 }

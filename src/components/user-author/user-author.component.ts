@@ -15,12 +15,12 @@ export class UserAuthorComponent {
   @Input() id!:String;
   authorData:any = [] ;
   author:any = {};
-  authorBooks: any ;
+  authorBooks: any[] = [] ;
   url = environment.apiurl;
   userId: any
+  colors = ['red','blue','green']
   constructor(private authorInfo : AuthorServicesService,
     private jwt : JwtTokenService){}
-  colors = ['red','blue','green']
   ngOnInit()
   {
     this.authorInfo.getAuthorWithBooks(this.id).subscribe((d:any)=>{
